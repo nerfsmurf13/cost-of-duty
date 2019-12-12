@@ -18,6 +18,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .adspace-container {
+	/* border: 10px dashed white; */
 	color: black;
 	display: flex;
 	flex: 1;

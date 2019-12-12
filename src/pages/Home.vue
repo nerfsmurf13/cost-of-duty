@@ -1,9 +1,9 @@
 <template>
-	<div>
+
 		<div class="main">
 			<div class="title">
-				<picture
-					><img
+				<picture>
+					<img
 						alt="Cost of Duty"
 						srcset="
 							../assets/logo-transparent-small.png   400w,
@@ -33,7 +33,7 @@
 				<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
 			</div>
 		</div>
-	</div>
+
 </template>
 
 <script>
@@ -56,6 +56,10 @@ h1 {
 }
 span {
 	font-size: 1.5rem;
+}
+
+.main{
+	width:100%;
 }
 .title img {
 	width: 100%;

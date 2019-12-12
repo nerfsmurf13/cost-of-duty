@@ -7,7 +7,6 @@
 				<router-view />
 			</div>
 		</div>
-
 		<ad-bottom />
 	</div>
 </template>
@@ -27,6 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import './styles/base.css';
 @import "styles/normalize.css";
 @import "https://fonts.googleapis.com/css?family=Roboto&display=swap";
 @import "https://fonts.googleapis.com/css?family=Coda:800&display=swap";
@@ -35,10 +35,15 @@ export default {
 $screen-med: 800px;
 $screen-large: 1080px;
 
+body{
+	width:100vw;
+}
+
 #app {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
+	width:100vw;
 	/* justify-items: center; */
 	justify-content: space-between;
 	background-color: #000;
@@ -63,6 +68,21 @@ $screen-large: 1080px;
 	--text-med: #89ddff;
 	--text-dark: #3e3e3e;
 	--hilight: #f0a84b;
+	--screen-med: 800px;
+	--screen-large: 1080px;
+		$bad: #871e1a;
+	$good: #77b164;
+	$background1: #000;
+	$background2: #111;
+	$selected-lite: #43677b;
+	$selected-dark: #253c4b;
+	/* --text-lite: #cccccc; */
+	$text-lite: #fff;
+	$text-med: #89ddff;
+	$text-dark: #3e3e3e;
+	$hilight: #f0a84b;
+	$screen-med: 800px;
+	$screen-large: 1080px;
 }
 input[type="text"] {
 	background-color: var(--background2);
@@ -80,7 +100,7 @@ input[type="text"]:focus {
 	border-bottom: 2px solid var(--hilight);
 }
 .btn {
-	margin: 1rem 0;
+	margin: .1rem 0;
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 	font-size: 2rem;
@@ -90,7 +110,7 @@ input[type="text"]:focus {
 	border: 2px solid var(--selected-lite);
 	outline: none;
 	cursor: pointer;
-	padding: 0 1rem;
+	padding: 0 .5rem;
 	&:hover {
 		border-bottom: 2px solid var(--selected-lite);
 		background-color: var(--background2);
@@ -108,8 +128,9 @@ a {
 .wrapper-full {
 	display: flex;
 	justify-content: center;
+	width:100%;
 	.wrapper {
-		padding: 0 2rem;
+		margin: 0 1rem;
 	}
 }
 
@@ -118,7 +139,7 @@ a {
 		width: $screen-med;
 	}
 }
-@media screen and (min-width: $screen-large) {
+@media screen and (min-width: $screen-large + 100) {
 	.wrapper {
 		width: $screen-large;
 	}
