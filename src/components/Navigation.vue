@@ -1,8 +1,20 @@
 <template>
 	<div class="nav-wrapper">
-		<div class="logo"><span class="_impact">CO$T of DUTY</span></div>
-		<div>About</div>
-		<div class="share">Share</div>
+		<div class="left">
+			<div class="logo nav">
+				<img
+					src="../assets/logo-transparent-small.png"
+					alt="Cost of Duty"
+					srcset=""
+				/>
+			</div>
+		</div>
+		<!-- <div class="middle nav"></div> -->
+		<div class="right">
+			<div class="about nav"><a href="#">About</a></div>
+			<div class="share nav "><a href="#">Share</a></div>
+			<div class="search nav"><a href="#">Search</a></div>
+		</div>
 	</div>
 </template>
 
@@ -18,13 +30,41 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+.logo {
+	justify-content: flex-start;
+	width: 200px;
+}
+.logo img {
+	width: 100%;
+	max-width: 200px;
+}
+
 .nav-wrapper {
+	margin: 1rem 0;
 	display: flex;
+	flex: 1;
 	flex-flow: row;
 	justify-content: space-between;
-}
-._impact {
-	font-family: "Coda", cursive;
+	background-color: var(--background2);
+	align-items: center;
+	.nav {
+		margin: 0 1rem;
+		font-size: 3vw;
+	}
+
+	.left {
+		flex: 2;
+		justify-content: flex-start;
+	}
+	.middle {
+		flex: 2;
+	}
+	.right {
+		flex: 1;
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+	}
 }
 </style>

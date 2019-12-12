@@ -1,10 +1,13 @@
 <template>
 	<div id="app">
 		<ad-top />
-		<div class="wrapper">
-			<app-navigation />
-			<router-view />
+		<div class="wrapper-full">
+			<div class="wrapper">
+				<app-navigation />
+				<router-view />
+			</div>
 		</div>
+
 		<ad-bottom />
 	</div>
 </template>
@@ -23,21 +26,101 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import "styles/normalize.css";
 @import "https://fonts.googleapis.com/css?family=Roboto&display=swap";
 @import "https://fonts.googleapis.com/css?family=Coda:800&display=swap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+$screen-med: 800px;
+$screen-large: 1080px;
 
 #app {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	/* justify-items: center; */
+	justify-content: space-between;
+	background-color: #000;
+	background-image: url("./assets/bg-large.jpg");
+	background-size: contain;
+	/* min-height: 100vh; */
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
-	color: #fff;
+	color: var(--text-lite);
 	/* background-color: #036704; */
-	background-color: #000;
+	/* background-color: #000; */
+	--bad: #871e1a;
+	--good: #77b164;
+	--background1: #000;
+	--background2: #111;
+	--selected-lite: #43677b;
+	--selected-dark: #253c4b;
+	/* --text-lite: #cccccc; */
+	--text-lite: #fff;
+	--text-med: #89ddff;
+	--text-dark: #3e3e3e;
+	--hilight: #f0a84b;
 }
-.wrapper {
+input[type="text"] {
+	background-color: var(--background2);
+	color: var(--text-med);
+	border: none;
+	font-size: 2.5rem;
+	border-bottom: 2px solid var(--selected-lite);
+	width: 100%;
+	text-align: center;
+	outline: none;
+	margin: 1rem 0;
+}
+input[type="text"]:focus {
+	border: none;
+	border-bottom: 2px solid var(--hilight);
+}
+.btn {
+	margin: 1rem 0;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	font-size: 2rem;
+	border: none;
+	color: var(--text-lite);
+	background: var(--background1);
+	border: 2px solid var(--selected-lite);
+	outline: none;
+	cursor: pointer;
 	padding: 0 1rem;
+	&:hover {
+		border-bottom: 2px solid var(--selected-lite);
+		background-color: var(--background2);
+	}
+	&_selected {
+		border-bottom: 2px solid var(--hilight);
+	}
+}
+
+a {
+	color: white;
+	text-decoration: white;
+}
+
+.wrapper-full {
+	display: flex;
+	justify-content: center;
+	.wrapper {
+		padding: 0 2rem;
+	}
+}
+
+@media screen and (min-width: $screen-med + 100) {
+	.wrapper {
+		width: $screen-med;
+	}
+}
+@media screen and (min-width: $screen-large) {
+	.wrapper {
+		width: $screen-large;
+	}
 }
 </style>

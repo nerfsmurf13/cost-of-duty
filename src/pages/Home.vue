@@ -2,19 +2,35 @@
 	<div>
 		<div class="main">
 			<div class="title">
-				<h1>CO$T <span>of</span> DUTY</h1>
+				<picture
+					><img
+						alt="Cost of Duty"
+						srcset="
+							../assets/logo-transparent-small.png   400w,
+							../assets/logo-transparent-medium.png 1024w,
+							../assets/logo-transparent-large.png  1920w
+						"
+				/></picture>
 				<h2>
 					Find out how much money you've used in Call of Duty's multiplayer!
 				</h2>
+				<p>1. Pick the platform you want to search.</p>
+				<p>2. Enter player's ID/Tag.</p>
+				<p>
+					3. Hit "Go" to see how much money has been used if online matches were
+					real!
+				</p>
+			</div>
+			<div class="sys-select">
+				<button type="button" class="btn">PC</button>
+				<button type="button" class="btn">XBOX</button>
+				<button type="button" class="btn btn_selected">PS4</button>
 			</div>
 
-			<input type="text" name="" id="" /><select name="" id=""
-				><option value="">PC</option
-				><option value="">XBOX</option></select
-			>
-			<button>Go</button>
+			<input type="text" placeholder="MrPoopyButthole" name="" id="" />
+			<button type="button" class="btn go">Go</button>
 			<div class="others">
-				{User Count} players looked up a total of ${XXXX} in chaos!
+				<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
 			</div>
 		</div>
 	</div>
@@ -32,13 +48,29 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 h1 {
 	font-size: 2.9rem;
 
 	font-family: "Coda", cursive;
 }
 span {
-	font-size: 1rem;
+	font-size: 1.5rem;
+}
+.title img {
+	width: 100%;
+}
+.sys-select {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	justify-content: space-around;
+}
+
+.go {
+	border-bottom: 2px solid var(--good);
+	&:hover {
+		border-bottom: 2px solid var(--good);
+	}
 }
 </style>

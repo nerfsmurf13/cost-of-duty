@@ -22,6 +22,7 @@ export default {
 	display: flex;
 	flex: 1;
 	justify-content: center;
+	height: 50px;
 }
 
 .adspace-top {
