@@ -6,17 +6,17 @@
 		<div class="main">
 			<div class="player-id-section">
 				<div class="player-id-section-top">
-					<div class="player-id">DemoPayer6969</div>
-					<div class="player-sys">PSN</div>
+					<div class="player-id">{{stats.data.username}}</div>
+					<div class="player-sys">{{stats.data.platform}}</div>
 				</div>
 				<div class="player-id-section-bottom">
-					<div class="player-level val1">Level: 999</div>
-					<div class="player-score val1">Score: 9,999,999,999</div>
+					<div class="player-level val1">Level: {{stats.data.level}}</div>
+					<div class="player-score val1">Score: {{stats.data.totalXp}}</div>
 				</div>
 				<div class="refresh-counter">Stat update in x:xx</div>
 			</div>
 			<!-- <div class="player-nav">Overview | Firearms | Explosives | Killstreaks</div> -->
-			<div class="tabs">
+			<div v-if="loaded" class="tabs">
 				<div class="title">
 					<button
 						:class="{ 'btn-active': tab == 1 }"
@@ -212,11 +212,11 @@
 					</table>
 				</div>
 				<!-- Killstreak tab -->
-				<div v-show="tab == 4" class="stat-container">
-					<div class="total-cash">
+				<!-- <div v-show="tab == 4" class="stat-container"> -->
+					<killstreaks :killstreakObject="stats.data.lifetime.scorestreakData.lethalScorestreakData" v-show="tab == 4"  />
+					<!-- <div class="total-cash">
 						<div class="value">$XX,XXX,XXX</div>
-						<!-- <div class="value-bottom">spent in {#matches} matches!</div>
-						<div class="value-gdp">Thats the GDP of {whatever!}</div> -->
+						
 					</div>
 
 					<table>
@@ -231,11 +231,11 @@
 						</thead>
 						<tbody>
 							<tr>
-								<th>Tomahawk</th>
-								<th>10</th>
-								<th>10</th>
-								<th>20</th>
-								<th>$15,000,000</th>
+								<th>Hover Jet</th>
+								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.awardedCount}}</th>
+								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.uses}}</th>
+								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.extraStat1}}</th>
+								<th>${{formatPrice(stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.awardedCount * costs.killstreaks.hover_jet.unit_cost)}}</th>
 							</tr>
 							<tr>
 								<th>Support Helo</th>
@@ -245,26 +245,108 @@
 								<th>$40,000,000</th>
 							</tr>
 						</tbody>
-					</table>
-				</div>
+					</table> -->
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import Killstreaks from "@/components/Killstreaks";
+
 export default {
 	name: "Home",
+	components:{
+		Killstreaks
+	},
 	data() {
 		return {
 			tab: 1,
 			url1:
 				"https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/",
-			platform: "",
 			url2: "/gamer/",
 			hash: "%23",
-			url3: "/profile/type/mp"
+			url3: "/profile/type/mp",
+			platform:'',
+			username:'',
+			name1:'',
+			name2:'',
+			stats:[],
+			loaded:false,
+			costs:{
+				firearms:{
+					iw8_sn_kilo98:{
+						mag:7.75,
+						cost:244
+					}
+				},
+				killstreaks:{
+					hover_jet:{
+						rockets:400,
+						ammo25:500,
+						unit_cost:1500000
+					}
+				}
+			}
 		};
+	},
+	created(){
+		this.passParams();
+		if (this.platform=='battle')
+		{
+			this.battleFormatter(this.username)
+		}
+	},
+	mounted(){
+		if (this.platform=='battle')
+		{
+			this.fetchBattlePlayer()
+		}else{
+			this.fetchPlayer()
+		}
+	},
+	methods:{
+		fetchBattlePlayer() {
+			let baseURI = this.url1 + this.platform + this.url2 + this.name1 + this.hash + this.name2 + this.url3;
+			this.$http.get(baseURI).then(result => {
+				this.stats = result.data;
+				this.loaded = true;
+			});
+		},
+		fetchPlayer() {
+			let baseURI = this.url1 + this.platform + this.url2 + this.username + this.url3;
+			this.$http.get(baseURI).then(result => {
+				this.stats = result.data;
+				this.loaded = true;
+			});
+		},
+		battleFormatter(x){
+			let name = x;
+			let part = 1;
+			for (let i=0; i<x.length; i++){
+				if (name[i]=='#'){
+					part=2
+				}
+				else if (part==1){
+					this.name1 += name[i]
+				}
+				else{
+					this.name2 += name[i]
+				}
+			}
+		},
+		passParams(){
+			this.platform = this.$route.params.platform;
+			this.username = this.$route.params.username;
+		},
+		populateLocalObject(){
+
+		},
+		formatPrice(value) {
+        let val = (value/1).toFixed(2).replace(',', '.')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
 	}
 };
 </script>
@@ -335,6 +417,7 @@ $screen-large: 1080px;
 	justify-content: space-around;
 }
 .player-id {
+	margin:  0;
 }
 
 .refresh-counter {

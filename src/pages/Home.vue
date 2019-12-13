@@ -53,7 +53,9 @@
 			placeholder="MrPoopyButthole"
 			name=""
 		/>
-		<button type="button" class="btn go">Go</button>
+		<router-link :to="{name: 'Player', params: { username: username, platform: platform }}">
+		<button type="button" class="btn go" >Go</button>
+		</router-link>
 		<div class="others">
 			<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
 		</div>
@@ -66,9 +68,16 @@ export default {
 	data() {
 		return {
 			platform: "",
-			username: ""
+			username: "",
 		};
-	}
+	},
+	// methods:{
+	// 	assembleQuery(){
+	// 	},
+		// submitPlayer(){
+		// 	router.push({ path: `/mw/stats/${platform}/${username}` }) // -> /user/123
+		// }
+	// }
 };
 </script>
 
