@@ -1,39 +1,63 @@
 <template>
-
-		<div class="main">
-			<div class="title">
-				<picture>
-					<img
-						alt="Cost of Duty"
-						srcset="
-							../assets/logo-transparent-small.png   400w,
-							../assets/logo-transparent-medium.png 1024w,
-							../assets/logo-transparent-large.png  1920w
-						"
-				/></picture>
-				<h2>
-					Find out how much money you've used in Call of Duty's multiplayer!
-				</h2>
-				<p>1. Pick the platform you want to search.</p>
-				<p>2. Enter player's ID/Tag.</p>
-				<p>
-					3. Hit "Go" to see how much money has been used if online matches were
-					real!
-				</p>
-			</div>
-			<div class="sys-select">
-				<button type="button" class="btn">PC</button>
-				<button type="button" class="btn">XBOX</button>
-				<button type="button" class="btn btn_selected">PS4</button>
-			</div>
-
-			<input type="text" placeholder="MrPoopyButthole" name="" id="" />
-			<button type="button" class="btn go">Go</button>
-			<div class="others">
-				<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
-			</div>
+	<div class="main">
+		<div class="title">
+			<picture>
+				<img
+					alt="Cost of Duty"
+					srcset="
+						../assets/logo-transparent-small.png   400w,
+						../assets/logo-transparent-medium.png 1024w,
+						../assets/logo-transparent-large.png  1920w
+					"
+			/></picture>
+			<h2>
+				Find out how much money you've used in Call of Duty's multiplayer!
+			</h2>
+			<p>1. Pick the platform you want to search.</p>
+			<p>2. Enter player's ID/Tag.</p>
+			<p>
+				3. Hit "Go" to see how much money has been used if online matches were
+				real!
+			</p>
+		</div>
+		<div class="sys-select">
+			<button
+				:class="{ btn_selected: platform == 'battle' }"
+				type="button"
+				class="btn"
+				@click="platform = 'battle'"
+			>
+				PC
+			</button>
+			<button
+				:class="{ btn_selected: platform == 'xbl' }"
+				type="button"
+				class="btn"
+				@click="platform = 'xbl'"
+			>
+				XBOX
+			</button>
+			<button
+				:class="{ btn_selected: platform == 'psn' }"
+				type="button"
+				class="btn"
+				@click="platform = 'psn'"
+			>
+				PS4
+			</button>
 		</div>
 
+		<input
+			v-model="username"
+			type="text"
+			placeholder="MrPoopyButthole"
+			name=""
+		/>
+		<button type="button" class="btn go">Go</button>
+		<div class="others">
+			<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -41,7 +65,8 @@ export default {
 	name: "Home",
 	data() {
 		return {
-			msg: "Welcome to Your Vue.js App"
+			platform: "",
+			username: ""
 		};
 	}
 };
@@ -58,8 +83,8 @@ span {
 	font-size: 1.5rem;
 }
 
-.main{
-	width:100%;
+.main {
+	width: 100%;
 }
 .title img {
 	width: 100%;
@@ -69,6 +94,10 @@ span {
 	flex-direction: row;
 	flex: 1;
 	justify-content: space-around;
+}
+
+.btn_selected {
+	border-bottom: 2px solid var(--hilight);
 }
 
 .go {
