@@ -2,11 +2,12 @@
 	<div class="nav-wrapper">
 		<div class="left">
 			<div class="logo nav">
-				<img
-					src="../assets/logo-transparent-small.png"
-					alt="Cost of Duty"
-					srcset=""
-				/>
+				<a href="/"
+					><img
+						src="../assets/logo-transparent-small.png"
+						alt="Cost of Duty"
+						srcset=""
+				/></a>
 			</div>
 		</div>
 		<!-- <div class="middle nav"></div> -->
@@ -34,13 +35,12 @@ export default {
 .logo {
 	display: flex;
 	justify-content: flex-start;
-	
+
 	width: 200px;
 }
 .logo img {
 	width: 100%;
 	max-width: 200px;
-
 }
 
 .nav-wrapper {
@@ -70,7 +70,7 @@ export default {
 		display: flex;
 		flex-flow: row;
 		justify-content: flex-end;
-		height:100%;
+		height: 100%;
 	}
 }
 
@@ -78,17 +78,17 @@ export default {
 	.nav-wrapper {
 		flex-flow: row;
 		.nav {
-		margin: 0 .2rem;
-		font-size: 1rem;
+			margin: 0 0.2rem;
+			font-size: 1rem;
 		}
 	}
 }
 @media screen and (min-width: --screen-large) {
 	.nav-wrapper {
 		.nav {
-		margin: 0 .2rem;
-		font-size: 2rem;
-	}
+			margin: 0 0.2rem;
+			font-size: 2rem;
+		}
 	}
 }
 </style>

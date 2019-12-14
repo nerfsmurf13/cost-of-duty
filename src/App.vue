@@ -134,6 +134,10 @@ a {
 	}
 }
 
+.good {
+	color: #77b164;
+}
+
 @media screen and (min-width: $screen-med + 100) {
 	.wrapper {
 		width: $screen-med;

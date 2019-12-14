@@ -6,12 +6,12 @@
 		<div class="main">
 			<div class="player-id-section">
 				<div class="player-id-section-top">
-					<div class="player-id">{{stats.data.username}}</div>
-					<div class="player-sys">{{stats.data.platform}}</div>
+					<div class="player-id">{{ stats.data.username }}</div>
+					<div class="player-sys">{{ stats.data.platform }}</div>
 				</div>
 				<div class="player-id-section-bottom">
-					<div class="player-level val1">Level: {{stats.data.level}}</div>
-					<div class="player-score val1">Score: {{stats.data.totalXp}}</div>
+					<div class="player-level val1">Level: {{ stats.data.level }}</div>
+					<div class="player-score val1">Score: {{ stats.data.totalXp }}</div>
 				</div>
 				<div class="refresh-counter">Stat update in x:xx</div>
 			</div>
@@ -85,50 +85,6 @@
 					<div class="stat-container-indv">
 						<div class="stats-content">230</div>
 						<div class="stats-title">Headshots</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
-					</div>
-					<div class="stat-container-indv">
-						<div class="stats-content">230</div>
-						<div class="stats-title">Acc</div>
 					</div>
 				</div>
 				<!-- </div> -->
@@ -213,8 +169,16 @@
 				</div>
 				<!-- Killstreak tab -->
 				<!-- <div v-show="tab == 4" class="stat-container"> -->
-					<killstreaks :killstreakObject="stats.data.lifetime.scorestreakData.lethalScorestreakData" v-show="tab == 4"  />
-					<!-- <div class="total-cash">
+				<killstreaks
+					v-show="tab == 4"
+					:offKillstreakObject="
+						stats.data.lifetime.scorestreakData.lethalScorestreakData
+					"
+					:tactKillstreakObject="
+						stats.data.lifetime.scorestreakData.supportScorestreakData
+					"
+				/>
+				<!-- <div class="total-cash">
 						<div class="value">$XX,XXX,XXX</div>
 						
 					</div>
@@ -257,7 +221,7 @@ import Killstreaks from "@/components/Killstreaks";
 
 export default {
 	name: "Home",
-	components:{
+	components: {
 		Killstreaks
 	},
 	data() {
@@ -268,85 +232,87 @@ export default {
 			url2: "/gamer/",
 			hash: "%23",
 			url3: "/profile/type/mp",
-			platform:'',
-			username:'',
-			name1:'',
-			name2:'',
-			stats:[],
-			loaded:false,
-			costs:{
-				firearms:{
-					iw8_sn_kilo98:{
-						mag:7.75,
-						cost:244
+			platform: "",
+			username: "",
+			name1: "",
+			name2: "",
+			stats: [],
+			loaded: false,
+			costs: {
+				firearms: {
+					iw8_sn_kilo98: {
+						mag: 7.75,
+						cost: 244
 					}
 				},
-				killstreaks:{
-					hover_jet:{
-						rockets:400,
-						ammo25:500,
-						unit_cost:1500000
+				killstreaks: {
+					hover_jet: {
+						rockets: 400,
+						ammo25: 500,
+						unit_cost: 1500000
 					}
 				}
 			}
 		};
 	},
-	created(){
+	created() {
 		this.passParams();
-		if (this.platform=='battle')
-		{
-			this.battleFormatter(this.username)
+		if (this.platform == "battle") {
+			this.battleFormatter(this.username);
 		}
 	},
-	mounted(){
-		if (this.platform=='battle')
-		{
-			this.fetchBattlePlayer()
-		}else{
-			this.fetchPlayer()
+	mounted() {
+		if (this.platform == "battle") {
+			this.fetchBattlePlayer();
+		} else {
+			this.fetchPlayer();
 		}
 	},
-	methods:{
+	methods: {
 		fetchBattlePlayer() {
-			let baseURI = this.url1 + this.platform + this.url2 + this.name1 + this.hash + this.name2 + this.url3;
+			let baseURI =
+				this.url1 +
+				this.platform +
+				this.url2 +
+				this.name1 +
+				this.hash +
+				this.name2 +
+				this.url3;
 			this.$http.get(baseURI).then(result => {
 				this.stats = result.data;
 				this.loaded = true;
 			});
 		},
 		fetchPlayer() {
-			let baseURI = this.url1 + this.platform + this.url2 + this.username + this.url3;
+			let baseURI =
+				this.url1 + this.platform + this.url2 + this.username + this.url3;
 			this.$http.get(baseURI).then(result => {
 				this.stats = result.data;
 				this.loaded = true;
 			});
 		},
-		battleFormatter(x){
+		battleFormatter(x) {
 			let name = x;
 			let part = 1;
-			for (let i=0; i<x.length; i++){
-				if (name[i]=='#'){
-					part=2
-				}
-				else if (part==1){
-					this.name1 += name[i]
-				}
-				else{
-					this.name2 += name[i]
+			for (let i = 0; i < x.length; i++) {
+				if (name[i] == "#") {
+					part = 2;
+				} else if (part == 1) {
+					this.name1 += name[i];
+				} else {
+					this.name2 += name[i];
 				}
 			}
 		},
-		passParams(){
+		passParams() {
 			this.platform = this.$route.params.platform;
 			this.username = this.$route.params.username;
 		},
-		populateLocalObject(){
-
-		},
+		populateLocalObject() {},
 		formatPrice(value) {
-        let val = (value/1).toFixed(2).replace(',', '.')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    }
+			let val = (value / 1).toFixed(2).replace(",", ".");
+			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
 	}
 };
 </script>
@@ -417,7 +383,7 @@ $screen-large: 1080px;
 	justify-content: space-around;
 }
 .player-id {
-	margin:  0;
+	margin: 0;
 }
 
 .refresh-counter {
