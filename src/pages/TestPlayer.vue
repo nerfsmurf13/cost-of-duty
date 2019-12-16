@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div v-show="false" class="loading-data">
-			One sec while we calculate your beautiful chaos
+		<div v-if="!loaded" class="loading-data">
+			One sec while we calculate your beautiful chaos!
 		</div>
-		<div class="main">
+		<div  v-if="loaded" class="main">
 			<div class="player-id-section">
 				<div class="player-id-section-top">
-					<div class="player-id">{{ stats.data.username }}</div>
+					<div class="player-id">{{ stats.data.username.toUpperCase() }}</div>
 					<div class="player-sys">{{ stats.data.platform }}</div>
 				</div>
 				<div class="player-id-section-bottom">
@@ -16,7 +16,7 @@
 				<div class="refresh-counter">Stat update in x:xx</div>
 			</div>
 			<!-- <div class="player-nav">Overview | Firearms | Explosives | Killstreaks</div> -->
-			<div v-if="loaded" class="tabs">
+			<div class="tabs">
 				<div class="title">
 					<button
 						:class="{ 'btn-active': tab == 1 }"
@@ -89,48 +89,15 @@
 				</div>
 				<!-- </div> -->
 				<!-- Firearms tab -->
-				<div v-show="tab == 2" class="stat-container">
-					<div class="total-cash">
-						<div class="value">$XX,XXX,XXX</div>
-						<!-- <div class="value-bottom">spent in {#matches} matches!</div>
-						<div class="value-gdp">Thats the GDP of {whatever!}</div> -->
-					</div>
-					<div class="">
-						<table>
-							<thead>
-								<tr>
-									<th>Weapon</th>
-									<th>Kills</th>
-									<th>KD Ratio</th>
-									<th>Deaths</th>
-									<th>Headshots</th>
-									<th>Lost Guns Cost</th>
-									<th>Ammo/Mag Cost</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>M1</th>
-									<th>99</th>
-									<th>1.5</th>
-									<th>2</th>
-									<th>99</th>
-									<th>$35,000</th>
-									<th>$35,000</th>
-								</tr>
-								<tr>
-									<th>M1</th>
-									<th>99</th>
-									<th>1.5</th>
-									<th>2</th>
-									<th>99</th>
-									<th>$35,000</th>
-									<th>$35,000</th>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+				<firearms
+					v-show="tab == 2"
+					:itemData_Ar="
+						stats.data.lifetime.itemData.weapon_assault_rifle
+					"
+					:itemData_Smg="
+						stats.data.lifetime.itemData.weapon_smg
+					"
+				/>
 				<!-- Explosives tab -->
 				<div v-show="tab == 3" class="stat-container">
 					<div class="total-cash">
@@ -177,40 +144,8 @@
 					:tactKillstreakObject="
 						stats.data.lifetime.scorestreakData.supportScorestreakData
 					"
+					:loaded=true
 				/>
-				<!-- <div class="total-cash">
-						<div class="value">$XX,XXX,XXX</div>
-						
-					</div>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Kill Streak</th>
-								<th>Awarded</th>
-								<th>Uses</th>
-								<th>Kills/Assists</th>
-								<th>Costs</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th>Hover Jet</th>
-								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.awardedCount}}</th>
-								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.uses}}</th>
-								<th>{{stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.extraStat1}}</th>
-								<th>${{formatPrice(stats.data.lifetime.scorestreakData.lethalScorestreakData.hover_jet.properties.awardedCount * costs.killstreaks.hover_jet.unit_cost)}}</th>
-							</tr>
-							<tr>
-								<th>Support Helo</th>
-								<th>1</th>
-								<th>1</th>
-								<th>20</th>
-								<th>$40,000,000</th>
-							</tr>
-						</tbody>
-					</table> -->
-				<!-- </div> -->
 			</div>
 		</div>
 	</div>
@@ -218,11 +153,13 @@
 
 <script>
 import Killstreaks from "@/components/Killstreaks";
+import Firearms from "@/components/Firearms";
 
 export default {
 	name: "Home",
 	components: {
-		Killstreaks
+		Killstreaks,
+		Firearms
 	},
 	data() {
 		return {
@@ -238,21 +175,6 @@ export default {
 			name2: "",
 			stats: [],
 			loaded: false,
-			costs: {
-				firearms: {
-					iw8_sn_kilo98: {
-						mag: 7.75,
-						cost: 244
-					}
-				},
-				killstreaks: {
-					hover_jet: {
-						rockets: 400,
-						ammo25: 500,
-						unit_cost: 1500000
-					}
-				}
-			}
 		};
 	},
 	created() {

@@ -1,7 +1,7 @@
 <template>
 	<div class="stat-container">
 		<div class="total-cash">
-			<div class="value good">$ {{ formatPrice(totalCostAdd) }}</div>
+			<div class="value good">$ {{  totalKillstreakCostFormatted }}</div>
 		</div>
 		<div class="table-title">Lethal Killstreaks</div>
 		<table>
@@ -31,6 +31,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="total-cash">
+			<div class="value good">$ {{  totalKillstreakCostFormatted }}</div>
+		</div>
 		<div class="table-title">Non-Lethal Killstreaks</div>
 		<table>
 			<thead>
@@ -73,7 +76,7 @@ export default {
 		tactKillstreakObject: {
 			type: Object,
 			default: () => {}
-		}
+		},
 	},
 	data() {
 		return {
@@ -82,33 +85,43 @@ export default {
 			metaObject: {
 				bradley: {
 					properties: {
-						name: "Bradley",
+						name: "Bradley/Wheelson",
 						nameFull: "Bradley Full",
-						cost: 3166000
-						// totalCost: computed("uses", "cost", function() {
-						// 	return this.uses * this.cost;
-						// }),
+						cost: 4583000
+						//Wheelson is close to TALON
+						//TALON is 6,000,000
+						//Bradley 3,166,000
+						//AVG between the 2 = 4583000
 					}
 				},
 				hover_jet: {
 					properties: {
 						name: "Hover Jet",
 						nameFull: "AV-8",
-						cost: 1500000
+						cost: 23700000 + (2799*4) + 2194
+						//AV-8 Cost 23700000
+						//Assuming the rocket salvo is LAU-5003 pod - CRV7 missiles
+						//and it fires 4 (need to confirm) 2799 each
+						//300 rounds of 25mm ammo = 2194
 					}
 				},
 				precision_airstrike: {
 					properties: {
-						name: "precision_airstrike",
-						nameFull: "Cluster Mortars",
-						cost: 1
+						name: "Precision Airstrike",
+						nameFull: "A-10 Strafing Run",
+						cost: 20000000 + 71084
+						//2x A-10s 2x strikes
+						// GAU price each 136.70
+						// Strafing duration 2 seconds
+						//3900rpm
+						//17771 dollars per burst, times 4
 					}
 				},
 				chopper_support: {
 					properties: {
-						name: "chopper_support",
-						nameFull: "AV-8",
-						cost: 1
+						name: "Chopper Support",
+						nameFull: "Pavelow",
+						cost: 40000000
 					}
 				},
 				pac_sentry: {
@@ -127,9 +140,9 @@ export default {
 				},
 				nuke: {
 					properties: {
-						name: "nuke",
-						nameFull: "AV-8",
-						cost: 1
+						name: "Nuke",
+						nameFull: "Tactical Nuke",
+						cost: 35500000
 					}
 				},
 				sentry_gun: {
@@ -141,44 +154,52 @@ export default {
 				},
 				gunship: {
 					properties: {
-						name: "gunship",
-						nameFull: "AV-8",
-						cost: 1
+						name: "Gunship",
+						nameFull: "AC-130U Spooky II",
+						cost: 190000000 + 2194 + 4000 + 380
+						//190000000 Unit Cost
+						//105mm = 400
+						//25mm *300 = 2194
+						//40mm * 40 = 380
 					}
 				},
 				toma_strike: {
 					properties: {
-						name: "toma_strike",
-						nameFull: "Tomahawk Land Attack Missile",
-						cost: 1400000
+						name: "Cluster Strike",
+						nameFull: "Cluster Mortar Strike",
+						cost: 1
+						//Aparently Toma_Strike is Mortar/Cluster Strike
+						//6 shots
 					}
 				},
 				cruise_predator: {
 					properties: {
-						name: "cruise_predator",
+						name: "Cruise Missile",
 						nameFull: "Tomahawk Land Attack Missile",
 						cost: 1400000
 					}
 				},
 				manual_turret: {
 					properties: {
-						name: "manual_turret",
-						nameFull: "Tomahawk Land Attack Missile",
-						cost: 1400000
+						name: "Shield Turret",
+						nameFull: "Browning M2",
+						cost: 14000
 					}
 				},
 				white_phosphorus: {
 					properties: {
-						name: "white_phosphorus",
-						nameFull: "Tomahawk Land Attack Missile",
-						cost: 1400000
+						name: "White Phosphorous",
+						nameFull: "White Phosphorous",
+						cost: 1
 					}
 				},
 				chopper_gunner: {
 					properties: {
-						name: "chopper_gunner",
-						nameFull: "Tomahawk Land Attack Missile",
-						cost: 1400000
+						name: "Chopper Gunner",
+						nameFull: "AH-64 Apache",
+						cost: 35500000
+						//8 Hellfires
+						//300 Cannon Rounds
 					}
 				}
 			},
@@ -231,56 +252,51 @@ export default {
 						totalCost: 0
 					}
 				}
-			}
+			},
+			offKsArr:[],
+			totalKillstreakCostFormatted:0
+			
 		};
 	},
 	computed: {
-		// sortedObject() {
-		// 	return Object.values(this.offKillstreakObject).sort();
-		// },
-		objToArr() {
-			return Object.keys(this.offKillstreakObject).map(
-				i => this.offKillstreakObject[i]
-			);
-		},
-		totalCostAdd() {
-			let totalCost = 0;
-			for (let i = 0; i < this.objToArr.length; i++) {
-				totalCost += this.objToArr[i].properties.totalCost;
-			}
-			return totalCost;
-		},
-		allKillstreakCost() {
-			let costs = document.body.querySelectorAll("totalKillstreakCost");
-			let total = 0;
-			for (let i = 0; i < costs.length; i++) {
-				total += i;
-			}
-			return total;
-		}
-		// totalCost() {
-		// 	let totalCost = 0;
-		// 	for (let i = 0; i < Object.keys(offKillstreakObject).length; i++) {
-		// 		i;
-		// 	}
-		// }
+		//Removed
 	},
+	created() {
+	  this.console = window.console; //Testing
+	  this.combineObjects(); // Combines API data and Local Metadata
+    },
 	mounted() {
-		this.combineObjects();
+		this.objToArr() // Convert piece of JSON to Array for easy cost addition and loops
+		this.totalKillstreakCostFormatted = this.formatPrice(this.totalKillstreakCost) //Formats Cost of OFF Killstreak (adds commas and cents)
 	},
 	methods: {
 		formatPrice(value) {
+			//Formats number into Dollar amounts
 			let val = (value / 1).toFixed(2).replace(",", ".");
 			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		},
 		combineObjects() {
+			// Combines API data and Local Metadata
 			stateMerge(this.offKillstreakObject, this.metaObject);
 			stateMerge(this.tactKillstreakObject, this.metaTactObject);
-		}
-
-		// sortedCost() {
-		//   return this.killstreakObject.sort((a, b) => { return b.cost - a.cost;});
-		// }
+		},
+		objToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops
+				this.offKsArr = Object.keys(this.offKillstreakObject).map(
+				i => this.offKillstreakObject[i]
+			);
+			this.totalCostAdd()
+		},
+		totalCostAdd() {
+			//Reads the array created from objToArr() to add up costs
+			let totalCost = 0;
+			for (let i = 0; i < this.offKsArr.length; i++) {
+				this.console.log(this.offKsArr[i].properties.totalCost)
+				totalCost += this.offKsArr[i].properties.totalCost;
+				this.console.log(totalCost)
+			}
+			this.totalKillstreakCost = totalCost;
+		},
 	}
 };
 </script>
