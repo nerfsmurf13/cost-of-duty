@@ -15,6 +15,8 @@
 				</div>
 				<div class="refresh-counter">Stat update in x:xx</div>
 			</div>
+			<!-- HORIZONTAL SCROLLING
+			https://codepen.io/cssgrid/pen/pRXQzW -->
 			<!-- <div class="player-nav">Overview | Firearms | Explosives | Killstreaks</div> -->
 			<div class="tabs">
 				<div class="title">
@@ -105,8 +107,8 @@
 						<!-- <div class="value-bottom">spent in {#matches} matches!</div>
 						<div class="value-gdp">Thats the GDP of {whatever!}</div> -->
 					</div>
-
-					<table>
+					
+						<table>
 						<thead>
 							<tr>
 								<th>Weapon</th>
@@ -133,6 +135,8 @@
 							</tr>
 						</tbody>
 					</table>
+					
+					
 				</div>
 				<!-- Killstreak tab -->
 				<!-- <div v-show="tab == 4" class="stat-container"> -->
@@ -240,7 +244,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss" >
 .main {
 	--bad: #871e1a;
 	--good: #77b164;
@@ -284,6 +288,18 @@ $screen-large: 1080px;
 	.player-sys {
 		font-size: 1rem;
 	}
+}
+.responsive-table{
+	overflow-x:auto
+}
+table {
+ margin: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
 }
 
 .player-id-section-top {

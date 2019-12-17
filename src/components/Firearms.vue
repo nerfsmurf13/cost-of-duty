@@ -44,7 +44,7 @@
 		<div class="total-cash">
 			<div class="value good">$ </div>
 		</div>
-		<div class="table-title">Assault Rifles</div>
+		<div class="table-title">Submachine Guns</div>
 		<table>
 			<thead>
 				<tr class="tablehead">
