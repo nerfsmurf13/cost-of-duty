@@ -22,9 +22,9 @@ export default new Router({
             path: '/mw2019/stats/:platform/:username',
             name: 'Player',
             component: TestPlayer,
-            props(route) {
-                return route.query || {}
-            }
+            // props(route) {
+            //     return route.query || {}
+            // }
         },
         {
             path: '/*',

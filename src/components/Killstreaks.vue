@@ -291,9 +291,9 @@ export default {
 			//Reads the array created from objToArr() to add up costs
 			let totalCost = 0;
 			for (let i = 0; i < this.offKsArr.length; i++) {
-				this.console.log(this.offKsArr[i].properties.totalCost)
+				//this.console.log(this.offKsArr[i].properties.totalCost)
 				totalCost += this.offKsArr[i].properties.totalCost;
-				this.console.log(totalCost)
+				//this.console.log(totalCost)
 			}
 			this.totalKillstreakCost = totalCost;
 		},

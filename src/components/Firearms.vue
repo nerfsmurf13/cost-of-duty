@@ -17,7 +17,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(ar, index) in itemData_Ar" :key="index">
+				<tr v-for="(ar, index) in itemDataAr" :key="index">
 					<td>{{ ar.properties.name }}</td>
 					<td>{{ ar.properties.kills }}</td>
 					<td>{{ Math.round(((ar.properties.kills/ar.properties.deaths)+0.00001)*100)/100 }}</td>
@@ -30,7 +30,7 @@
 							)
 						}}
 					</td>
-					<td :id="ar.properties.name+'ammo'">
+					<td :id="ar.properties.name">
 						${{
 							formatPrice(
 								(ar.properties.roundCost * ar.properties.shots) + ((ar.properties.shots/ar.properties.magSize)*ar.properties.magCost)
@@ -58,7 +58,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(smg, index) in itemData_Smg" :key="index">
+				<tr v-for="(smg, index) in itemDataSmg" :key="index">
 					<td>{{ smg.properties.name }}</td>
 					<td>{{ smg.properties.kills }}</td>
 					<td>{{ Math.round(((smg.properties.kills/smg.properties.deaths)+0.00001)*100)/100 }}</td>
@@ -71,7 +71,7 @@
 							)
 						}}
 					</td>
-					<td :id="smg.properties.name+'ammo'">
+					<td :id="smg.properties.name">
 						${{
 							formatPrice(
 								(smg.properties.roundCost * smg.properties.shots) + ((smg.properties.shots/smg.properties.magSize)*smg.properties.magCost)
@@ -90,15 +90,11 @@ import { stateMerge } from "vue-object-merge";
 export default {
 	name: "Firearms",
 	props: {
-		itemData_Ar: {
+		itemDataAr: {
 			type: Object,
 			default: () => {}
 		},
-		itemData_Smg: {
-			type: Object,
-			default: () => {}
-		},
-		tactKillstreakObject: {
+		itemDataSmg: {
 			type: Object,
 			default: () => {}
 		},
@@ -205,10 +201,10 @@ export default {
 						}
 				},
 			},
-			metaObjectSMG: {
+			metaObjectSmg: {
 				iw8_sm_mpapa7: {
 					properties: {
-						name: "FAL",
+						name: "iw8_sm_mpapa7",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -220,7 +216,7 @@ export default {
 				},
 				iw8_sm_augolf: {
 					properties: {
-						name: "M4",
+						name: "iw8_sm_augolf",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -228,11 +224,11 @@ export default {
 						magSize: 5
 						//demoVar: magCost * shots
 						//Fal					
-						}
+					}
 				},
 				iw8_sm_papa90: {
 					properties: {
-						name: "iw8_ar_falpha",
+						name: "iw8_sm_papa90",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -240,11 +236,11 @@ export default {
 						magSize: 5
 						//demoVar: magCost * shots
 						//Fal					
-						}
+					}
 				},
 				iw8_sm_mpapa5: {
 					properties: {
-						name: "iw8_ar_mcharlie",
+						name: "iw8_sm_mpapa5",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -252,11 +248,11 @@ export default {
 						magSize: 5
 						//demoVar: magCost * shots
 						//Fal					
-						}
+					}
 				},
 				iw8_sm_beta: {
 					properties: {
-						name: "AK-47",
+						name: "iw8_sm_beta",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -264,11 +260,11 @@ export default {
 						magSize: 5
 						//demoVar: magCost * shots
 						//Fal					
-						}
+					}
 				},
 				iw8_sm_uzulu: {
 					properties: {
-						name: "K433",
+						name: "iw8_sm_uzulu",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -276,13 +272,12 @@ export default {
 						magSize: 5
 						//demoVar: magCost * shots
 						//Fal					
-						}
-				},
+					}
+				}
 			},
 			arArr:[],
 			smgArr:[],
 			totalArCostFormatted:0
-			
 		};
 	},
 	computed: {
@@ -291,13 +286,13 @@ export default {
 	created() {
 	  this.console = window.console; //Testing
 	  this.combineObjects(); // Combines API data and Local Metadata
-	this.objToArr(this.itemData_Ar,this.arArr) // Convert piece of JSON to Array for easy cost addition and loops
-		this.objToArr(this.itemData_Smg,this.smgArr)
+	
 	},
 	mounted() {
 		
-
-
+		this.smgObjToArr()
+		this.arObjToArr() // Convert piece of JSON to Array for easy cost addition and loops
+		
 		//this.totalArCostFormatted = this.formatPrice(this.totalArCost) //Formats Cost of OFF Killstreak (adds commas and cents)
 	},
 	methods: {
@@ -307,17 +302,32 @@ export default {
 			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		},
 		combineObjects() {
+
 			// Combines API data and Local Metadata
-			stateMerge(this.itemData_Ar, this.metaObjectAr);
-			stateMerge(this.itemData_Smg, this.metaObjectSmg);
+			stateMerge(this.itemDataSmg, this.metaObjectSmg);
+			stateMerge(this.itemDataAr, this.metaObjectAr);
+			// this.console.log('metaObjectSmg')     So many console logs to track down a bug. Turns out the 
+			// this.console.log(this.metaObjectSmg)  metaObjectSmg object was mistakenly labeled "metaObjectSMG"
+			// this.console.log('itemDataSmg')       Note the capital SMG.....
+			// this.console.log(this.itemDataSmg)
+			// this.console.log('itemDataAr')
+			// this.console.log(this.itemDataAr)
+			// this.console.log('metaObjectAr')
+			// this.console.log(this.metaObjectAr)
 			//stateMerge(this.tactKillstreakObject, this.metaTactObject);
 		},
-		objToArr(obj, arr) {
+		arObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
-				this.arr = Object.keys(obj).map(
-				i => obj[i]
+				this.arArr = Object.keys(this.itemDataAr).map(
+				i => this.itemDataAr[i]
 			);
-			this.console.log(arr)
+			//this.totalCostAdd()
+		},
+		smgObjToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
+				this.smgArr = Object.keys(this.itemDataSmg).map(
+				j => this.itemDataSmg[j]
+			);
 			//this.totalCostAdd()
 		},
 		// totalCostAdd() {

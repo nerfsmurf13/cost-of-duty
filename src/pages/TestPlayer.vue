@@ -91,10 +91,10 @@
 				<!-- Firearms tab -->
 				<firearms
 					v-show="tab == 2"
-					:itemData_Ar="
+					:item-data-ar="
 						stats.data.lifetime.itemData.weapon_assault_rifle
 					"
-					:itemData_Smg="
+					:item-data-smg="
 						stats.data.lifetime.itemData.weapon_smg
 					"
 				/>
@@ -138,10 +138,10 @@
 				<!-- <div v-show="tab == 4" class="stat-container"> -->
 				<killstreaks
 					v-show="tab == 4"
-					:offKillstreakObject="
+					:off-killstreak-object="
 						stats.data.lifetime.scorestreakData.lethalScorestreakData
 					"
-					:tactKillstreakObject="
+					:tact-killstreak-object="
 						stats.data.lifetime.scorestreakData.supportScorestreakData
 					"
 					:loaded=true
