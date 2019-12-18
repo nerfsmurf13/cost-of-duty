@@ -77,10 +77,10 @@ export default {
 		loadPlayer(){
 		//makeBackendCall().then(detail=>{
 			this.$router.push({
-            name: 'Player',
-            params: {
-				username: this.username,
-				platform: this.platform
+				name: 'Player',
+				params: {
+					username: this.username,
+					platform: this.platform
             }
         //})
     })

@@ -11,8 +11,17 @@ Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: "#app",
-  router,
-  components: { App },
-  template: "<App/>"
+    el: "#app",
+    router,
+    components: { App },
+    template: "<App/>"
+});
+
+//Google Analytics Code for Trtacking Page within Vue Router
+router.afterEach((to) => {
+    gtag('config', 'UA-154724658-2', {
+        page_path: to.fullPath,
+        app_name: 'Monitive Web App',
+        send_page_view: true,
+    });
 });

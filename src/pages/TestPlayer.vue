@@ -153,6 +153,13 @@
 			</div>
 		</div>
 	</div>
+
+<!-- ujustgotowned#1241
+theguero16#1389
+phdinwhy#1462
+supremeruler#11316
+jmonster#1567
+samfisher#1366 -->
 </template>
 
 <script>
@@ -244,7 +251,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" >
+<style lang="scss" scoped>
 .main {
 	--bad: #871e1a;
 	--good: #77b164;
@@ -292,15 +299,15 @@ $screen-large: 1080px;
 .responsive-table{
 	overflow-x:auto
 }
-table {
- margin: auto;
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
-}
+// table {
+//  margin: auto;
+//   border-collapse: collapse;
+//   overflow-x: auto;
+//   display: block;
+//   width: fit-content;
+//   max-width: 100%;
+//   box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
+// }
 
 .player-id-section-top {
 	margin: 0.3rem 0;
