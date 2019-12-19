@@ -45,7 +45,17 @@
 
 <script>
 export default {
-	name: "Modal",
+	name: "FireableModal",
+	props: {
+		arr: {
+			type: Array,
+			default: () => []
+		},
+		obj: {
+			type: Object,
+			default: () => {}
+		}
+	},
 	methods: {
 		close() {
 			this.$emit("close");

@@ -97,6 +97,11 @@
 					v-show="tab == 2"
 					:item-data-ar="stats.data.lifetime.itemData.weapon_assault_rifle"
 					:item-data-smg="stats.data.lifetime.itemData.weapon_smg"
+					:item-data-dmr="stats.data.lifetime.itemData.weapon_dmr"
+					:item-data-sniper="stats.data.lifetime.itemData.weapon_sniper"
+					:item-data-lmg="stats.data.lifetime.itemData.weapon_lmg"
+					:item-data-pistol="stats.data.lifetime.itemData.weapon_pistol"
+					:item-data-shotgun="stats.data.lifetime.itemData.weapon_shotgun"
 				/>
 				<!-- Explosives tab -->
 				<div v-show="tab == 3" class="stat-container">

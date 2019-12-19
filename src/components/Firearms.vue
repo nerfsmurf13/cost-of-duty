@@ -1,50 +1,11 @@
 <template>
 	<div class="stat-container">
-		<div class="total-cash">
-			<div class="value good">$</div>
-		</div>
-		<div class="table-title">Assault Rifles</div>
-		<table>
-			<thead>
-				<tr class="tablehead">
-					<th>Weapon</th>
-					<th>Kills</th>
-					<th>KD Ratio</th>
-					<th>Deaths</th>
-					<th>Headshots</th>
-					<th>Cost</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(ar, index) in itemDataAr" :key="index">
-					<td>{{ ar.properties.name }}</td>
-					<td>{{ ar.properties.kills }}</td>
-					<td>
-						{{
-							Math.round(
-								(ar.properties.kills / ar.properties.deaths + 0.00001) * 100
-							) / 100
-						}}
-					</td>
-					<td>{{ ar.properties.deaths }}</td>
-					<td>{{ ar.properties.headShots }}</td>
-					<td :id="ar.properties.name">
-						${{
-							formatPrice(
-								ar.properties.roundCost * ar.properties.shots +
-									(ar.properties.shots / ar.properties.magSize) *
-										ar.properties.magCost
-							)
-						}}
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<table-component :arr="arArr" :obj="itemDataAr" :table-name="'table-ar'" />
 		<div class="total-cash">
 			<div class="value good">$</div>
 		</div>
 		<div class="table-title">Submachine Guns</div>
-		<table>
+		<table id="table-smg">
 			<thead>
 				<tr class="tablehead">
 					<th>Weapon</th>
@@ -90,6 +51,55 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="total-cash">
+			<div class="value good">$ {{ totalDmrCost }}</div>
+		</div>
+		<div class="table-title">Designated Marksman Rifles</div>
+		<table id="table-dmr">
+			<thead>
+				<tr class="tablehead">
+					<th>Weapon</th>
+					<th>Kills</th>
+					<th>KD Ratio</th>
+					<th>Deaths</th>
+					<th>Headshots</th>
+					<th>Cost</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="(dmr, index) in itemDataDmr" :key="index">
+					<td>
+						<button
+							:id="dmr.properties.name"
+							class="table-btn"
+							@click="openDetails"
+						>
+							{{ dmr.properties.name }}
+						</button>
+					</td>
+					<td>{{ dmr.properties.kills }}</td>
+					<td>
+						{{
+							Math.round(
+								(dmr.properties.kills / dmr.properties.deaths + 0.00001) * 100
+							) / 100
+						}}
+					</td>
+					<td>{{ dmr.properties.deaths }}</td>
+					<td>{{ dmr.properties.headShots }}</td>
+					<td id="dmr-cost">
+						${{
+							formatPrice(
+								dmr.properties.roundCost * dmr.properties.shots +
+									(dmr.properties.shots / dmr.properties.magSize) *
+										dmr.properties.magCost +
+									dmr.properties.cost * dmr.properties.deaths
+							)
+						}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<modal v-show="isModalVisible" @close="closeModal">
 			<template #header>
 				{{ selected.nameFull }}
@@ -124,9 +134,7 @@
 				</div>
 				<div class="stat-container-indv">
 					<div class="stats-content">
-						{{
-							Math.round((selected.shots / selected.hits + 0.00001) * 100) / 100
-						}}
+						{{ Math.round((selected.hits / selected.shots + 0.00001) * 100) }}
 						%
 					</div>
 					<div class="stats-title">Accuracy</div>
@@ -151,7 +159,7 @@
 					<div class="stats-title">Mags Tossed</div>
 				</div>
 				<div class="stat-container-indv">
-					<div class="stats-content">{{ selected.cost }}</div>
+					<div class="stats-cost">$ {{ selected.cost }}</div>
 					<div class="stats-title">$/Weapon</div>
 				</div>
 				<div class="stat-container-indv">
@@ -168,15 +176,6 @@
 					<div class="stats-content">{{ selected.hits }}</div>
 					<div class="stats-title">Hits</div>
 				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">
-						{{
-							Math.round((selected.shots / selected.hits + 0.00001) * 100) / 100
-						}}
-						%
-					</div>
-					<div class="stats-title">Accuracy</div>
-				</div>
 			</template>
 		</modal>
 	</div>
@@ -184,11 +183,13 @@
 <script>
 import { stateMerge } from "vue-object-merge";
 import Modal from "./Modal";
+import TableComponent from "./TableComponent";
 
 export default {
 	name: "Firearms",
 	components: {
-		Modal
+		Modal,
+		TableComponent
 	},
 	props: {
 		itemDataAr: {
@@ -198,17 +199,57 @@ export default {
 		itemDataSmg: {
 			type: Object,
 			default: () => {}
+		},
+		itemDataDmr: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataSniper: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataTacticals: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataLethals: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataLmg: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataLauncher: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataPistol: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataOther: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataShotgun: {
+			type: Object,
+			default: () => {}
+		},
+		itemDataMelee: {
+			type: Object,
+			default: () => {}
 		}
 	},
 	data() {
 		return {
 			isModalVisible: false,
 			debug: false,
-			selected: {},
+			selected: {}, //
 			metaObjectAr: {
 				iw8_ar_falima: {
 					properties: {
-						name: "FAL",
+						name: "iw8_ar_falima",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 0.15,
@@ -220,7 +261,7 @@ export default {
 				},
 				iw8_ar_mike4: {
 					properties: {
-						name: "M4",
+						name: "iw8_ar_mike4",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 0.15,
@@ -256,7 +297,7 @@ export default {
 				},
 				iw8_ar_akilo47: {
 					properties: {
-						name: "AK-47",
+						name: "iw8_ar_akilo47",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -268,7 +309,7 @@ export default {
 				},
 				iw8_ar_kilo433: {
 					properties: {
-						name: "K433",
+						name: "iw8_ar_kilo433",
 						nameFull: "FAL",
 						cost: 2200,
 						roundCost: 2,
@@ -377,10 +418,47 @@ export default {
 					}
 				}
 			},
+			metaObjectDmr: {
+				iw8_sn_kilo98: {
+					properties: {
+						name: "iw8_sn_kilo98",
+						nameFull: "iw8_sn_kilo98",
+						desc: "Enter description here",
+						cost: 100,
+						roundCost: 0.01,
+						magCost: 5,
+						magSize: 30
+					}
+				},
+				iw8_sn_mike14: {
+					properties: {
+						name: "iw8_sn_mike14",
+						nameFull: "iw8_sn_mike14",
+						desc: "Enter description here",
+						cost: 100,
+						roundCost: 0.01,
+						magCost: 5,
+						magSize: 30
+					}
+				},
+				iw8_sn_delta: {
+					properties: {
+						name: "iw8_sn_delta",
+						nameFull: "iw8_sn_delta",
+						desc: "Enter description here",
+						cost: 100,
+						roundCost: 0.01,
+						magCost: 5,
+						magSize: 30
+					}
+				}
+			},
 			arArr: [],
 			smgArr: [],
+			dmrArr: [],
 			totalArCost: 0,
-			totalSmgCost: 0
+			totalSmgCost: 0,
+			totalDmrCost: 0
 		};
 	},
 	computed: {
@@ -393,8 +471,17 @@ export default {
 	mounted() {
 		this.smgObjToArr(); // Convert piece of JSON to Array for easy cost addition and loops
 		this.arObjToArr();
+		this.dmrObjToArr();
 	},
 	methods: {
+		openDetails(e) {
+			this.showModal();
+			this.clickEven(e);
+			this.console.log(e);
+			this.console.log(
+				e.target.parentElement.parentElement.parentElement.parentElement.id
+			);
+		},
 		showModal() {
 			this.isModalVisible = true;
 		},
@@ -403,9 +490,20 @@ export default {
 		},
 		clickEven(e) {
 			let wid = e.toElement.id;
-			this.console.log(wid);
-			this.selected = this.itemDataSmg[wid].properties;
-			this.console.log(this.itemDataSmg[wid].properties);
+			let cat =
+				e.target.parentElement.parentElement.parentElement.parentElement.id;
+			//this.console.log(wid);
+			//this.selected = this.itemDataSmg[wid].properties;
+			//this.console.log(this.itemDataSmg[wid].properties);
+			if (cat == "table-dmr") {
+				this.selected = this.itemDataDmr[wid].properties;
+			}
+			if (cat == "table-smg") {
+				this.selected = this.itemDataSmg[wid].properties;
+			}
+			if (cat == "table-ar") {
+				this.selected = this.itemDataAr[wid].properties;
+			}
 		},
 		formatPrice(value) {
 			//Formats number into Dollar amounts
@@ -416,6 +514,7 @@ export default {
 			// Combines API data and Local Metadata
 			stateMerge(this.itemDataSmg, this.metaObjectSmg);
 			stateMerge(this.itemDataAr, this.metaObjectAr);
+			stateMerge(this.itemDataDmr, this.metaObjectDmr);
 		},
 		arObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
@@ -426,6 +525,27 @@ export default {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
 			this.smgArr = Object.keys(this.itemDataSmg).map(j => this.itemDataSmg[j]);
 			//this.totalCostAdd()
+		},
+		dmrObjToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
+			this.dmrArr = Object.keys(this.itemDataDmr).map(j => this.itemDataDmr[j]);
+			this.totalDmrCostCalc();
+			//this.totalCostAdd()
+		},
+		totalDmrCostCalc() {
+			let val = 0;
+			for (let i = 0; i < this.dmrArr.length; i++) {
+				let ammo =
+					this.dmrArr[i].properties.roundCost * this.dmrArr[i].properties.shots;
+				let gear =
+					this.dmrArr[i].properties.cost * this.dmrArr[i].properties.deaths;
+				let total = ammo + gear;
+				val += total;
+				this.console.log(ammo);
+				this.console.log(gear);
+				this.console.log(val);
+			}
+			this.totalDmrCost = val;
 		}
 		// totalCostAdd() {
 		// 	//Reads the array created from objToArr() to add up costs
@@ -448,7 +568,6 @@ $background1: #000;
 $background2: #111;
 $selected-lite: #43677b;
 $selected-dark: #253c4b;
-/* --text-lite: #cccccc; */
 $text-lite: #fff;
 $text-med: #89ddff;
 $text-dark: #3e3e3e;
