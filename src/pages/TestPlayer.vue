@@ -3,11 +3,13 @@
 		<div v-if="!loaded" class="loading-data">
 			One sec while we calculate your beautiful chaos!
 		</div>
-		<div  v-if="loaded" class="main">
+		<div v-if="loaded" class="main">
 			<div class="player-id-section">
 				<div class="player-id-section-top">
 					<div class="player-id">{{ stats.data.username.toUpperCase() }}</div>
-					<div class="player-sys">{{ stats.data.platform }}</div>
+					<div class="player-sys">
+						{{ showSystem() }}
+					</div>
 				</div>
 				<div class="player-id-section-bottom">
 					<div class="player-level val1">Level: {{ stats.data.level }}</div>
@@ -93,12 +95,8 @@
 				<!-- Firearms tab -->
 				<firearms
 					v-show="tab == 2"
-					:item-data-ar="
-						stats.data.lifetime.itemData.weapon_assault_rifle
-					"
-					:item-data-smg="
-						stats.data.lifetime.itemData.weapon_smg
-					"
+					:item-data-ar="stats.data.lifetime.itemData.weapon_assault_rifle"
+					:item-data-smg="stats.data.lifetime.itemData.weapon_smg"
 				/>
 				<!-- Explosives tab -->
 				<div v-show="tab == 3" class="stat-container">
@@ -107,8 +105,8 @@
 						<!-- <div class="value-bottom">spent in {#matches} matches!</div>
 						<div class="value-gdp">Thats the GDP of {whatever!}</div> -->
 					</div>
-					
-						<table>
+
+					<table>
 						<thead>
 							<tr>
 								<th>Weapon</th>
@@ -135,8 +133,6 @@
 							</tr>
 						</tbody>
 					</table>
-					
-					
 				</div>
 				<!-- Killstreak tab -->
 				<!-- <div v-show="tab == 4" class="stat-container"> -->
@@ -148,13 +144,13 @@
 					:tact-killstreak-object="
 						stats.data.lifetime.scorestreakData.supportScorestreakData
 					"
-					:loaded=true
+					:loaded="true"
 				/>
 			</div>
 		</div>
 	</div>
 
-<!-- ujustgotowned#1241
+	<!-- ujustgotowned#1241
 theguero16#1389
 phdinwhy#1462
 supremeruler#11316
@@ -185,7 +181,7 @@ export default {
 			name1: "",
 			name2: "",
 			stats: [],
-			loaded: false,
+			loaded: false
 		};
 	},
 	created() {
@@ -201,6 +197,8 @@ export default {
 			this.fetchPlayer();
 		}
 	},
+	calculated: {},
+
 	methods: {
 		fetchBattlePlayer() {
 			let baseURI =
@@ -245,6 +243,16 @@ export default {
 		formatPrice(value) {
 			let val = (value / 1).toFixed(2).replace(",", ".");
 			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		},
+		showSystem() {
+			if (this.stats.data.platform == "battle") {
+				return "on Battle.net";
+			}
+			if (this.stats.data.platform == "xbl") {
+				return "on XBox Live";
+			} else {
+				return "on Playstation Network";
+			}
 		}
 	}
 };
@@ -296,8 +304,8 @@ $screen-large: 1080px;
 		font-size: 1rem;
 	}
 }
-.responsive-table{
-	overflow-x:auto
+.responsive-table {
+	overflow-x: auto;
 }
 // table {
 //  margin: auto;
@@ -310,6 +318,8 @@ $screen-large: 1080px;
 // }
 
 .player-id-section-top {
+	display: flex;
+	flex-direction: column;
 	margin: 0.3rem 0;
 }
 .player-id-section-bottom {
@@ -426,7 +436,6 @@ $screen-large: 1080px;
 	}
 
 	table {
-		font-size: 0.75rem;
 		font-weight: 100;
 		width: 100%;
 	}

@@ -120,6 +120,32 @@ input[type="text"]:focus {
 	}
 }
 
+.table-btn {
+	//margin: 0.1rem 0;
+	-webkit-transition-duration: 0.2; /* Safari */
+	transition-duration: 0.2s;
+	//font-size: 1rem;
+	width: 100%;
+	border: none;
+	color: var(--text-lite);
+	background: none;
+	//border: 2px solid var(--selected-lite);
+	outline: none;
+	cursor: pointer;
+	padding: 0 0.5rem;
+	&:hover {
+		//border-bottom: 2px solid var(--selected-lite);
+		background-color: var(--background2);
+	}
+	// &_selected {
+	// 	border-bottom: 2px solid var(--hilight);
+	// }
+}
+
+tr:nth-child(even) {
+	background-color: #43677b;
+}
+
 a {
 	color: white;
 	text-decoration: white;
@@ -138,14 +164,20 @@ a {
 	color: #77b164;
 }
 
-@media screen and (min-width: $screen-med + 100) {
+@media screen and (min-width: $screen-med) {
 	.wrapper {
 		width: $screen-med;
 	}
+	tr {
+		font-size: 1rem;
+	}
 }
-@media screen and (min-width: $screen-large + 100) {
+@media screen and (min-width: $screen-large) {
 	.wrapper {
 		width: $screen-large;
+	}
+	tr {
+		font-size: 1.5rem;
 	}
 }
 </style>
