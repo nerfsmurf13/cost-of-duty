@@ -386,65 +386,7 @@ $screen-large: 1080px;
 .tab {
 	width: 40%;
 }
-// Stat Container
-.stat-container {
-	font-size: 1.5rem;
-	// border-radius: 1rem;
-	border: 1px solid $selected-dark;
-	display: flex;
-	background-color: $background1;
-	margin: 1rem 0;
-	margin-top: 0;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	padding: 0.5rem 0;
-	.stat-container-indv {
-		background-color: $background2;
-		background-image: url("../assets/corners.png");
-		background-size: cover;
-		background-repeat: no-repeat;
-		width: 125px;
-		margin: 0.5rem;
-		// border: 1px solid lightgray;
-		//border-radius: .5rem;
 
-		.stats-content {
-			padding: 0.3rem;
-			color: $text-lite;
-		}
-		.stats-cost {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $good;
-		}
-		.stats-title {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $text-med;
-		}
-		&:hover {
-			background-color: $selected-dark;
-			.stats-title {
-				border-top: 2px solid $hilight;
-				color: $hilight;
-			}
-			.stats-cost {
-				border-top: 2px solid $hilight;
-			}
-		}
-	}
-	.title {
-		width: 100%;
-		margin-bottom: 0.5rem;
-	}
-
-	table {
-		font-weight: 100;
-		width: 100%;
-	}
-}
 
 @media screen and (min-width: $screen-med) {
 	.wrapper {

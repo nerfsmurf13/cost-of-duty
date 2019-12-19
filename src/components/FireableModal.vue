@@ -8,28 +8,70 @@
 				aria-describedby="modalDescription"
 			>
 				<header id="modalTitle" class="modal-header">
-					<slot name="header">
-						This is the default tile!
-
-						<button
-							type="button"
-							class="btn-close"
-							aria-label="Close modal"
-							@click="close"
-						>
-							x
-						</button>
-					</slot>
+					<div class="stats-content">{{ obj.nameFull }}</div>
 				</header>
 				<section id="modalDescription" class="modal-body-top">
-					<slot name="body">
-						I'm the default body!
-					</slot>
+				<!-- ========== COST SECTION ========== -->
+				<div class="col">
+				<div class="flex">
+					<div class="cost-container-indv pri">
+					<div class="stats-cost">
+						$ {{ formatPrice((obj.cost * obj.deaths)+(obj.roundCost * obj.shots)) }}
+					</div>
+					<div class="stats-title">Total</div>
+					</div>
+				</div>
+				<div class="flex">
+					<div class="cost-container-indv">
+					<div class="stats-cost">
+						$ {{ formatPrice(obj.roundCost * obj.shots) }}
+					</div>
+					<div class="stats-title">Ammo Used</div>
+				</div>
+				<div class="cost-container-indv">
+					<div class="stats-cost">$ {{ formatPrice(obj.cost * obj.deaths) }}</div>
+					<div class="stats-title">Weapon Lost</div>
+				</div>
+				</div>
+				</div>
+				
+				
 				</section>
+				<!-- BREAK -->
 				<section class="modal-body-middle">
-					<slot name="cost">
-						I'm the default body!
-					</slot>
+				<!-- ==========STAT SECTION========== -->
+				<div class="stat-container-indv">
+					<div class="stats-content">{{ obj.kills }}</div>
+					<div class="stats-title">Kills</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">{{ obj.deaths }}</div>
+					<div class="stats-title">Deaths</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">
+						{{ Math.round((obj.kdRatio + 0.00001) * 100) / 100 }}
+					</div>
+					<div class="stats-title">KD</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">{{ obj.headShots }}</div>
+					<div class="stats-title">Headshots</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">{{ obj.shots }}</div>
+					<div class="stats-title">Shots</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">{{ obj.hits }}</div>
+					<div class="stats-title">Hits</div>
+				</div>
+				<div class="stat-container-indv">
+					<div class="stats-content">
+						{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
+					</div>
+					<div class="stats-title">Accuracy</div>
+				</div>
 				</section>
 				<footer class="modal-footer">
 					<slot name="footer">
@@ -83,6 +125,49 @@ $hilight: #f0a84b;
 $screen-med: 800px;
 $screen-large: 1080px;
 
+.stat-container-indv,
+.cost-container-indv
+	{
+		background-color: $background2;
+		background-image: url("../assets/corners.png");
+		background-size: cover;
+		background-repeat: no-repeat;
+		width: 125px;
+		margin: 0.5rem;
+		.stats-content {
+			padding: 0.3rem;
+			color: $text-lite;
+		}
+		.stats-cost {
+			padding: 0.3rem;
+			//border-top: 2px solid $text-dark;
+			font-size: 1rem;
+			color: $good;
+		}
+		.stats-title {
+			padding: 0.3rem;
+			border-top: 2px solid $text-dark;
+			font-size: 1rem;
+			color: $text-med;
+		}
+		&:hover {
+			background-color: $selected-dark;
+			.stats-title {
+				border-top: 2px solid $hilight;
+				color: $hilight;
+			}
+			.stats-cost {
+				//border-top: 2px solid $hilight;
+			}
+		}
+	}
+	.cost-container-indv{
+		flex:1;
+	}
+	
+
+
+
 .modal-backdrop {
 	position: fixed;
 	top: 0;
@@ -129,6 +214,28 @@ $screen-large: 1080px;
 	position: relative;
 	padding: 20px 10px;
 }
+
+.col{
+	display:flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.flex{
+	display:flex;
+	flex-wrap: wrap;
+	flex:1;
+	justify-content: center;
+}
+.pri
+	{
+		
+		
+		justify-content: center;
+		.stats-cost{
+			font-size: 2rem;
+		}
+	}
 
 .btn-close {
 	border: none;
