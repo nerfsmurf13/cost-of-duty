@@ -11,67 +11,72 @@
 					<div class="stats-content">{{ obj.nameFull }}</div>
 				</header>
 				<section id="modalDescription" class="modal-body-top">
-				<!-- ========== COST SECTION ========== -->
-				<div class="col">
-				<div class="flex">
-					<div class="cost-container-indv pri">
-					<div class="stats-cost">
-						$ {{ formatPrice((obj.cost * obj.deaths)+(obj.roundCost * obj.shots)) }}
+					<!-- ========== COST SECTION ========== -->
+					<div class="col">
+						<div class="flex">
+							<div class="cost-container-indv pri">
+								<div class="stats-cost">
+									$
+									{{
+										formatPrice(
+											obj.cost * obj.deaths + obj.roundCost * obj.shots
+										)
+									}}
+								</div>
+								<div class="stats-title">Total</div>
+							</div>
+						</div>
+						<div class="flex">
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$ {{ formatPrice(obj.roundCost * obj.shots) }}
+								</div>
+								<div class="stats-title">Ammo Used</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$ {{ formatPrice(obj.cost * obj.deaths) }}
+								</div>
+								<div class="stats-title">Weapon Lost</div>
+							</div>
+						</div>
 					</div>
-					<div class="stats-title">Total</div>
-					</div>
-				</div>
-				<div class="flex">
-					<div class="cost-container-indv">
-					<div class="stats-cost">
-						$ {{ formatPrice(obj.roundCost * obj.shots) }}
-					</div>
-					<div class="stats-title">Ammo Used</div>
-				</div>
-				<div class="cost-container-indv">
-					<div class="stats-cost">$ {{ formatPrice(obj.cost * obj.deaths) }}</div>
-					<div class="stats-title">Weapon Lost</div>
-				</div>
-				</div>
-				</div>
-				
-				
 				</section>
 				<!-- BREAK -->
 				<section class="modal-body-middle">
-				<!-- ==========STAT SECTION========== -->
-				<div class="stat-container-indv">
-					<div class="stats-content">{{ obj.kills }}</div>
-					<div class="stats-title">Kills</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">{{ obj.deaths }}</div>
-					<div class="stats-title">Deaths</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">
-						{{ Math.round((obj.kdRatio + 0.00001) * 100) / 100 }}
+					<!-- ==========STAT SECTION========== -->
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.kills }}</div>
+						<div class="stats-title">Kills</div>
 					</div>
-					<div class="stats-title">KD</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">{{ obj.headShots }}</div>
-					<div class="stats-title">Headshots</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">{{ obj.shots }}</div>
-					<div class="stats-title">Shots</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">{{ obj.hits }}</div>
-					<div class="stats-title">Hits</div>
-				</div>
-				<div class="stat-container-indv">
-					<div class="stats-content">
-						{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.deaths }}</div>
+						<div class="stats-title">Deaths</div>
 					</div>
-					<div class="stats-title">Accuracy</div>
-				</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.kdRatio + 0.00001) * 100) / 100 }}
+						</div>
+						<div class="stats-title">KD</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.headShots }}</div>
+						<div class="stats-title">Headshots</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.shots }}</div>
+						<div class="stats-title">Shots</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.hits }}</div>
+						<div class="stats-title">Hits</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
+						</div>
+						<div class="stats-title">Accuracy</div>
+					</div>
 				</section>
 				<footer class="modal-footer">
 					<slot name="footer">
@@ -126,47 +131,43 @@ $screen-med: 800px;
 $screen-large: 1080px;
 
 .stat-container-indv,
-.cost-container-indv
-	{
-		background-color: $background2;
-		background-image: url("../assets/corners.png");
-		background-size: cover;
-		background-repeat: no-repeat;
-		width: 125px;
-		margin: 0.5rem;
-		.stats-content {
-			padding: 0.3rem;
-			color: $text-lite;
+.cost-container-indv {
+	background-color: $background2;
+	background-image: url("../assets/corners.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 125px;
+	margin: 0.5rem;
+	.stats-content {
+		padding: 0.3rem;
+		color: $text-lite;
+	}
+	.stats-cost {
+		padding: 0.3rem;
+		//border-top: 2px solid $text-dark;
+		font-size: 1rem;
+		color: $good;
+	}
+	.stats-title {
+		padding: 0.3rem;
+		border-top: 2px solid $text-dark;
+		font-size: 1rem;
+		color: $text-med;
+	}
+	&:hover {
+		background-color: $selected-dark;
+		.stats-title {
+			border-top: 2px solid $hilight;
+			color: $hilight;
 		}
 		.stats-cost {
-			padding: 0.3rem;
-			//border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $good;
-		}
-		.stats-title {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $text-med;
-		}
-		&:hover {
-			background-color: $selected-dark;
-			.stats-title {
-				border-top: 2px solid $hilight;
-				color: $hilight;
-			}
-			.stats-cost {
-				//border-top: 2px solid $hilight;
-			}
+			//border-top: 2px solid $hilight;
 		}
 	}
-	.cost-container-indv{
-		flex:1;
-	}
-	
-
-
+}
+.cost-container-indv {
+	flex: 1;
+}
 
 .modal-backdrop {
 	position: fixed;
@@ -181,7 +182,10 @@ $screen-large: 1080px;
 }
 
 .modal {
+	// background-attachment: fixed;
 	background: #000;
+	background-size: contain;
+	background-image: url("../assets/bg-large.jpg");
 	box-shadow: 2px 2px 20px 1px;
 	overflow-x: auto;
 	display: flex;
@@ -215,27 +219,24 @@ $screen-large: 1080px;
 	padding: 20px 10px;
 }
 
-.col{
-	display:flex;
+.col {
+	display: flex;
 	flex-flow: column;
 	justify-content: center;
 }
 
-.flex{
-	display:flex;
+.flex {
+	display: flex;
 	flex-wrap: wrap;
-	flex:1;
+	flex: 1;
 	justify-content: center;
 }
-.pri
-	{
-		
-		
-		justify-content: center;
-		.stats-cost{
-			font-size: 2rem;
-		}
+.pri {
+	justify-content: center;
+	.stats-cost {
+		font-size: 2rem;
 	}
+}
 
 .btn-close {
 	border: none;

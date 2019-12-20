@@ -56,8 +56,7 @@
 		<!-- <router-link :to="{name: 'Player', params: { username: username, platform: platform }}">
 		<button type="button" class="btn go" >Go</button>
 		</router-link> -->
-		<button  class="btn go" @click="loadPlayer()"> Create Detail
-		</button>
+		<button class="btn go" @click="loadPlayer()">Go!</button>
 		<div class="others">
 			<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
 		</div>
@@ -69,24 +68,24 @@ export default {
 	name: "Home",
 	data() {
 		return {
-			platform: "",
-			username: "",
+			platform: "battle",
+			username: "phdinwhy#1462"
 		};
 	},
-	methods:{
-		loadPlayer(){
-		//makeBackendCall().then(detail=>{
+	methods: {
+		loadPlayer() {
+			//makeBackendCall().then(detail=>{
 			this.$router.push({
-				name: 'Player',
+				name: "Player",
 				params: {
 					username: this.username,
 					platform: this.platform
-            }
-        //})
-    })
-}
-	// 	assembleQuery(){
-	// 	},
+				}
+				//})
+			});
+		}
+		// 	assembleQuery(){
+		// 	},
 		// submitPlayer(){
 		// 	router.push({ path: `/mw/stats/${platform}/${username}` }) // -> /user/123
 		// }

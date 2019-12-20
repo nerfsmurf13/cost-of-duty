@@ -1,14 +1,43 @@
 <template>
 	<div class="stat-container">
-		<table-component :arr="arArr" :obj="itemDataAr" :table-name="'table-ar'" :name="'Assault Rifles'"/>
-		<table-component :arr="smgArr" :obj="itemDataSmg" :table-name="'table-smg'" :name="'Submachine Guns'"/>
-		<table-component :arr="dmrArr" :obj="itemDataDmr" :table-name="'table-dmr'" :name="'DMRs'"/>
-		<table-component :arr="shotgunArr" :obj="itemDataShotgun" :table-name="'table-shotgun'" :name="'Shotguns'"/>
-		<table-component :arr="pistolArr" :obj="itemDataPistol" :table-name="'table-pistol'" :name="'Pistols'"/>
+		<table-component
+			:arr="arArr"
+			:obj="itemDataAr"
+			:table-name="'table-ar'"
+			:name="'Assault Rifles'"
+		/>
+		<table-component
+			:arr="smgArr"
+			:obj="itemDataSmg"
+			:table-name="'table-smg'"
+			:name="'Submachine Guns'"
+		/>
+		<table-component
+			:arr="lmgArr"
+			:obj="itemDataLmg"
+			:table-name="'table-lmg'"
+			:name="'Light Machine Guns'"
+		/>
+		<table-component
+			:arr="dmrArr"
+			:obj="itemDataDmr"
+			:table-name="'table-dmr'"
+			:name="'DMRs'"
+		/>
+		<table-component
+			:arr="shotgunArr"
+			:obj="itemDataShotgun"
+			:table-name="'table-shotgun'"
+			:name="'Shotguns'"
+		/>
+		<table-component
+			:arr="pistolArr"
+			:obj="itemDataPistol"
+			:table-name="'table-pistol'"
+			:name="'Pistols'"
+		/>
 	</div>
-
-		
-	</template>
+</template>
 <script>
 import { stateMerge } from "vue-object-merge";
 import Modal from "./Modal";
@@ -361,7 +390,7 @@ export default {
 						//demoVar: magCost * shots
 						//Fal
 					}
-				},
+				}
 			},
 			metaObjectShotgun: {
 				iw8_sh_charlie725: {
@@ -415,8 +444,74 @@ export default {
 						//demoVar: magCost * shots
 						//Fal
 					}
+				}
+			},
+			metaObjectLmg: {
+				iw8_lm_dblmg: {
+					properties: {
+						name: "iw8_lm_dblmg",
+						nameFull: "iw8_lm_dblmg",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 0.15,
+						magCost: 10,
+						magSize: 5
+						//demoVar: magCost * shots
+						//Fal
+					}
 				},
-				
+				iw8_lm_kilo121: {
+					properties: {
+						name: "iw8_lm_kilo121",
+						nameFull: "iw8_lm_kilo121",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 0.15,
+						magCost: 10,
+						magSize: 5
+						//demoVar: magCost * shots
+						//Fal
+					}
+				},
+				iw8_lm_lima86: {
+					properties: {
+						name: "iw8_lm_lima86",
+						nameFull: "iw8_lm_lima86",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 2,
+						magCost: 10,
+						magSize: 5
+						//demoVar: magCost * shots
+						//Fal
+					}
+				},
+				iw8_lm_mgolf34: {
+					properties: {
+						name: "iw8_lm_mgolf34",
+						nameFull: "iw8_lm_mgolf34",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 2,
+						magCost: 10,
+						magSize: 5
+						//demoVar: magCost * shots
+						//Fal
+					}
+				},
+				iw8_lm_pkilo: {
+					properties: {
+						name: "iw8_lm_pkilo",
+						nameFull: "iw8_lm_pkilo",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 2,
+						magCost: 10,
+						magSize: 5
+						//demoVar: magCost * shots
+						//Fal
+					}
+				}
 			},
 			arArr: [],
 			totalArCost: 0,
@@ -431,7 +526,7 @@ export default {
 			pistolArr: [],
 			totalPistolCost: 0,
 			shotgunArr: [],
-			totalShotgunCost: 0,
+			totalShotgunCost: 0
 		};
 	},
 	computed: {
@@ -447,6 +542,7 @@ export default {
 		this.dmrObjToArr();
 		this.pistolObjToArr();
 		this.shotgunObjToArr();
+		this.lmgObjToArr();
 	},
 	methods: {
 		openDetails(e) {
@@ -485,6 +581,9 @@ export default {
 			if (cat == "table-shotgun") {
 				this.selected = this.itemDataShotgun[wid].properties;
 			}
+			if (cat == "table-lmg") {
+				this.selected = this.itemDataLmg[wid].properties;
+			}
 		},
 		formatPrice(value) {
 			//Formats number into Dollar amounts
@@ -498,6 +597,7 @@ export default {
 			stateMerge(this.itemDataDmr, this.metaObjectDmr);
 			stateMerge(this.itemDataPistol, this.metaObjectPistol);
 			stateMerge(this.itemDataShotgun, this.metaObjectShotgun);
+			stateMerge(this.itemDataLmg, this.metaObjectLmg);
 		},
 		arObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
@@ -517,13 +617,23 @@ export default {
 		},
 		pistolObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
-			this.pistolArr = Object.keys(this.itemDataPistol).map(j => this.itemDataPistol[j]);
+			this.pistolArr = Object.keys(this.itemDataPistol).map(
+				j => this.itemDataPistol[j]
+			);
 			//this.totalDmrCostCalc();
 			//this.totalCostAdd()
 		},
 		shotgunObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
-			this.shotgunArr = Object.keys(this.itemDataShotgun).map(j => this.itemDataShotgun[j]);
+			this.shotgunArr = Object.keys(this.itemDataShotgun).map(
+				j => this.itemDataShotgun[j]
+			);
+			//this.totalDmrCostCalc();
+			//this.totalCostAdd()
+		},
+		lmgObjToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
+			this.lmgArr = Object.keys(this.itemDataLmg).map(j => this.itemDataLmg[j]);
 			//this.totalDmrCostCalc();
 			//this.totalCostAdd()
 		},
@@ -627,7 +737,5 @@ $screen-large: 1080px;
 		width: 100%;
 		margin-bottom: 0.5rem;
 	}
-
-	
 }
 </style>

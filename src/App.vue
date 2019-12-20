@@ -38,7 +38,7 @@ $screen-large: 1080px;
 body {
 	width: 100vw;
 }
-
+$grid-filler: #2d516a;
 #app {
 	display: flex;
 	flex-direction: column;
@@ -48,6 +48,7 @@ body {
 	justify-content: space-between;
 	background-color: #000;
 	background-image: url("./assets/bg-large.jpg");
+	background-attachment: fixed;
 	background-size: contain;
 	/* min-height: 100vh; */
 	font-family: "Roboto", sans-serif;
@@ -70,6 +71,8 @@ body {
 	--hilight: #f0a84b;
 	--screen-med: 800px;
 	--screen-large: 1080px;
+	$grid-color: #1e303c;
+
 	$bad: #871e1a;
 	$good: #77b164;
 	$background1: #000;
@@ -162,6 +165,31 @@ a {
 
 .good {
 	color: #77b164;
+}
+
+.grid {
+	$grid-color: #1e303c;
+	//$grid-filler: #2d516a;
+	$grid-filler: #2d516a;
+	background-color: $grid-filler;
+	background-image: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			$grid-color 2px,
+			$grid-color 3px
+		),
+		repeating-linear-gradient(
+			-90deg,
+			transparent,
+			transparent 2px,
+			$grid-color 2px,
+			$grid-color 3px
+		);
+	background-size: 3px 3px;
+}
+.grid-bg {
+	background-color: $grid-filler;
 }
 
 @media screen and (min-width: $screen-med) {
