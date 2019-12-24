@@ -39,6 +39,8 @@ body {
 	width: 100vw;
 }
 $grid-filler: #2d516a;
+$background2: #111;
+
 #app {
 	display: flex;
 	flex-direction: column;
@@ -138,6 +140,7 @@ input[type="text"]:focus {
 	padding: 0 0.5rem;
 	&:hover {
 		//border-bottom: 2px solid var(--selected-lite);
+
 		background-color: var(--background2);
 	}
 	// &_selected {
@@ -146,7 +149,7 @@ input[type="text"]:focus {
 }
 
 tr:nth-child(even) {
-	background-color: #43677b;
+	background-color: $background2;
 }
 
 a {
@@ -167,29 +170,66 @@ a {
 	color: #77b164;
 }
 
+$grid-on: #1e303c;
+$grid-off: #000;
+$gridbg-on: #2d516a;
+$gridbg-off: #121212;
+$grid-hi: #3c93ca;
+
 .grid {
-	$grid-color: #1e303c;
-	//$grid-filler: #2d516a;
-	$grid-filler: #2d516a;
-	background-color: $grid-filler;
+	//background-color: $grid-filler;
 	background-image: repeating-linear-gradient(
 			0deg,
 			transparent,
 			transparent 2px,
-			$grid-color 2px,
-			$grid-color 3px
+			$grid-off 2px,
+			$grid-off 3px
 		),
 		repeating-linear-gradient(
 			-90deg,
 			transparent,
 			transparent 2px,
-			$grid-color 2px,
-			$grid-color 3px
+			$grid-off 2px,
+			$grid-off 3px
 		);
 	background-size: 3px 3px;
+	&:hover {
+		background-color: $gridbg-on;
+		$grid-color: #1e303c;
+		//$grid-filler: #2d516a;
+		$grid-filler: #2d516a;
+
+		border-top: 5px solid red;
+		//padding-bottom: 5px;
+		// background: /* gradient can be an image */ linear-gradient(
+		// 		to left,
+		// 		rgba(0, 0, 0, 0.01) 0%,
+		// 		rgba(60, 147, 202, 1) 50%,
+		// 		rgba(0, 0, 0, 0.01) 100%
+		// 	)
+		// 	left bottom $grid-hi no-repeat;
+		// background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+		background-image: repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 2px,
+				$grid-on 2px,
+				$grid-on 3px
+			),
+			repeating-linear-gradient(
+				-90deg,
+				transparent,
+				transparent 2px,
+				$grid-on 2px,
+				$grid-on 3px
+			);
+	}
 }
 .grid-bg {
-	background-color: $grid-filler;
+	background-color: $gridbg-off;
+	&:hover {
+		background-color: $gridbg-on;
+	}
 }
 
 @media screen and (min-width: $screen-med) {

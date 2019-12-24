@@ -209,11 +209,11 @@ $screen-large: 1080px;
 			border-bottom: 1px solid $selected-dark;
 			padding: 0.2rem 0;
 		}
-		tr:hover {
-			background: $hilight;
-			color: black;
-			font-weight: 600;
-		}
+		// tr:hover {
+		// 	background: $hilight;
+		// 	color: black;
+		// 	font-weight: 600;
+		// }
 	}
 }
 </style>
