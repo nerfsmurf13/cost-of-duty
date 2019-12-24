@@ -58,6 +58,7 @@ $background2: #111;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: var(--text-lite);
+
 	/* background-color: #036704; */
 	/* background-color: #000; */
 	--bad: #871e1a;
@@ -73,22 +74,23 @@ $background2: #111;
 	--hilight: #f0a84b;
 	--screen-med: 800px;
 	--screen-large: 1080px;
-	$grid-color: #1e303c;
-
-	$bad: #871e1a;
-	$good: #77b164;
-	$background1: #000;
-	$background2: #111;
-	$selected-lite: #43677b;
-	$selected-dark: #253c4b;
-	/* --text-lite: #cccccc; */
-	$text-lite: #fff;
-	$text-med: #89ddff;
-	$text-dark: #3e3e3e;
-	$hilight: #f0a84b;
-	$screen-med: 800px;
-	$screen-large: 1080px;
 }
+$grid-color: #1e303c;
+
+$bad: #871e1a;
+$good: #77b164;
+$background1: #000;
+$background2: #111;
+$selected-lite: #43677b;
+$selected-dark: #253c4b;
+/* --text-lite: #cccccc; */
+$text-lite: #fff;
+$text-med: #89ddff;
+$text-dark: #3e3e3e;
+$hilight: #f0a84b;
+$screen-med: 800px;
+$screen-large: 1080px;
+
 input[type="text"] {
 	background-color: var(--background2);
 	color: var(--text-med);
@@ -178,6 +180,7 @@ $grid-hi: #3c93ca;
 
 .grid {
 	//background-color: $grid-filler;
+	border: 3px solid $grid-on;
 	background-image: repeating-linear-gradient(
 			0deg,
 			transparent,
@@ -198,8 +201,10 @@ $grid-hi: #3c93ca;
 		$grid-color: #1e303c;
 		//$grid-filler: #2d516a;
 		$grid-filler: #2d516a;
-
-		border-top: 5px solid red;
+		border-left: 3px solid transparent;
+		border-right: 3px solid transparent;
+		border-top: 3px solid $text-med;
+		border-bottom: 3px solid $text-med;
 		//padding-bottom: 5px;
 		// background: /* gradient can be an image */ linear-gradient(
 		// 		to left,

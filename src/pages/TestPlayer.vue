@@ -104,41 +104,14 @@
 					:item-data-shotgun="stats.data.lifetime.itemData.weapon_shotgun"
 				/>
 				<!-- Explosives tab -->
-				<div v-show="tab == 3" class="stat-container">
-					<div class="total-cash">
-						<div class="value">$XX,XXX,XXX</div>
-						<!-- <div class="value-bottom">spent in {#matches} matches!</div>
-						<div class="value-gdp">Thats the GDP of {whatever!}</div> -->
-					</div>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Weapon</th>
-								<th>Kills</th>
-								<th>Uses</th>
-								<th>Headshots</th>
-								<th>Ammo/Mag Cost</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th>Frag Grenade</th>
-								<th>99</th>
-								<th>1.5</th>
-								<th>2</th>
-								<th>$35,000</th>
-							</tr>
-							<tr>
-								<th>M1</th>
-								<th>99</th>
-								<th>1.5</th>
-								<th>2</th>
-								<th>$35,000</th>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<other
+					v-show="tab == 3"
+					:item-data-lethal="stats.data.lifetime.itemData.lethals"
+					:item-data-tactical="stats.data.lifetime.itemData.tacticals"
+					:item-data-launcher="stats.data.lifetime.itemData.weapon_launcher"
+					:item-data-other="stats.data.lifetime.itemData.weapon_other"
+					:item-data-melee="stats.data.lifetime.itemData.weapon_melee"
+				/>
 				<!-- Killstreak tab -->
 				<!-- <div v-show="tab == 4" class="stat-container"> -->
 				<killstreaks
@@ -166,12 +139,14 @@ samfisher#1366 -->
 <script>
 import Killstreaks from "@/components/Killstreaks";
 import Firearms from "@/components/Firearms";
+import Other from "@/components/Other";
 
 export default {
 	name: "Home",
 	components: {
 		Killstreaks,
-		Firearms
+		Firearms,
+		Other
 	},
 	data() {
 		return {
@@ -386,7 +361,6 @@ $screen-large: 1080px;
 .tab {
 	width: 40%;
 }
-
 
 @media screen and (min-width: $screen-med) {
 	.wrapper {

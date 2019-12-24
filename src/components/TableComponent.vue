@@ -17,7 +17,7 @@
 			</thead>
 			<tbody>
 				<tr v-for="(weapon, index) in sortedArray" :key="index">
-					<td class="grid-bg">
+					<td class="">
 						<button
 							:id="weapon.properties.name"
 							class="table-btn grid"
@@ -37,10 +37,10 @@
 					</td>
 					<td>{{ weapon.properties.deaths }}</td>
 					<td>{{ weapon.properties.headShots }}</td>
-					<td :id="weapon.properties.name">
+					<td :id="weapon.properties.name" class="">
 						<button
 							:id="weapon.properties.name"
-							class="table-btn"
+							class="table-btn grid"
 							@click="openDetails"
 						>
 							${{
@@ -108,7 +108,7 @@ export default {
 				if (acost > bcost) return -1;
 				return 0;
 			}
-			return this.arr.sort(compare);
+			return this.arr.slice().sort(compare);
 		}
 	},
 	created() {
@@ -204,11 +204,11 @@ $screen-large: 1080px;
 			border-bottom: 1px solid $hilight;
 			// background-color: $good;
 		}
-		tr {
-			// background: $selected-dark;
-			border-bottom: 1px solid $selected-dark;
-			padding: 0.2rem 0;
-		}
+		// tr {
+		// 	// background: $selected-dark;
+		// 	border-bottom: 1px solid $selected-dark;
+		// 	padding: 0.2rem 0;
+		// }
 		// tr:hover {
 		// 	background: $hilight;
 		// 	color: black;
