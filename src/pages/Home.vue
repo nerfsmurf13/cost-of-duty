@@ -22,25 +22,25 @@
 		</div>
 		<div class="sys-select">
 			<button
-				:class="{ btn_selected: platform == 'battle' }"
+				:class="{ 'home-btn-active': platform == 'battle' }"
 				type="button"
-				class="btn"
+				class="home-btn btn grid"
 				@click="platform = 'battle'"
 			>
 				PC
 			</button>
 			<button
-				:class="{ btn_selected: platform == 'xbl' }"
+				:class="{ 'home-btn-active': platform == 'xbl' }"
 				type="button"
-				class="btn"
+				class="home-btn btn grid"
 				@click="platform = 'xbl'"
 			>
 				XBOX
 			</button>
 			<button
-				:class="{ btn_selected: platform == 'psn' }"
+				:class="{ 'home-btn-active': platform == 'psn' }"
 				type="button"
-				class="btn"
+				class="home-btn btn grid"
 				@click="platform = 'psn'"
 			>
 				PS4
@@ -56,9 +56,9 @@
 		<!-- <router-link :to="{name: 'Player', params: { username: username, platform: platform }}">
 		<button type="button" class="btn go" >Go</button>
 		</router-link> -->
-		<button class="btn go" @click="loadPlayer()">Go!</button>
+		<button class="home-btn go btn grid " @click="loadPlayer()">Go!</button>
 		<div class="others">
-			<p>{User Count} players looked up a total of ${XXXX} in chaos!</p>
+			<!-- <p>{User Count} players looked up a total of ${XXXX} in chaos!</p> -->
 		</div>
 	</div>
 </template>
@@ -95,6 +95,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+$bad: #871e1a;
+$good: #77b164;
+$background1: #000;
+$background2: #111;
+$selected-lite: #43677b;
+$selected-dark: #253c4b;
+/* --text-lite: #cccccc; */
+$text-lite: #fff;
+$text-med: #89ddff;
+$text-dark: #3e3e3e;
+$hilight: #f0a84b;
+$screen-med: 800px;
+$screen-large: 1080px;
 h1 {
 	font-size: 2.9rem;
 
@@ -118,7 +131,18 @@ span {
 }
 
 .btn_selected {
-	border-bottom: 2px solid var(--hilight);
+	//border-bottom: 2px solid var(--hilight);
+}
+.home-btn {
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+	// border-bottom: none;
+	&-active {
+		border-left: 2px solid transparent;
+		border-right: 2px solid transparent;
+		border-top: 2px solid $hilight;
+		border-bottom: 2px solid $hilight;
+	}
 }
 
 .go {

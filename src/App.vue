@@ -36,7 +36,10 @@ $screen-med: 800px;
 $screen-large: 1080px;
 
 body {
-	width: 100vw;
+	display: flex;
+	flex: 1;
+	min-height: 100vh;
+	// width: 100vw;
 }
 $grid-filler: #2d516a;
 $background2: #111;
@@ -114,16 +117,16 @@ input[type="text"]:focus {
 	border: none;
 	color: var(--text-lite);
 	background: var(--background1);
-	border: 2px solid var(--selected-lite);
+	border: 1px solid var(--selected-lite);
 	outline: none;
 	cursor: pointer;
 	padding: 0 0.5rem;
 	&:hover {
-		border-bottom: 2px solid var(--selected-lite);
+		border-bottom: 1px solid var(--selected-lite);
 		background-color: var(--background2);
 	}
 	&_selected {
-		border-bottom: 2px solid var(--hilight);
+		border-bottom: 1px solid var(--hilight);
 	}
 }
 
@@ -162,7 +165,7 @@ a {
 .wrapper-full {
 	display: flex;
 	justify-content: center;
-	width: 100%;
+	flex: 1;
 	.wrapper {
 		margin: 0 1rem;
 	}
@@ -172,15 +175,15 @@ a {
 	color: #77b164;
 }
 
+//Call of Duty Esque Buttons
 $grid-on: #1e303c;
 $grid-off: #000;
 $gridbg-on: #2d516a;
 $gridbg-off: #121212;
 $grid-hi: #3c93ca;
-
 .grid {
 	//background-color: $grid-filler;
-	border: 3px solid $grid-on;
+	border: 2px solid $grid-on;
 	background-image: repeating-linear-gradient(
 			0deg,
 			transparent,
@@ -201,10 +204,10 @@ $grid-hi: #3c93ca;
 		$grid-color: #1e303c;
 		//$grid-filler: #2d516a;
 		$grid-filler: #2d516a;
-		border-left: 3px solid transparent;
-		border-right: 3px solid transparent;
-		border-top: 3px solid $text-med;
-		border-bottom: 3px solid $text-med;
+		border-left: 2px solid transparent;
+		border-right: 2px solid transparent;
+		border-top: 2px solid $text-med;
+		border-bottom: 2px solid $text-med;
 		//padding-bottom: 5px;
 		// background: /* gradient can be an image */ linear-gradient(
 		// 		to left,

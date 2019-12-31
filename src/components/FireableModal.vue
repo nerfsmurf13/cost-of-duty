@@ -40,6 +40,58 @@
 								<div class="stats-title">Weapon Lost</div>
 							</div>
 						</div>
+						<div class="flex">
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice((obj.roundCost * obj.shots) / obj.kills) }}
+								</div>
+								<div class="stats-title">$/Kill (Ammo)</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{
+										formatPrice(
+											(obj.cost * obj.deaths + obj.roundCost * obj.shots) /
+												obj.kills
+										)
+									}}
+								</div>
+								<div class="stats-title">$/Kill (Total)</div>
+							</div>
+						</div>
+						<!-- Unit Costs -->
+						<div class="flex">
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.roundCost) }}
+								</div>
+								<div class="stats-title">$/Round</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Weapon</div>
+							</div>
+						</div>
+						<!-- <div class="flex">
+							<div class="cost-container-indv pri">
+								<div class="stats-cost">
+									$
+									{{
+										formatPrice(
+											(obj.cost * obj.deaths + obj.roundCost * obj.shots) /
+												obj.kills
+										)
+									}}
+								</div>
+								<div class="stats-title">Cost per Kill</div>
+							</div>
+						</div> -->
 					</div>
 				</section>
 				<!-- BREAK -->
@@ -133,7 +185,7 @@ $screen-large: 1080px;
 .stat-container-indv,
 .cost-container-indv {
 	background-color: $background2;
-	background-image: url("../assets/corners.png");
+	background-image: url("../assets/corners_125_58.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	width: 125px;
@@ -182,6 +234,8 @@ $screen-large: 1080px;
 }
 
 .modal {
+	max-height: 100vh;
+	overflow-y: auto;
 	// background-attachment: fixed;
 	background: #000;
 	background-size: contain;
@@ -233,6 +287,7 @@ $screen-large: 1080px;
 }
 .pri {
 	justify-content: center;
+	background-image: url("../assets/corners_266_75.png");
 	.stats-cost {
 		font-size: 2rem;
 	}

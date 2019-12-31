@@ -1,7 +1,35 @@
 <template>
 	<div class="stat-container">
-		<div class="total-cash">
-			<div class="value good">$ {{  totalKillstreakCostFormatted }}</div>
+		<div class="cat-spend">
+			<span class="value">$ {{ formatPrice(otherTotal) }}</span
+			><br />spent on killstreaks!!
+		</div>
+		<table-component
+			:tab="1"
+			:cat="10"
+			:calc-projectiles="4"
+			:cost-total="costTotal"
+			:killstreak-table="true"
+			:display-headshots="false"
+			:arr="offKsArr"
+			:obj="offKillstreakObject"
+			:table-name="'table-off-killstreaks'"
+			:name="'Offensive Killstreaks'"
+		/>
+		<table-component
+			:tab="1"
+			:cat="11"
+			:calc-projectiles="4"
+			:cost-total="costTotal"
+			:display-headshots="false"
+			:killstreak-table="true"
+			:arr="suppKsArr"
+			:obj="suppKillstreakObject"
+			:table-name="'table-supp-killstreaks'"
+			:name="'Support Killstreaks'"
+		/>
+		<!-- <div class="total-cash">
+			<div class="value good">$ {{ totalKillstreakCostFormatted }}</div>
 		</div>
 		<div class="table-title">Lethal Killstreaks</div>
 		<table>
@@ -32,7 +60,7 @@
 			</tbody>
 		</table>
 		<div class="total-cash">
-			<div class="value good">$ {{  totalKillstreakCostFormatted }}</div>
+			<div class="value good">$ {{ totalKillstreakCostFormatted }}</div>
 		</div>
 		<div class="table-title">Non-Lethal Killstreaks</div>
 		<table>
@@ -60,29 +88,39 @@
 					</td>
 				</tr>
 			</tbody>
-		</table>
+		</table> -->
 	</div>
 </template>
 <script>
 import { stateMerge } from "vue-object-merge";
+import Modal from "./Modal";
+import TableComponent from "./TableComponent";
 
 export default {
 	name: "Killstreaks",
+	components: {
+		Modal,
+		TableComponent
+	},
 	props: {
+		costTotal: {
+			type: Array,
+			default: () => []
+		},
 		offKillstreakObject: {
 			type: Object,
 			default: () => {}
 		},
-		tactKillstreakObject: {
+		suppKillstreakObject: {
 			type: Object,
 			default: () => {}
-		},
+		}
 	},
 	data() {
 		return {
 			totalKillstreakCost: 0,
 			debug: false,
-			metaObject: {
+			metaObjectOffKs: {
 				bradley: {
 					properties: {
 						name: "Bradley/Wheelson",
@@ -98,7 +136,7 @@ export default {
 					properties: {
 						name: "Hover Jet",
 						nameFull: "AV-8",
-						cost: 23700000 + (2799*4) + 2194
+						cost: 23700000 + 2799 * 4 + 2194
 						//AV-8 Cost 23700000
 						//Assuming the rocket salvo is LAU-5003 pod - CRV7 missiles
 						//and it fires 4 (need to confirm) 2799 each
@@ -203,7 +241,7 @@ export default {
 					}
 				}
 			},
-			metaTactObject: {
+			metaObjectSuppKs: {
 				airdrop: {
 					properties: {
 						name: "airdrop",
@@ -253,21 +291,30 @@ export default {
 					}
 				}
 			},
-			offKsArr:[],
-			totalKillstreakCostFormatted:0
-			
+			offKsArr: [],
+			offKsCost: 0,
+			suppKsArr: [],
+			suppKsCost: 0,
+			totalKillstreakCostFormatted: 0,
+			otherTotal: 0
 		};
 	},
 	computed: {
 		//Removed
 	},
 	created() {
-	  this.console = window.console; //Testing
-	  this.combineObjects(); // Combines API data and Local Metadata
-    },
+		this.console = window.console; //Testing
+		this.combineObjects(); // Combines API data and Local Metadata
+	},
 	mounted() {
-		this.objToArr() // Convert piece of JSON to Array for easy cost addition and loops
-		this.totalKillstreakCostFormatted = this.formatPrice(this.totalKillstreakCost) //Formats Cost of OFF Killstreak (adds commas and cents)
+		this.offKsObjToArr(); // Convert piece of JSON to Array for easy cost addition and loops
+		this.suppKsObjToArr(); // Convert piece of JSON to Array for easy cost addition and loops
+		// this.totalKillstreakCostFormatted = this.formatPrice(
+		// 	this.totalKillstreakCost
+		// ); //Formats Cost of OFF Killstreak (adds commas and cents)
+	},
+	updated() {
+		this.totalCat();
 	},
 	methods: {
 		formatPrice(value) {
@@ -277,15 +324,22 @@ export default {
 		},
 		combineObjects() {
 			// Combines API data and Local Metadata
-			stateMerge(this.offKillstreakObject, this.metaObject);
-			stateMerge(this.tactKillstreakObject, this.metaTactObject);
+			stateMerge(this.offKillstreakObject, this.metaObjectOffKs);
+			stateMerge(this.suppKillstreakObject, this.metaObjectSuppKs);
 		},
-		objToArr() {
+		offKsObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops
-				this.offKsArr = Object.keys(this.offKillstreakObject).map(
+			this.offKsArr = Object.keys(this.offKillstreakObject).map(
 				i => this.offKillstreakObject[i]
 			);
-			this.totalCostAdd()
+			this.totalCostAdd();
+		},
+		suppKsObjToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops
+			this.suppKsArr = Object.keys(this.suppKillstreakObject).map(
+				i => this.suppKillstreakObject[i]
+			);
+			this.totalCostAdd();
 		},
 		totalCostAdd() {
 			//Reads the array created from objToArr() to add up costs
@@ -297,6 +351,9 @@ export default {
 			}
 			this.totalKillstreakCost = totalCost;
 		},
+		totalCat() {
+			this.otherTotal = this.costTotal[10] + this.costTotal[11];
+		}
 	}
 };
 </script>
@@ -308,7 +365,6 @@ $background1: #000;
 $background2: #111;
 $selected-lite: #43677b;
 $selected-dark: #253c4b;
-/* --text-lite: #cccccc; */
 $text-lite: #fff;
 $text-med: #89ddff;
 $text-dark: #3e3e3e;
@@ -321,11 +377,22 @@ $screen-large: 1080px;
 	font-size: 1rem;
 }
 
+.value {
+	color: #3e9c35;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.cat-spend {
+	padding-bottom: 1rem;
+}
+
 .stat-container {
 	font-size: 1.5rem;
-	border: 1px solid $selected-dark;
+	//border: 1px solid $selected-dark;
 	display: flex;
-	background-color: $background1;
+	flex-flow: column;
+	//background-color: $background1;
 	margin: 1rem 0;
 	margin-top: 0;
 	flex-wrap: wrap;
@@ -341,7 +408,6 @@ $screen-large: 1080px;
 		background-repeat: no-repeat;
 		width: 125px;
 		margin: 0.5rem;
-
 		.stats-content {
 			padding: 0.3rem;
 			color: $text-lite;
@@ -372,26 +438,6 @@ $screen-large: 1080px;
 	.title {
 		width: 100%;
 		margin-bottom: 0.5rem;
-	}
-
-	table {
-		font-size: 0.75rem;
-		border-collapse: collapse;
-		font-weight: 100;
-		width: 100%;
-		th {
-			border-top: 1px solid $hilight;
-			border-bottom: 1px solid $hilight;
-			// background-color: $good;
-		}
-		tr {
-			// background: $selected-dark;
-			border-bottom: 1px solid $selected-dark;
-			padding: 0.2rem 0;
-		}
-		tr:hover {
-			background: $hilight;
-		}
 	}
 }
 </style>

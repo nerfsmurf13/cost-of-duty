@@ -4,8 +4,15 @@
 					:item-data-tacticals
 					:item-data-dmr
 					:item-data-sniper -->
-
+		<div class="cat-spend">
+			<span class="value">$ {{ formatPrice(otherTotal) }}</span
+			><br />spent on launchers, rockets, melee weapons and throwables!
+		</div>
 		<table-component
+			:tab="1"
+			:cat="6"
+			:cost-total="costTotal"
+			:display-headshots="false"
 			:arr="launcherArr"
 			:obj="itemDataLauncher"
 			:table-name="'table-launcher'"
@@ -14,6 +21,12 @@
 
 		<table-component
 			:arr="lethalArr"
+			:cat="7"
+			:cost-total="costTotal"
+			:calc-projectiles="2"
+			:display-headshots="false"
+			:display-deaths="false"
+			:display-kd="false"
 			:obj="itemDataLethal"
 			:table-name="'table-lethal'"
 			:name="'Lethal Equipment'"
@@ -21,6 +34,10 @@
 
 		<table-component
 			:arr="otherArr"
+			:calc-projectiles="3"
+			:cat="8"
+			:cost-total="costTotal"
+			:display-headshots="false"
 			:obj="itemDataOther"
 			:table-name="'table-other'"
 			:name="'Other'"
@@ -28,6 +45,10 @@
 
 		<table-component
 			:arr="meleeArr"
+			:cat="9"
+			:cost-total="costTotal"
+			:calc-projectiles="3"
+			:display-headshots="false"
 			:obj="itemDataMelee"
 			:table-name="'table-melee'"
 			:name="'Melee'"
@@ -53,12 +74,16 @@ import Modal from "./Modal";
 import TableComponent from "./TableComponent";
 
 export default {
-	name: "Firearms",
+	name: "Other",
 	components: {
 		Modal,
 		TableComponent
 	},
 	props: {
+		costTotal: {
+			type: Array,
+			default: () => []
+		},
 		itemDataLethal: {
 			type: Object,
 			default: () => {}
@@ -83,15 +108,16 @@ export default {
 	data() {
 		return {
 			isModalVisible: false,
+			otherTotal: 0,
 			debug: false,
-			selected: {}, //
+			selected: {},
 			metaObjectLethal: {
 				equip_frag: {
 					properties: {
 						name: "equip_frag",
 						nameFull: "equip_frag",
 						desc: "Enter description here",
-						cost: 22
+						cost: 1
 					}
 				},
 				equip_thermite: {
@@ -99,7 +125,7 @@ export default {
 						name: "equip_thermite",
 						nameFull: "equip_thermite",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_semtex: {
@@ -107,7 +133,7 @@ export default {
 						name: "equip_semtex",
 						nameFull: "equip_semtex",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_claymore: {
@@ -115,7 +141,7 @@ export default {
 						name: "equip_claymore",
 						nameFull: "equip_claymore",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_c4: {
@@ -123,7 +149,7 @@ export default {
 						name: "equip_c4",
 						nameFull: "equip_c4",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_at_mine: {
@@ -131,7 +157,7 @@ export default {
 						name: "equip_at_mine",
 						nameFull: "equip_at_mine",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_throwing_knife: {
@@ -139,7 +165,7 @@ export default {
 						name: "equip_throwing_knife",
 						nameFull: "equip_throwing_knife",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				},
 				equip_molotov: {
@@ -147,7 +173,7 @@ export default {
 						name: "equip_molotov",
 						nameFull: "equip_molotov",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 1
 					}
 				}
 			},
@@ -157,8 +183,8 @@ export default {
 						name: "iw8_la_gromeo",
 						nameFull: "iw8_la_gromeo-7",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2
+						cost: 1000,
+						roundCost: 1
 					}
 				},
 				iw8_la_rpapa7: {
@@ -166,8 +192,8 @@ export default {
 						name: "iw8_la_rpapa7",
 						nameFull: "iw8_la_rpapa7",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2
+						cost: 1000,
+						roundCost: 1
 					}
 				},
 				iw8_la_juliet: {
@@ -175,8 +201,8 @@ export default {
 						name: "iw8_la_juliet",
 						nameFull: "iw8_la_juliet",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2
+						cost: 1000,
+						roundCost: 1
 					}
 				},
 				iw8_la_kgolf: {
@@ -184,8 +210,8 @@ export default {
 						name: "iw8_la_kgolf",
 						nameFull: "iw8_la_kgolf",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.1
+						cost: 1000,
+						roundCost: 1
 					}
 				},
 				iw8_la_mike32: {
@@ -193,17 +219,8 @@ export default {
 						name: "iw8_la_mike32",
 						nameFull: "iw8_la_mike32",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2
-					}
-				},
-				iw8_sm_uzulu: {
-					properties: {
-						name: "iw8_sm_uzulu",
-						nameFull: "Uzi",
-						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2
+						cost: 1000,
+						roundCost: 1
 					}
 				}
 			},
@@ -213,7 +230,7 @@ export default {
 						name: "iw8_me_riotshield",
 						nameFull: "iw8_me_riotshield",
 						desc: "Enter description here",
-						cost: 100
+						cost: 1000
 					}
 				}
 			},
@@ -223,7 +240,7 @@ export default {
 						name: "iw8_knife",
 						nameFull: "iw8_knife",
 						desc: "Enter description here",
-						cost: 2200
+						cost: 10
 					}
 				}
 			},
@@ -252,6 +269,9 @@ export default {
 		this.otherObjToArr();
 		this.launcherObjToArr();
 		this.meleeObjToArr();
+	},
+	updated() {
+		this.totalCat();
 	},
 	methods: {
 		openDetails(e) {
@@ -333,6 +353,13 @@ export default {
 			);
 			//this.totalDmrCostCalc();
 			//this.totalCostAdd()
+		},
+		totalCat() {
+			this.otherTotal =
+				this.costTotal[6] +
+				this.costTotal[7] +
+				this.costTotal[8] +
+				this.costTotal[9];
 		}
 		// totalCostAdd() {
 		// 	//Reads the array created from objToArr() to add up costs
@@ -365,6 +392,16 @@ $screen-large: 1080px;
 .table-title {
 	width: 100%;
 	font-size: 1rem;
+}
+
+.value {
+	color: #3e9c35;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.cat-spend {
+	padding-bottom: 1rem;
 }
 
 .stat-container {

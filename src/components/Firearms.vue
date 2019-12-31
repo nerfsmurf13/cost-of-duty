@@ -1,36 +1,53 @@
 <template>
 	<div class="stat-container">
+		<div class="cat-spend">
+			<span class="value">$ {{ formatPrice(firearmTotal) }}</span
+			><br />spent on firearms and ammunition!
+		</div>
+
 		<table-component
+			:cat="0"
+			:cost-total="costTotal"
 			:arr="arArr"
 			:obj="itemDataAr"
 			:table-name="'table-ar'"
 			:name="'Assault Rifles'"
 		/>
 		<table-component
+			:cat="1"
+			:cost-total="costTotal"
 			:arr="smgArr"
 			:obj="itemDataSmg"
 			:table-name="'table-smg'"
 			:name="'Submachine Guns'"
 		/>
 		<table-component
+			:cat="2"
+			:cost-total="costTotal"
 			:arr="lmgArr"
 			:obj="itemDataLmg"
 			:table-name="'table-lmg'"
 			:name="'Light Machine Guns'"
 		/>
 		<table-component
+			:cat="3"
+			:cost-total="costTotal"
 			:arr="dmrArr"
 			:obj="itemDataDmr"
 			:table-name="'table-dmr'"
 			:name="'DMRs'"
 		/>
 		<table-component
+			:cat="4"
+			:cost-total="costTotal"
 			:arr="shotgunArr"
 			:obj="itemDataShotgun"
 			:table-name="'table-shotgun'"
 			:name="'Shotguns'"
 		/>
 		<table-component
+			:cat="5"
+			:cost-total="costTotal"
 			:arr="pistolArr"
 			:obj="itemDataPistol"
 			:table-name="'table-pistol'"
@@ -50,6 +67,18 @@ export default {
 		TableComponent
 	},
 	props: {
+		tab: {
+			type: Number,
+			default: 0
+		},
+		cat: {
+			type: Number,
+			default: 0
+		},
+		costTotal: {
+			type: Array,
+			default: () => []
+		},
 		itemDataAr: {
 			type: Object,
 			default: () => {}
@@ -513,6 +542,7 @@ export default {
 					}
 				}
 			},
+			firearmTotal: 0,
 			arArr: [],
 			totalArCost: 0,
 			smgArr: [],
@@ -544,6 +574,9 @@ export default {
 		this.shotgunObjToArr();
 		this.lmgObjToArr();
 	},
+	updated() {
+		this.totalCat();
+	},
 	methods: {
 		openDetails(e) {
 			this.showModal();
@@ -558,6 +591,15 @@ export default {
 		},
 		closeModal() {
 			this.isModalVisible = false;
+		},
+		totalCat() {
+			this.firearmTotal =
+				this.costTotal[0] +
+				this.costTotal[1] +
+				this.costTotal[2] +
+				this.costTotal[3] +
+				this.costTotal[4] +
+				this.costTotal[5];
 		},
 		clickEven(e) {
 			let wid = e.toElement.id;
@@ -679,6 +721,16 @@ $text-dark: #3e3e3e;
 $hilight: #f0a84b;
 $screen-med: 800px;
 $screen-large: 1080px;
+
+.value {
+	color: #3e9c35;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.cat-spend {
+	padding-bottom: 1rem;
+}
 
 .table-title {
 	width: 100%;
