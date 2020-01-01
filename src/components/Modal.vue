@@ -8,28 +8,265 @@
 				aria-describedby="modalDescription"
 			>
 				<header id="modalTitle" class="modal-header">
-					<slot name="header">
-						This is the default tile!
-
-						<button
-							type="button"
-							class="btn-close"
-							aria-label="Close modal"
-							@click="close"
-						>
-							x
-						</button>
-					</slot>
+					<div class="stats-content">{{ obj.nameFull }}</div>
 				</header>
 				<section id="modalDescription" class="modal-body-top">
-					<slot name="body">
-						I'm the default body!
-					</slot>
+					<!-- ========== COST SECTION ========== -->
+					<div class="col">
+						<!-- COST FIREARM -->
+						<div
+							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							class="flex"
+						>
+							<div class="cost-container-indv pri">
+								<div class="stats-cost">
+									$
+									{{
+										formatPrice(
+											obj.cost * obj.deaths + obj.roundCost * obj.shots
+										)
+									}}
+								</div>
+								<div class="stats-title">Total</div>
+							</div>
+						</div>
+						<div
+							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							class="flex"
+						>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$ {{ formatPrice(obj.roundCost * obj.shots) }}
+								</div>
+								<div class="stats-title">Ammo Used</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$ {{ formatPrice(obj.cost * obj.deaths) }}
+								</div>
+								<div class="stats-title">Weapon Lost</div>
+							</div>
+						</div>
+						<div
+							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							class="flex"
+						>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice((obj.roundCost * obj.shots) / obj.kills) }}
+								</div>
+								<div class="stats-title">$/Kill (Ammo)</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{
+										formatPrice(
+											(obj.cost * obj.deaths + obj.roundCost * obj.shots) /
+												obj.kills
+										)
+									}}
+								</div>
+								<div class="stats-title">$/Kill (Total)</div>
+							</div>
+						</div>
+						<div
+							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							class="flex"
+						>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.roundCost) }}
+								</div>
+								<div class="stats-title">$/Round</div>
+							</div>
+							<div class="cost-container-indv">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Weapon</div>
+							</div>
+						</div>
+						<!-- COST Killstreak -->
+						<div v-show="obj.type == 'killstreak'" class="flex row">
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost * obj.uses) }}
+								</div>
+								<div class="stats-title">$/Total</div>
+							</div>
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Each</div>
+							</div>
+						</div>
+						<!-- COST SUPPORT Killstreak -->
+						<div v-show="obj.type == 'tkillstreak'" class="flex row">
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost * obj.uses) }}
+								</div>
+								<div class="stats-title">$/Total</div>
+							</div>
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Each</div>
+							</div>
+						</div>
+						<!-- COST LETHAL THROWABLE -->
+						<div v-show="obj.type == 'lThrowable'" class="flex row">
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost * (obj.kills * 4)) }}
+								</div>
+								<div class="stats-title">$/Total</div>
+							</div>
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Each</div>
+							</div>
+						</div>
+						<!-- COST Melee THROWABLE -->
+						<div v-show="obj.type == 'melee'" class="flex row">
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost * obj.kills) }}
+								</div>
+								<div class="stats-title">$/Total</div>
+							</div>
+							<div class="cost-container-wide pri">
+								<div class="stats-cost">
+									$
+									{{ formatPrice(obj.cost) }}
+								</div>
+								<div class="stats-title">$/Each</div>
+							</div>
+						</div>
+					</div>
 				</section>
-				<section class="modal-body-middle">
-					<slot name="cost">
-						I'm the default body!
-					</slot>
+
+				<!-- ==========FIREARM STAT SECTION========== -->
+				<section
+					v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+					class="modal-body-middle"
+				>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.kills }}</div>
+						<div class="stats-title">Kills</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.deaths }}</div>
+						<div class="stats-title">Deaths</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.kdRatio + 0.00001) * 100) / 100 }}
+						</div>
+						<div class="stats-title">KD</div>
+					</div>
+					<div v-show="obj.type == '!firearm'" class="stat-container-indv">
+						<div class="stats-content">{{ obj.headShots }}</div>
+						<div class="stats-title">Headshots</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.shots }}</div>
+						<div class="stats-title">Shots</div>
+					</div>
+					<div v-show="obj.type == '!firearm'" class="stat-container-indv">
+						<div class="stats-content">{{ obj.hits }}</div>
+						<div class="stats-title">Hits</div>
+					</div>
+					<div v-show="obj.type == 'firearm'" class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
+						</div>
+						<div class="stats-title">Accuracy</div>
+					</div>
+					<div v-show="obj.type == 'launcher'" class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
+						</div>
+						<div class="stats-title">Accuracy</div>
+					</div>
+				</section>
+
+				<!-- ==========KILLSTREAK STAT SECTION========== -->
+				<section v-show="obj.type == 'killstreak'" class="modal-body-desc">
+					{{ obj.desc }}
+				</section>
+				<section v-show="obj.type == 'killstreak'" class="modal-body-middle">
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.uses }}</div>
+						<div class="stats-title">Uses</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.awardedCount }}</div>
+						<div class="stats-title">Awarded</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.extraStat1 }}</div>
+						<div class="stats-title">Kills/Assists</div>
+					</div>
+				</section>
+				<!-- ==========SUPPORT KILLSTREAK STAT SECTION========== -->
+				<section v-show="obj.type == 'tkillstreak'" class="modal-body-middle">
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.uses }}</div>
+						<div class="stats-title">Uses</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.awardedCount }}</div>
+						<div class="stats-title">Awarded</div>
+					</div>
+				</section>
+				<!-- ==========LETHAL THROWABLE STAT SECTION========== -->
+				<section v-show="obj.type == 'lThrowable'" class="modal-body-middle">
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.kills }}</div>
+						<div class="stats-title">Kills</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.deaths }}</div>
+						<div class="stats-title">Deaths</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.cost * (obj.kills * 4) }}</div>
+						<div class="stats-title">Est. Used</div>
+					</div>
+				</section>
+
+				<!-- ==========MELEE STAT SECTION========== -->
+				<section v-show="obj.type == 'melee'" class="modal-body-middle">
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.kills }}</div>
+						<div class="stats-title">Kills</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">{{ obj.deaths }}</div>
+						<div class="stats-title">Deaths</div>
+					</div>
+					<div class="stat-container-indv">
+						<div class="stats-content">
+							{{ Math.round((obj.kdRatio + 0.00001) * 100) / 100 }}
+						</div>
+						<div class="stats-title">KD</div>
+					</div>
 				</section>
 				<footer class="modal-footer">
 					<slot name="footer">
@@ -46,6 +283,23 @@
 <script>
 export default {
 	name: "Modal",
+	props: {
+		modalType: {
+			//deprecated
+			type: String,
+			//firearm, killstreak, lThrowable, tThrowable, melee
+
+			default: "firearm"
+		},
+		arr: {
+			type: Array,
+			default: () => []
+		},
+		obj: {
+			type: Object,
+			default: () => {}
+		}
+	},
 	methods: {
 		close() {
 			this.$emit("close");
@@ -60,18 +314,8 @@ export default {
 </script>
 
 <style lang="scss">
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+@import "../styles/base.scss";
+@import "../styles/tab-styles.scss";
 
 .modal-backdrop {
 	position: fixed;
@@ -86,7 +330,12 @@ $screen-large: 1080px;
 }
 
 .modal {
+	max-height: 100vh;
+	overflow-y: auto;
+	// background-attachment: fixed;
 	background: #000;
+	background-size: contain;
+	background-image: url("../assets/bg-large.jpg");
 	box-shadow: 2px 2px 20px 1px;
 	overflow-x: auto;
 	display: flex;
@@ -111,29 +360,61 @@ $screen-large: 1080px;
 }
 
 .modal-body-top,
-.modal-body-middle {
+.modal-body-middle,
+.modal-body-desc {
 	display: flex;
 	justify-content: center;
 	flex: 1;
 	flex-wrap: wrap;
 	position: relative;
-	padding: 20px 10px;
+	padding: 10px 10px;
 }
 
-.btn-close {
-	border: none;
-	font-size: 20px;
-	padding: 20px;
-	cursor: pointer;
-	font-weight: bold;
-	color: #4aae9b;
-	background: transparent;
+.modal-body-desc {
+	font-size: 1rem;
 }
 
-.btn-green {
-	color: white;
-	background: #4aae9b;
-	border: 1px solid #4aae9b;
-	border-radius: 2px;
-}
+// .col {
+// 	display: flex;
+// 	flex-flow: column;
+// 	justify-content: center;
+// 	flex: 1;
+// }
+
+// .row {
+// 	display: flex;
+// 	flex-flow: column;
+// 	justify-content: center;
+// }
+
+// .flex {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	flex: 1;
+// 	justify-content: center;
+// }
+// .pri {
+// 	justify-content: center;
+// 	background-image: url("../assets/corners_266_75.png");
+// 	.stats-cost {
+// 		font-size: 2rem;
+// 	}
+// }
+
+// .btn-close {
+// 	border: none;
+// 	font-size: 20px;
+// 	padding: 20px;
+// 	cursor: pointer;
+// 	font-weight: bold;
+// 	color: #4aae9b;
+// 	background: transparent;
+// }
+
+// .btn-green {
+// 	color: white;
+// 	background: #4aae9b;
+// 	border: 1px solid #4aae9b;
+// 	border-radius: 2px;
+// }
 </style>

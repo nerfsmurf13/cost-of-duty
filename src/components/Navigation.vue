@@ -12,9 +12,16 @@
 		</div>
 		<!-- <div class="middle nav"></div> -->
 		<div class="right">
-			<div class="about nav"><a href="#">About</a></div>
-			<div class="share nav "><a href="#">Share</a></div>
-			<div class="search nav"><a href="#">Search</a></div>
+			<!-- <div class="about nav"><a href="#">About</a></div> -->
+			<!-- <div
+				class="fb-share-button"
+				data-href="https://www.costofduty.com"
+				data-layout="button_count"
+			></div> -->
+			<!-- |
+			<div class="share nav "><a href="#">Share</a></div> -->
+			<!-- | -->
+			<div class="search nav"><a href="/">Search Another Player</a></div>
 		</div>
 	</div>
 </template>
@@ -32,10 +39,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import "../styles/base.scss";
+
 .logo {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	justify-content: flex-start;
-
 	width: 200px;
 }
 .logo img {
@@ -45,16 +56,19 @@ export default {
 
 .nav-wrapper {
 	margin: 1rem 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	flex: 1;
+	flex-basis: 1 0 0%;
 	flex-flow: column;
 	justify-content: space-between;
-	//background-color: var(--background2);
 	border-top: 1px solid var(--hilight);
 	border-bottom: 1px solid var(--hilight);
 	align-items: center;
 	.nav {
-		margin: 0 1rem;
+		//margin: 0 1rem;
 		font-size: 1rem;
 	}
 
@@ -62,23 +76,27 @@ export default {
 		flex: 2;
 		justify-content: flex-start;
 	}
-	// .middle {
-	// 	flex: 2;
-	// }
+
 	.right {
 		flex: 1;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
+
 		flex-flow: row;
 		justify-content: flex-end;
 		height: 100%;
+		a {
+			margin: 0.2rem;
+		}
 	}
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 500px) {
 	.nav-wrapper {
 		flex-flow: row;
 		.nav {
-			margin: 0 0.2rem;
 			font-size: 1rem;
 		}
 	}
@@ -86,7 +104,6 @@ export default {
 @media screen and (min-width: --screen-large) {
 	.nav-wrapper {
 		.nav {
-			margin: 0 0.2rem;
 			font-size: 2rem;
 		}
 	}

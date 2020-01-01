@@ -74,7 +74,7 @@
 						>
 							${{
 								formatPrice(
-									weapon.properties.kills * (weapon.properties.cost * 3)
+									weapon.properties.kills * (weapon.properties.cost * 4)
 								)
 							}}
 						</button>
@@ -97,36 +97,50 @@
 				</tr>
 			</tbody>
 		</table>
-		<!-- Killstreak Table -->
+		<!-- ======================Killstreak Table====================== -->
 		<table v-show="!hidden && killstreakTable" :id="tableName">
 			<thead>
 				<tr>
 					<th width="25%">Kill Streak</th>
 					<th>Awarded</th>
 					<th>Uses</th>
-					<th>Kills/Assists</th>
+					<th>Kills / Assists</th>
 					<th>Costs</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(killstreak, index) in sortedArray" :key="index">
-					<td>{{ killstreak.properties.name }}</td>
+				<tr v-for="(killstreak, index) in sortedKsArray" :key="index">
+					<td>
+						<button
+							:id="killstreak.properties.idName"
+							class="table-btn grid"
+							@click="openDetails"
+						>
+							{{ killstreak.properties.name }}
+						</button>
+					</td>
 					<td>{{ killstreak.properties.awardedCount }}</td>
 					<td>{{ killstreak.properties.uses }}</td>
 					<td>{{ killstreak.properties.extraStat1 }}</td>
 					<td class="killstreak-total" width="25%">
-						{{
-							formatPrice(
-								(killstreak.properties.totalCost =
-									killstreak.properties.uses * killstreak.properties.cost)
-							)
-						}}
+						<button
+							:id="killstreak.properties.idName"
+							class="table-btn grid"
+							@click="openDetails"
+						>
+							{{
+								formatPrice(
+									(killstreak.properties.totalCost =
+										killstreak.properties.uses * killstreak.properties.cost)
+								)
+							}}
+						</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<!-- //Modal -->
-		<fireable-modal
+		<modal
 			v-show="isModalVisible"
 			:arr="arr"
 			:obj="selected"
@@ -135,11 +149,11 @@
 	</div>
 </template>
 <script>
-import FireableModal from "./FireableModal";
+import Modal from "./Modal";
 export default {
 	name: "TableComponent",
 	components: {
-		FireableModal
+		Modal
 	},
 	props: {
 		arr: {
@@ -225,6 +239,16 @@ export default {
 				return 0;
 			}
 			return this.arr.slice().sort(compare);
+		},
+		sortedKsArray: function() {
+			function compare(a, b) {
+				let acost = a.properties.cost * a.properties.uses;
+				let bcost = b.properties.cost * b.properties.uses;
+				if (acost < bcost) return 1;
+				if (acost > bcost) return -1;
+				return 0;
+			}
+			return this.arr.slice().sort(compare);
 		}
 	},
 	created() {
@@ -251,18 +275,15 @@ export default {
 			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		},
 		formatNumber(value) {
-			//Formats number into readable number (INCOMPLETE)
-			let val = (value / 1).toFixed(2).replace(",", ".");
-			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		},
-		openDetails(e) {
-			// this.console.log("openDetails Running... " + e);
-			// this.console.log(
-			// 	"openDetails Running... " +
-			// 		e.target.parentElement.parentElement.parentElement.parentElement.id
-			// );
-			this.clickEven(e);
-			this.showModal();
+		openDetails(event) {
+			// this.clickEven(e);
+			this.console.log(event.target.id);
+			let wid = event.target.id;
+			this.selected = this.obj[wid].properties;
+			// this.showModal();
+			this.isModalVisible = true;
 		},
 		showModal() {
 			this.isModalVisible = true;
@@ -272,15 +293,6 @@ export default {
 		},
 		clickEven(e) {
 			let wid = e.toElement.id;
-			// let cat =
-			// 	e.target.parentElement.parentElement.parentElement.parentElement.id;
-
-			// this.console.log("clickEven " + cat);
-			// this.console.log("clickEven " + wid);
-			// this.console.log(this.obj[wid].properties);
-			//this.selected = this.itemDataSmg[wid].properties;
-			//this.console.log(this.itemDataSmg[wid].properties);
-
 			this.selected = this.obj[wid].properties;
 		},
 		totalCostAdd() {
@@ -332,66 +344,40 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$grid-color: #1e303c;
-//$grid-filler: #2d516a;
-$grid-filler: #2d516a;
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+@import "../styles/base.scss";
+@import "../styles/tab-styles.scss";
+// .small-btn {
+// 	max-width: 6rem;
+// 	font-size: 1rem;
+// 	margin-left: 1rem;
+// }
 
-.small-btn {
-	max-width: 6rem;
-	font-size: 1rem;
-	margin-left: 1rem;
-}
+// .table-container {
+// 	display: flex;
+// 	flex: 1;
+// 	flex-direction: column;
+// 	margin-bottom: 2rem;
+// 	border: 1px solid $selected-dark;
+// 	background-color: $background1;
+// 	.table-title {
+// 		margin-top: 0.2rem;
+// 		margin-bottom: 0.2rem;
+// 		display: flex;
+// 		justify-content: center;
+// 	}
 
-.table-container {
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-	margin-bottom: 2rem;
-	border: 1px solid $selected-dark;
-	background-color: $background1;
-	.table-title {
-		margin-top: 0.2rem;
-		margin-bottom: 0.2rem;
-		display: flex;
-		justify-content: center;
-	}
-
-	table {
-		font-size: 0.75rem;
-		border-collapse: collapse;
-		font-weight: 100;
-		width: 100%;
-		th {
-			border-top: 1px solid $hilight;
-			border-bottom: 1px solid $hilight;
-			// background-color: $good;
-			.table-col-name {
-				max-width: 25%;
-			}
-		}
-
-		// tr {
-		// 	// background: $selected-dark;
-		// 	border-bottom: 1px solid $selected-dark;
-		// 	padding: 0.2rem 0;
-		// }
-		// tr:hover {
-		// 	background: $hilight;
-		// 	color: black;
-		// 	font-weight: 600;
-		// }
-	}
-}
+// 	table {
+// 		font-size: 0.75rem;
+// 		border-collapse: collapse;
+// 		font-weight: 100;
+// 		width: 100%;
+// 		th {
+// 			border-top: 1px solid $hilight;
+// 			border-bottom: 1px solid $hilight;
+// 			.table-col-name {
+// 				max-width: 25%;
+// 			}
+// 		}
+// 	}
+// }
 </style>

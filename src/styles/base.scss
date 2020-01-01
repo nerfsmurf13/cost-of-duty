@@ -1,0 +1,61 @@
+:root {
+  --background-color: #036704;
+  --bad: #871e1a;
+  --good: #77b164;
+  --background1: #000;
+  --background2: #111;
+  --selected-lite: #43677b;
+  --selected-dark: #253c4b;
+  --text-lite: #cccccc;
+  --text-lite: #fff;
+  --text-med: #89ddff;
+  --text-dark: #3e3e3e;
+  --hilight: #f0a84b;
+  --screen-med: 800px;
+  --screen-large: 1080px;
+}
+
+$grid-color: #1e303c;
+$bad: #871e1a;
+$good: #77b164;
+$background1: #000;
+$background2: #111;
+$background-color: #036704;
+$selected-lite: #43677b;
+$selected-dark: #253c4b;
+$text-lite: #cccccc;
+$text-lite2: #fff;
+$text-med: #89ddff;
+$text-dark: #3e3e3e;
+$hilight: #f0a84b;
+$grid-filler: #2d516a;
+$grid-on: #1e303c;
+$grid-off: #000;
+$gridbg-on: #2d516a;
+$gridbg-off: #121212;
+$grid-hi: #3c93ca;
+$screen-med: 800px;
+$screen-large: 1080px;
+
+// -----========== Wrapper ==========-----
+.wrapper-full {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .wrapper {
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (min-width: $screen-med) {
+  .wrapper {
+    width: $screen-med;
+  }
+}
+
+@media screen and (min-width: $screen-large) {
+  .wrapper {
+    width: $screen-large;
+  }
+}

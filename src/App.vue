@@ -26,73 +26,44 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/base.css";
+@import "./styles/base.scss";
 @import "styles/normalize.css";
 @import "https://fonts.googleapis.com/css?family=Roboto&display=swap";
 @import "https://fonts.googleapis.com/css?family=Coda:800&display=swap";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-$screen-med: 800px;
-$screen-large: 1080px;
-
-body {
-	display: flex;
-	flex: 1;
-	min-height: 100vh;
-	// width: 100vw;
-}
-$grid-filler: #2d516a;
-$background2: #111;
-
 #app {
+	display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	width: 100vw;
-	/* justify-items: center; */
+	flex-basis: 1 0 0%;
 	justify-content: space-between;
 	background-color: #000;
-	background-image: url("./assets/bg-large.jpg");
+	background: url("./assets/bg-large.jpg");
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='assets/bg-large.jpg', sizingMethod='scale')";
 	background-attachment: fixed;
 	background-size: contain;
-	/* min-height: 100vh; */
+
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
-	color: var(--text-lite);
-
-	/* background-color: #036704; */
-	/* background-color: #000; */
-	--bad: #871e1a;
-	--good: #77b164;
-	--background1: #000;
-	--background2: #111;
-	--selected-lite: #43677b;
-	--selected-dark: #253c4b;
-	/* --text-lite: #cccccc; */
-	--text-lite: #fff;
-	--text-med: #89ddff;
-	--text-dark: #3e3e3e;
-	--hilight: #f0a84b;
-	--screen-med: 800px;
-	--screen-large: 1080px;
+	color: $text-lite;
 }
-$grid-color: #1e303c;
 
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-/* --text-lite: #cccccc; */
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+body {
+	display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+	display: flex;
+	flex: 1;
+	flex-basis: 1 0 0%;
+	min-height: 100%;
+}
+
 
 input[type="text"] {
 	background-color: var(--background2);
@@ -163,11 +134,16 @@ a {
 }
 
 .wrapper-full {
+	display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
 	display: flex;
 	justify-content: center;
 	flex: 1;
+		flex-basis: 1 0 0%;
 	.wrapper {
 		margin: 0 1rem;
+		// width: 600px;
 	}
 }
 
@@ -175,12 +151,6 @@ a {
 	color: #77b164;
 }
 
-//Call of Duty Esque Buttons
-$grid-on: #1e303c;
-$grid-off: #000;
-$gridbg-on: #2d516a;
-$gridbg-off: #121212;
-$grid-hi: #3c93ca;
 .grid {
 	//background-color: $grid-filler;
 	border: 2px solid $grid-on;
@@ -240,17 +210,17 @@ $grid-hi: #3c93ca;
 	}
 }
 
-@media screen and (min-width: $screen-med) {
+@media screen and (min-width: 850px) {
 	.wrapper {
-		width: $screen-med;
+		width: 800px;
 	}
 	tr {
 		font-size: 1rem;
 	}
 }
-@media screen and (min-width: $screen-large) {
+@media screen and (min-width: 1080px) {
 	.wrapper {
-		width: $screen-large;
+		width: 970px;
 	}
 	tr {
 		font-size: 1.5rem;

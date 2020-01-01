@@ -95,19 +95,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-/* --text-lite: #cccccc; */
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+@import "../styles/base.scss";
+
 h1 {
 	font-size: 2.9rem;
 

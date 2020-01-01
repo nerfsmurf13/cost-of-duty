@@ -17,17 +17,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../styles/base.scss";
 .adspace-container {
 	color: black;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	flex: 1;
 	justify-content: center;
-	height: 50px;
+	/* height: 100px; */
 }
 
 .adspace-top {
 	background-color: lightgray;
 	width: 320px;
-	height: 50px;
+	height: 100px;
+	display: inline-block;
+}
+
+@media screen and (min-width: 468px) {
+	.adspace-top {
+		width: 468px;
+	}
+}
+@media screen and (min-width: 1080px) {
+	.adspace-top {
+		width: 970px;
+	}
 }
 </style>

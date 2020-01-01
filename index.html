@@ -2,32 +2,58 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Cost of Duty - Calculates your cost of COD multiplayer gameplay!</title>
-    <meta name="description" content="Look up your Call of Duty Modern Warfare 2019 profile stats with Monetary Information! Find out how much money you spent on killstreak costs!">
-    <meta name="og:title" property="og:title" content="Cost of Duty">
-    <link rel="stylesheet" href="src/styles/base.css">
-    <link rel="stylesheet" href="/src/styles/base.css">
-    <link rel="stylesheet" href="/src/styles/normalize.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154724658-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cost of Duty - Calculates your cost of COD multiplayer gameplay!</title>
+  <meta name="description"
+    content="Look up your Call of Duty Modern Warfare 2019 profile stats with Monetary Information! Find out how much money you spent on killstreak costs!">
+  <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url" content="https://www.costofduty.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cost of Duty - Calculates your cost of COD multiplayer gameplay!" />
+  <meta property="og:description" content="Look up your Call of Duty Modern Warfare 2019 profile stats with Monetary Information! Find out how much money you spent on killstreak costs!ion" />
+  <meta property="og:image" content="http://costofduty.com/assets/logo-med-square.jpg" />
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
-        gtag('config', 'UA-154724658-2');
-    </script>
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/normalize.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154724658-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-154724658-2');
+
+  </script>
 
 </head>
 
 <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+  <div id="fb-root"></div>
+  <script>
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  </script>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
 </body>
 
 </html>

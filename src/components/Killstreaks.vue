@@ -28,67 +28,6 @@
 			:table-name="'table-supp-killstreaks'"
 			:name="'Support Killstreaks'"
 		/>
-		<!-- <div class="total-cash">
-			<div class="value good">$ {{ totalKillstreakCostFormatted }}</div>
-		</div>
-		<div class="table-title">Lethal Killstreaks</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Kill Streak</th>
-					<th>Awarded</th>
-					<th>Uses</th>
-					<th>Kills/Assists</th>
-					<th>Costs</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(killstreak, index) in offKillstreakObject" :key="index">
-					<td>{{ killstreak.properties.name }}</td>
-					<td>{{ killstreak.properties.awardedCount }}</td>
-					<td>{{ killstreak.properties.uses }}</td>
-					<td>{{ killstreak.properties.extraStat1 }}</td>
-					<td class="killstreak-total">
-						{{
-							formatPrice(
-								(killstreak.properties.totalCost =
-									killstreak.properties.uses * killstreak.properties.cost)
-							)
-						}}
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="total-cash">
-			<div class="value good">$ {{ totalKillstreakCostFormatted }}</div>
-		</div>
-		<div class="table-title">Non-Lethal Killstreaks</div>
-		<table>
-			<thead>
-				<tr class="tablehead">
-					<th>Kill Streak</th>
-					<th>Awarded</th>
-					<th>Uses</th>
-					<th>Kills/Assists</th>
-					<th>Costs</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(killstreak, index) in tactKillstreakObject" :key="index">
-					<td>{{ killstreak.properties.name }}</td>
-					<td>{{ killstreak.properties.awardedCount }}</td>
-					<td>{{ killstreak.properties.uses }}</td>
-					<td>{{ killstreak.properties.extraStat1 }}</td>
-					<td :id="killstreak.properties.name">
-						${{
-							formatPrice(
-								killstreak.properties.cost * killstreak.properties.uses
-							)
-						}}
-					</td>
-				</tr>
-			</tbody>
-		</table> -->
 	</div>
 </template>
 <script>
@@ -125,7 +64,10 @@ export default {
 					properties: {
 						name: "Bradley/Wheelson",
 						nameFull: "Bradley Full",
-						cost: 4583000
+						cost: 4583000,
+						desc: "Description Here",
+						idName: "bradley",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//Wheelson is close to TALON
 						//TALON is 6,000,000
 						//Bradley 3,166,000
@@ -136,7 +78,10 @@ export default {
 					properties: {
 						name: "Hover Jet",
 						nameFull: "AV-8",
-						cost: 23700000 + 2799 * 4 + 2194
+						cost: 23700000 + 2799 * 4 + 2194,
+						desc: "Description Here",
+						idName: "hover_jet",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//AV-8 Cost 23700000
 						//Assuming the rocket salvo is LAU-5003 pod - CRV7 missiles
 						//and it fires 4 (need to confirm) 2799 each
@@ -147,7 +92,10 @@ export default {
 					properties: {
 						name: "Precision Airstrike",
 						nameFull: "A-10 Strafing Run",
-						cost: 20000000 + 71084
+						cost: 20000000 + 71084,
+						desc: "Description Here",
+						idName: "precision_airstrike",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//2x A-10s 2x strikes
 						// GAU price each 136.70
 						// Strafing duration 2 seconds
@@ -159,42 +107,60 @@ export default {
 					properties: {
 						name: "Chopper Support",
 						nameFull: "Pavelow",
-						cost: 40000000
+						cost: 40000000,
+						desc: "Description Here",
+						idName: "chopper_support",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				pac_sentry: {
 					properties: {
 						name: "pac_sentry",
 						nameFull: "AV-8",
-						cost: 1
+						cost: 1,
+						desc: "Description Here",
+						idName: "pac_sentry",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				juggernaut: {
 					properties: {
 						name: "juggernaut",
 						nameFull: "AV-8",
-						cost: 1
+						cost: 1,
+						desc: "Description Here",
+						idName: "juggernaut",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				nuke: {
 					properties: {
 						name: "Nuke",
 						nameFull: "Tactical Nuke",
-						cost: 35500000
+						cost: 35500000,
+						desc: "Description Here",
+						idName: "nuke",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				sentry_gun: {
 					properties: {
 						name: "sentry_gun",
 						nameFull: "AV-8",
-						cost: 1
+						cost: 1,
+						desc: "Description Here",
+						idName: "sentry_gun",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				gunship: {
 					properties: {
 						name: "Gunship",
 						nameFull: "AC-130U Spooky II",
-						cost: 190000000 + 2194 + 4000 + 380
+						cost: 190000000 + 2194 + 4000 + 380,
+						desc: "Description Here",
+						idName: "gunship",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//190000000 Unit Cost
 						//105mm = 400
 						//25mm *300 = 2194
@@ -205,7 +171,10 @@ export default {
 					properties: {
 						name: "Cluster Strike",
 						nameFull: "Cluster Mortar Strike",
-						cost: 1
+						cost: 1,
+						desc: "Description Here",
+						idName: "toma_strike",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//Aparently Toma_Strike is Mortar/Cluster Strike
 						//6 shots
 					}
@@ -214,28 +183,40 @@ export default {
 					properties: {
 						name: "Cruise Missile",
 						nameFull: "Tomahawk Land Attack Missile",
-						cost: 1400000
+						cost: 1400000,
+						desc: "Description Here",
+						idName: "cruise_predator",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				manual_turret: {
 					properties: {
 						name: "Shield Turret",
 						nameFull: "Browning M2",
-						cost: 14000
+						cost: 14000,
+						desc: "Description Here",
+						idName: "manual_turret",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				white_phosphorus: {
 					properties: {
 						name: "White Phosphorous",
 						nameFull: "White Phosphorous",
-						cost: 1
+						cost: 1,
+						desc: "Description Here",
+						idName: "white_phosphorus",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				chopper_gunner: {
 					properties: {
 						name: "Chopper Gunner",
 						nameFull: "AH-64 Apache",
-						cost: 35500000
+						cost: 35500000,
+						desc: "Description Here",
+						idName: "chopper_gunner",
+						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//8 Hellfires
 						//300 Cannon Rounds
 					}
@@ -247,7 +228,10 @@ export default {
 						name: "airdrop",
 						nameFull: "airdrop",
 						cost: 3,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "airdrop",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				radar_drone_overwatch: {
@@ -255,7 +239,10 @@ export default {
 						name: "radar_drone_overwatch",
 						nameFull: "radar_drone_overwatch",
 						cost: 1,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "radar_drone_overwatch",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				scrambler_drone_guard: {
@@ -263,7 +250,10 @@ export default {
 						name: "scrambler_drone_guard",
 						nameFull: "Cluster Mortars",
 						cost: 1,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "scrambler_drone_guard",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				uav: {
@@ -271,7 +261,10 @@ export default {
 						name: "uav",
 						nameFull: "AV-8",
 						cost: 1,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "uav",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				airdrop_multiple: {
@@ -279,7 +272,10 @@ export default {
 						name: "airdrop_multiple",
 						nameFull: "AV-8",
 						cost: 1,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "airdrop_multiple",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				directional_uav: {
@@ -287,7 +283,10 @@ export default {
 						name: "directional_uav",
 						nameFull: "AV-8",
 						cost: 1,
-						totalCost: 0
+						totalCost: 0,
+						desc: "Description Here",
+						idName: "directional_uav",
+						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				}
 			},
@@ -359,85 +358,72 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+@import "../styles/base.scss";
+@import "../styles/tab-styles.scss";
+// .table-title {
+// 	width: 100%;
+// 	font-size: 1rem;
+// }
 
-.table-title {
-	width: 100%;
-	font-size: 1rem;
-}
+// .value {
+// 	color: #3e9c35;
+// 	font-size: 2rem;
+// 	font-weight: 300;
+// }
 
-.value {
-	color: #3e9c35;
-	font-size: 2rem;
-	font-weight: 300;
-}
+// .cat-spend {
+// 	padding-bottom: 1rem;
+// }
 
-.cat-spend {
-	padding-bottom: 1rem;
-}
-
-.stat-container {
-	font-size: 1.5rem;
-	//border: 1px solid $selected-dark;
-	display: flex;
-	flex-flow: column;
-	//background-color: $background1;
-	margin: 1rem 0;
-	margin-top: 0;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	padding: 0;
-	.value {
-		padding: 0.5rem 0;
-	}
-	.stat-container-indv {
-		background-color: $background2;
-		background-image: url("../assets/corners.png");
-		background-size: cover;
-		background-repeat: no-repeat;
-		width: 125px;
-		margin: 0.5rem;
-		.stats-content {
-			padding: 0.3rem;
-			color: $text-lite;
-		}
-		.stats-cost {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $good;
-		}
-		.stats-title {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $text-med;
-		}
-		&:hover {
-			background-color: $selected-dark;
-			.stats-title {
-				border-top: 2px solid $hilight;
-				color: $hilight;
-			}
-			.stats-cost {
-				border-top: 2px solid $hilight;
-			}
-		}
-	}
-	.title {
-		width: 100%;
-		margin-bottom: 0.5rem;
-	}
-}
+// .stat-container {
+// 	font-size: 1.5rem;
+// 	display: flex;
+// 	flex-flow: column;
+// 	margin: 1rem 0;
+// 	margin-top: 0;
+// 	flex-wrap: wrap;
+// 	justify-content: space-evenly;
+// 	padding: 0;
+// 	.value {
+// 		padding: 0.5rem 0;
+// 	}
+// 	.stat-container-indv {
+// 		background-color: $background2;
+// 		background-image: url("../assets/corners.png");
+// 		background-size: cover;
+// 		background-repeat: no-repeat;
+// 		width: 125px;
+// 		margin: 0.5rem;
+// 		.stats-content {
+// 			padding: 0.3rem;
+// 			color: $text-lite;
+// 		}
+// 		.stats-cost {
+// 			padding: 0.3rem;
+// 			border-top: 2px solid $text-dark;
+// 			font-size: 1rem;
+// 			color: $good;
+// 		}
+// 		.stats-title {
+// 			padding: 0.3rem;
+// 			border-top: 2px solid $text-dark;
+// 			font-size: 1rem;
+// 			color: $text-med;
+// 		}
+// 		&:hover {
+// 			background-color: $selected-dark;
+// 			.stats-title {
+// 				border-top: 2px solid $hilight;
+// 				color: $hilight;
+// 			}
+// 			.stats-cost {
+// 				border-top: 2px solid $hilight;
+// 			}
+// 		}
+// 	}
+// 	.title {
+// 		width: 100%;
+// 		margin-bottom: 0.5rem;
+// 	}
+// }
 </style>

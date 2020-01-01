@@ -142,7 +142,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -155,7 +156,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -168,7 +170,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -181,7 +184,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -194,7 +198,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -207,7 +212,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -220,7 +226,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -233,7 +240,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -248,7 +256,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -261,7 +270,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -274,7 +284,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -287,7 +298,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.1,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -300,7 +312,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -313,7 +326,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -328,7 +342,8 @@ export default {
 						cost: 100,
 						roundCost: 0.01,
 						magCost: 5,
-						magSize: 30
+						magSize: 30,
+						type: "firearm"
 					}
 				},
 				iw8_sn_mike14: {
@@ -339,7 +354,8 @@ export default {
 						cost: 100,
 						roundCost: 0.01,
 						magCost: 5,
-						magSize: 30
+						magSize: 30,
+						type: "firearm"
 					}
 				},
 				iw8_sn_delta: {
@@ -350,7 +366,8 @@ export default {
 						cost: 100,
 						roundCost: 0.01,
 						magCost: 5,
-						magSize: 30
+						magSize: 30,
+						type: "firearm"
 					}
 				}
 			},
@@ -363,7 +380,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -376,7 +394,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -389,7 +408,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -402,7 +422,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -415,7 +436,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -430,7 +452,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -443,7 +466,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -456,7 +480,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -469,7 +494,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -484,7 +510,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -497,7 +524,8 @@ export default {
 						cost: 2200,
 						roundCost: 0.15,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -510,7 +538,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -523,7 +552,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -536,7 +566,8 @@ export default {
 						cost: 2200,
 						roundCost: 2,
 						magCost: 10,
-						magSize: 5
+						magSize: 5,
+						type: "firearm"
 						//demoVar: magCost * shots
 						//Fal
 					}
@@ -709,85 +740,72 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bad: #871e1a;
-$good: #77b164;
-$background1: #000;
-$background2: #111;
-$selected-lite: #43677b;
-$selected-dark: #253c4b;
-$text-lite: #fff;
-$text-med: #89ddff;
-$text-dark: #3e3e3e;
-$hilight: #f0a84b;
-$screen-med: 800px;
-$screen-large: 1080px;
+@import "../styles/base.scss";
+@import "../styles/tab-styles.scss";
+// .value {
+// 	color: #3e9c35;
+// 	font-size: 2rem;
+// 	font-weight: 300;
+// }
 
-.value {
-	color: #3e9c35;
-	font-size: 2rem;
-	font-weight: 300;
-}
+// .cat-spend {
+// 	padding-bottom: 1rem;
+// }
 
-.cat-spend {
-	padding-bottom: 1rem;
-}
+// .table-title {
+// 	width: 100%;
+// 	font-size: 1rem;
+// }
 
-.table-title {
-	width: 100%;
-	font-size: 1rem;
-}
-
-.stat-container {
-	font-size: 1.5rem;
-	//border: 1px solid $selected-dark;
-	display: flex;
-	flex-flow: column;
-	//background-color: $background1;
-	margin: 1rem 0;
-	margin-top: 0;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	padding: 0;
-	.value {
-		padding: 0.5rem 0;
-	}
-	.stat-container-indv {
-		background-color: $background2;
-		background-image: url("../assets/corners.png");
-		background-size: cover;
-		background-repeat: no-repeat;
-		width: 125px;
-		margin: 0.5rem;
-		.stats-content {
-			padding: 0.3rem;
-			color: $text-lite;
-		}
-		.stats-cost {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $good;
-		}
-		.stats-title {
-			padding: 0.3rem;
-			border-top: 2px solid $text-dark;
-			font-size: 1rem;
-			color: $text-med;
-		}
-		&:hover {
-			background-color: $selected-dark;
-			.stats-title {
-				border-top: 2px solid $hilight;
-				color: $hilight;
-			}
-			.stats-cost {
-				border-top: 2px solid $hilight;
-			}
-		}
-	}
-	.title {
-		width: 100%;
-		margin-bottom: 0.5rem;
-	}
-}
+// .stat-container {
+// 	font-size: 1.5rem;
+// 	display: flex;
+// 	flex-flow: column;
+// 	margin: 1rem 0;
+// 	margin-top: 0;
+// 	flex-wrap: wrap;
+// 	justify-content: space-evenly;
+// 	padding: 0;
+// 	.value {
+// 		padding: 0.5rem 0;
+// 	}
+// 	.stat-container-indv {
+// 		background-color: $background2;
+// 		background-image: url("../assets/corners.png");
+// 		background-size: cover;
+// 		background-repeat: no-repeat;
+// 		width: 125px;
+// 		margin: 0.5rem;
+// 		.stats-content {
+// 			padding: 0.3rem;
+// 			color: $text-lite;
+// 		}
+// 		.stats-cost {
+// 			padding: 0.3rem;
+// 			border-top: 2px solid $text-dark;
+// 			font-size: 1rem;
+// 			color: $good;
+// 		}
+// 		.stats-title {
+// 			padding: 0.3rem;
+// 			border-top: 2px solid $text-dark;
+// 			font-size: 1rem;
+// 			color: $text-med;
+// 		}
+// 		&:hover {
+// 			background-color: $selected-dark;
+// 			.stats-title {
+// 				border-top: 2px solid $hilight;
+// 				color: $hilight;
+// 			}
+// 			.stats-cost {
+// 				border-top: 2px solid $hilight;
+// 			}
+// 		}
+// 	}
+// 	.title {
+// 		width: 100%;
+// 		margin-bottom: 0.5rem;
+// 	}
+// }
 </style>

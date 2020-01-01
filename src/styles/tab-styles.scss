@@ -1,0 +1,407 @@
+// -----========== GRID TEXTURE ON SOME BUTTONS ==========-----
+.grid {
+  //background-color: $grid-filler;
+  border: 2px solid $grid-on;
+  background-image: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      $grid-off 2px,
+      $grid-off 3px),
+    repeating-linear-gradient(-90deg,
+      transparent,
+      transparent 2px,
+      $grid-off 2px,
+      $grid-off 3px);
+  background-size: 3px 3px;
+
+  &:hover {
+    background-color: $gridbg-on;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 2px solid $text-med;
+    border-bottom: 2px solid $text-med;
+    background-image: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        $grid-on 2px,
+        $grid-on 3px),
+      repeating-linear-gradient(-90deg,
+        transparent,
+        transparent 2px,
+        $grid-on 2px,
+        $grid-on 3px);
+  }
+}
+
+
+
+// -----========== Buttons ==========-----
+.btn {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+
+  // border-bottom: none;
+  &-active {
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 2px solid $hilight;
+    border-bottom: 2px solid $hilight;
+  }
+}
+
+// -----========== Modal Containers ==========-----
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: center;
+}
+
+.pri {
+  justify-content: center;
+  background-image: url("../assets/corners_266_75.png");
+
+  .stats-cost {
+    font-size: 2rem;
+  }
+}
+
+.btn-close {
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4aae9b;
+  background: transparent;
+}
+
+.btn-green {
+  color: white;
+  background: #4aae9b;
+  border: 1px solid #4aae9b;
+  border-radius: 2px;
+}
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+// -----========== DEMO ==========-----
+
+
+
+.total-spent {
+  margin-bottom: 0.5rem;
+}
+
+.total-spent-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.loading-data {
+  font-size: 2rem;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.filler {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.space {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  // width: 50%;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.player-id-section {
+  display: flex;
+  flex-flow: column;
+
+  &-top {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+
+    .player-id {
+      font-size: 2rem;
+    }
+  }
+
+  .player-sys {
+    font-size: 1rem;
+  }
+}
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+.player-id-section-top {
+  display: flex;
+  flex-direction: column;
+  margin: 0.3rem 0;
+}
+
+.player-id-section-bottom {
+  margin: 0.3rem 0;
+}
+
+.player-id {
+  font-size: 1.5rem;
+}
+
+.player-sys {
+  font-size: 1.5rem;
+}
+
+.player-id-section-bottom {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.player-id {
+  margin: 0;
+}
+
+.refresh-counter {
+  font-size: 0.75rem;
+  font-weight: 200;
+  margin: 0.3rem 0;
+}
+
+/* Overview Tab */
+.total-spent {
+  color: $good;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.value {
+  color: $good;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+
+.val1 {
+  padding: 0 0.2rem;
+  border-bottom: 1px solid $selected-lite;
+}
+
+
+
+.tab {
+  width: 40%;
+}
+
+.stat-container-indv,
+.cost-container-indv {
+
+  border: 1px solid white;
+  //background-image: url("../assets/corners_125_58.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 125px;
+  height: 58px;
+  margin: 0.5rem;
+
+  .stats-content {
+    padding: 0.3rem;
+    color: $text-lite;
+  }
+
+  .stats-cost {
+    padding: 0.3rem;
+    //border-top: 2px solid $text-dark;
+    font-size: 1rem;
+    color: $good;
+  }
+
+  .stats-title {
+    padding: 0.3rem;
+    border-top: 2px solid $text-dark;
+    font-size: 1rem;
+    color: $text-med;
+  }
+
+  &:hover {
+    background-color: $selected-dark;
+
+    .stats-title {
+      border-top: 2px solid $hilight;
+      color: $hilight;
+    }
+
+    .stats-cost {
+      //border-top: 2px solid $hilight;
+    }
+  }
+}
+
+.small-btn {
+  max-width: 6rem;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.table-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  border: 1px solid $selected-dark;
+  background-color: $background1;
+
+  .table-title {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  table {
+    font-size: 0.75rem;
+    border-collapse: collapse;
+    font-weight: 100;
+    width: 100%;
+
+    th {
+      border-top: 1px solid $hilight;
+      border-bottom: 1px solid $hilight;
+
+      .table-col-name {
+        max-width: 25%;
+      }
+    }
+  }
+}
+
+.cost-container-indv {
+  flex: 1;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-section-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.overview-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  border: 1px solid $selected-dark;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.col {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: center;
+}
+
+.pri {
+  justify-content: center;
+
+  .stats-cost {
+    font-size: 2rem;
+  }
+}
+
+.btn-close {
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4aae9b;
+  background: transparent;
+}
+
+.btn-green {
+  color: white;
+  background: #4aae9b;
+  border: 1px solid #4aae9b;
+  border-radius: 2px;
+}
+
+
+
+.cat-spend {
+  padding-bottom: 1rem;
+}
+
+.table-title {
+  width: 100%;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: $screen-med) {
+  .total-spent {
+    font-size: 2rem;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: $screen-large) {
+  .total-spent {
+    font-size: 2.5rem;
+  }
+
+  .value {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+}

@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import App from "./App";
+import es6Promise from 'es6-promise'
+es6Promise.polyfill()
 import router from "./router";
 import axios from "axios";
 

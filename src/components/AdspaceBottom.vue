@@ -17,18 +17,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../styles/base.scss";
+
 .adspace-container {
-	/* border: 10px dashed white; */
 	color: black;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	flex: 1;
 	justify-content: center;
-	height: 50px;
+	/* height: 100px; */
 }
 
 .adspace-bottom {
 	background-color: lightgray;
 	width: 320px;
-	height: 50px;
+	height: 100px;
+	display: inline-block;
+}
+
+@media screen and (min-width: 468px) {
+	.adspace-bottom {
+		width: 468px;
+	}
+}
+@media screen and (min-width: 1080px) {
+	.adspace-bottom {
+		width: 970px;
+	}
 }
 </style>
