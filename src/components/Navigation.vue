@@ -41,6 +41,11 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/base.scss";
 
+a {
+	color: white;
+	text-decoration: white;
+}
+
 .logo {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -64,8 +69,8 @@ export default {
 	flex-basis: 1 0 0%;
 	flex-flow: column;
 	justify-content: space-between;
-	border-top: 1px solid var(--hilight);
-	border-bottom: 1px solid var(--hilight);
+	border-top: 1px solid $hilight;
+	border-bottom: 1px solid $hilight;
 	align-items: center;
 	.nav {
 		//margin: 0 1rem;
@@ -101,10 +106,10 @@ export default {
 		}
 	}
 }
-@media screen and (min-width: --screen-large) {
+@media screen and (min-width: $screen-large) {
 	.nav-wrapper {
 		.nav {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 	}
 }

@@ -1,4 +1,5 @@
 :root {
+
   --background-color: #036704;
   --bad: #871e1a;
   --good: #77b164;
@@ -15,7 +16,7 @@
   --screen-large: 1080px;
 }
 
-$grid-color: #1e303c;
+
 $bad: #871e1a;
 $good: #77b164;
 $background1: #000;
@@ -29,6 +30,7 @@ $text-med: #89ddff;
 $text-dark: #3e3e3e;
 $hilight: #f0a84b;
 $grid-filler: #2d516a;
+$grid-color: #1e303c;
 $grid-on: #1e303c;
 $grid-off: #000;
 $gridbg-on: #2d516a;
@@ -36,6 +38,13 @@ $gridbg-off: #121212;
 $grid-hi: #3c93ca;
 $screen-med: 800px;
 $screen-large: 1080px;
+
+body {
+  color: $text-lite2;
+  -webkit-transition-duration: 0.2;
+  /* Safari */
+  transition-duration: 0.2s;
+}
 
 // -----========== Wrapper ==========-----
 .wrapper-full {

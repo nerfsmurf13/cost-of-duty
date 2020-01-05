@@ -28,7 +28,7 @@
 							class="table-btn grid"
 							@click="openDetails"
 						>
-							{{ weapon.properties.name }}
+							{{ weapon.properties.nameFull }}
 						</button>
 					</td>
 					<td v-show="displayKills">{{ weapon.properties.kills }}</td>

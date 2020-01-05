@@ -9,6 +9,7 @@
 						../assets/logo-transparent-medium.png 1024w,
 						../assets/logo-transparent-large.png  1920w
 					"
+					src="../assets/logo-transparent-medium.png"
 			/></picture>
 			<h2>
 				Find out how much money you've used in Call of Duty's multiplayer!
@@ -96,6 +97,44 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import "../styles/base.scss";
+@import "../styles/tab-styles.scss";
+
+input[type="text"] {
+	background-color: $background2;
+	color: $text-med;
+	border: none;
+	font-size: 2.5rem;
+	border-bottom: 2px solid $selected-lite;
+	width: 100%;
+	text-align: center;
+	outline: none;
+	margin: 1rem 0;
+}
+input[type="text"]:focus {
+	border: none;
+	border-bottom: 2px solid $hilight;
+}
+
+// .btn {
+// 	margin: 0.1rem 0;
+// 	-webkit-transition-duration: 0.2; /* Safari */
+// 	transition-duration: 0.2s;
+// 	font-size: 2rem;
+// 	border: none;
+// 	color: $text-lite;
+// 	background: $background1;
+// 	border: 1px solid $selected-lite;
+// 	outline: none;
+// 	cursor: pointer;
+// 	padding: 0 0.5rem;
+// 	&:hover {
+// 		border-bottom: 1px solid $selected-lite;
+// 		background-color: $background2;
+// 	}
+// 	&_selected {
+// 		border-bottom: 1px solid $hilight;
+// 	}
+// }
 
 h1 {
 	font-size: 2.9rem;
@@ -125,6 +164,7 @@ span {
 .home-btn {
 	font-size: 2rem;
 	margin-bottom: 0.5rem;
+
 	// border-bottom: none;
 	&-active {
 		border-left: 2px solid transparent;

@@ -15,7 +15,11 @@
 					<div class="col">
 						<!-- COST FIREARM -->
 						<div
-							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							v-show="
+								obj.type == 'firearm' ||
+									obj.type == 'launcher' ||
+									obj.type == 'sniper'
+							"
 							class="flex"
 						>
 							<div class="cost-container-indv pri">
@@ -31,7 +35,11 @@
 							</div>
 						</div>
 						<div
-							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							v-show="
+								obj.type == 'firearm' ||
+									obj.type == 'launcher' ||
+									obj.type == 'sniper'
+							"
 							class="flex"
 						>
 							<div class="cost-container-indv">
@@ -48,7 +56,11 @@
 							</div>
 						</div>
 						<div
-							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							v-show="
+								obj.type == 'firearm' ||
+									obj.type == 'sniper' ||
+									obj.type == 'launcher'
+							"
 							class="flex"
 						>
 							<div class="cost-container-indv">
@@ -72,7 +84,11 @@
 							</div>
 						</div>
 						<div
-							v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+							v-show="
+								obj.type == 'firearm' ||
+									obj.type == 'launcher' ||
+									obj.type == 'sniper'
+							"
 							class="flex"
 						>
 							<div class="cost-container-indv">
@@ -163,7 +179,11 @@
 
 				<!-- ==========FIREARM STAT SECTION========== -->
 				<section
-					v-show="obj.type == 'firearm' || obj.type == 'launcher'"
+					v-show="
+						obj.type == 'firearm' ||
+							obj.type == 'launcher' ||
+							obj.type == 'sniper'
+					"
 					class="modal-body-middle"
 				>
 					<div class="stat-container-indv">
@@ -192,7 +212,10 @@
 						<div class="stats-content">{{ obj.hits }}</div>
 						<div class="stats-title">Hits</div>
 					</div>
-					<div v-show="obj.type == 'firearm'" class="stat-container-indv">
+					<div
+						v-show="obj.type == 'firearm' || obj.type == 'sniper'"
+						class="stat-container-indv"
+					>
 						<div class="stats-content">
 							{{ Math.round((obj.hits / obj.shots + 0.00001) * 100) }}%
 						</div>
@@ -270,7 +293,12 @@
 				</section>
 				<footer class="modal-footer">
 					<slot name="footer">
-						<button type="button" class="btn" aria-label="Close" @click="close">
+						<button
+							type="button"
+							class="btn close"
+							aria-label="Close"
+							@click="close"
+						>
 							Close
 						</button>
 					</slot>

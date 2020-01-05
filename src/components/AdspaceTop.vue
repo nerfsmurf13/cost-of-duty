@@ -1,6 +1,22 @@
 <template>
 	<div class="adspace-container">
-		<div class="adspace-top">Advertisement Here!!!</div>
+		<div class="adspace-top">
+			<!-- <div
+				id="adsgoeshere"
+				style="background: #1d1f29; padding-top:60px; text-align: center;"
+				v-html="adsenseContent"
+			></div> -->
+			<!-- <Adsense
+				root-class="adspace-top"
+				data-ad-client="ca-pub-8318488452444586"
+				data-ad-slot="6448065455"
+				data-ad-format="horizontal"
+			>
+			</Adsense> -->
+			<a href="mailto:business@costofduty.com" target="_blank"
+				>Advertise Here!</a
+			>
+		</div>
 	</div>
 </template>
 
@@ -9,8 +25,13 @@ export default {
 	name: "AdspaceTop",
 	data() {
 		return {
-			msg: "Welcome to Your Vue.js App"
+			adsenseContent: ""
 		};
+	},
+	mounted() {
+		// this.adsenseContent = document.getElementById(
+		// 	"divadsensedisplaynone"
+		// ).innerHTML;
 	}
 };
 </script>
@@ -19,12 +40,13 @@ export default {
 <style scoped>
 @import "../styles/base.scss";
 .adspace-container {
+	/* height: 90px; */
 	color: black;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	flex: 1;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	flex: 1 0 auto;
+
 	justify-content: center;
 	/* height: 100px; */
 }
@@ -32,8 +54,16 @@ export default {
 .adspace-top {
 	background-color: lightgray;
 	width: 320px;
-	height: 100px;
-	display: inline-block;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	/* height: 90px; */
+}
+
+a {
+	color: black;
+	text-decoration: white;
+	width: 100%;
 }
 
 @media screen and (min-width: 468px) {

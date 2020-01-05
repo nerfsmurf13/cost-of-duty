@@ -40,13 +40,21 @@
 		<table-component
 			:cat="4"
 			:cost-total="costTotal"
+			:arr="sniperArr"
+			:obj="itemDataSniper"
+			:table-name="'table-sniper'"
+			:name="'Snipers'"
+		/>
+		<table-component
+			:cat="5"
+			:cost-total="costTotal"
 			:arr="shotgunArr"
 			:obj="itemDataShotgun"
 			:table-name="'table-shotgun'"
 			:name="'Shotguns'"
 		/>
 		<table-component
-			:cat="5"
+			:cat="6"
 			:cost-total="costTotal"
 			:arr="pistolArr"
 			:obj="itemDataPistol"
@@ -137,10 +145,10 @@ export default {
 				iw8_ar_falima: {
 					properties: {
 						name: "iw8_ar_falima",
-						nameFull: "FAL",
+						nameFull: "FN FAL",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 1499,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -151,10 +159,10 @@ export default {
 				iw8_ar_mike4: {
 					properties: {
 						name: "iw8_ar_mike4",
-						nameFull: "FAL",
+						nameFull: "M4A1",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 700,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -165,10 +173,10 @@ export default {
 				iw8_ar_falpha: {
 					properties: {
 						name: "iw8_ar_falpha",
-						nameFull: "FAL",
+						nameFull: "FAMAS",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 6500,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -179,10 +187,10 @@ export default {
 				iw8_ar_mcharlie: {
 					properties: {
 						name: "iw8_ar_mcharlie",
-						nameFull: "FAL",
+						nameFull: "M13",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 2995,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -193,10 +201,10 @@ export default {
 				iw8_ar_akilo47: {
 					properties: {
 						name: "iw8_ar_akilo47",
-						nameFull: "FAL",
+						nameFull: "AK-47",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 1200,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -207,10 +215,10 @@ export default {
 				iw8_ar_kilo433: {
 					properties: {
 						name: "iw8_ar_kilo433",
-						nameFull: "FAL",
+						nameFull: "Kilo 141",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 2795,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -221,10 +229,10 @@ export default {
 				iw8_ar_scharlie: {
 					properties: {
 						name: "iw8_ar_scharlie",
-						nameFull: "FAL",
+						nameFull: "FN Scar",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 2995,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -235,7 +243,7 @@ export default {
 				iw8_ar_asierra12: {
 					properties: {
 						name: "iw8_ar_asierra12",
-						nameFull: "FAL",
+						nameFull: "ODIN wip",
 						desc: "Enter description here",
 						cost: 2200,
 						roundCost: 2,
@@ -253,8 +261,8 @@ export default {
 						name: "iw8_sm_mpapa7",
 						nameFull: "MP-7",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2,
+						cost: 1799.95,
+						roundCost: 0.48,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -267,8 +275,8 @@ export default {
 						name: "iw8_sm_augolf",
 						nameFull: "AUG",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2,
+						cost: 1899,
+						roundCost: 0.15,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -281,8 +289,8 @@ export default {
 						name: "iw8_sm_papa90",
 						nameFull: "P90",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.2,
+						cost: 1751,
+						roundCost: 0.5,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -295,8 +303,8 @@ export default {
 						name: "iw8_sm_mpapa5",
 						nameFull: "MP5",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.1,
+						cost: 2150,
+						roundCost: 0.15,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -307,10 +315,10 @@ export default {
 				iw8_sm_beta: {
 					properties: {
 						name: "iw8_sm_beta",
-						nameFull: "Beta???",
+						nameFull: "PP19 Bizon",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 1751,
+						roundCost: 0.15,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -323,8 +331,8 @@ export default {
 						name: "iw8_sm_uzulu",
 						nameFull: "Uzi",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 4985,
+						roundCost: 0.15,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -337,10 +345,10 @@ export default {
 				iw8_sn_kilo98: {
 					properties: {
 						name: "iw8_sn_kilo98",
-						nameFull: "iw8_sn_kilo98",
+						nameFull: "Kar98k",
 						desc: "Enter description here",
-						cost: 100,
-						roundCost: 0.01,
+						cost: 699,
+						roundCost: 0.3,
 						magCost: 5,
 						magSize: 30,
 						type: "firearm"
@@ -349,10 +357,10 @@ export default {
 				iw8_sn_mike14: {
 					properties: {
 						name: "iw8_sn_mike14",
-						nameFull: "iw8_sn_mike14",
+						nameFull: "EBR-14",
 						desc: "Enter description here",
-						cost: 100,
-						roundCost: 0.01,
+						cost: 3549,
+						roundCost: 0.18,
 						magCost: 5,
 						magSize: 30,
 						type: "firearm"
@@ -361,13 +369,51 @@ export default {
 				iw8_sn_delta: {
 					properties: {
 						name: "iw8_sn_delta",
-						nameFull: "iw8_sn_delta",
+						nameFull: "Mk2 Carbine",
 						desc: "Enter description here",
-						cost: 100,
-						roundCost: 0.01,
+						cost: 8500,
+						roundCost: 1.35,
 						magCost: 5,
 						magSize: 30,
 						type: "firearm"
+					}
+				}
+			},
+			metaObjectSniper: {
+				iw8_sn_sbeta: {
+					properties: {
+						name: "iw8_sn_sbeta",
+						nameFull: "Dragunov",
+						desc: "Enter description here",
+						cost: 6500,
+						roundCost: 0.18,
+						magCost: 5,
+						magSize: 30,
+						type: "sniper"
+					}
+				},
+				iw8_sn_alpha50: {
+					properties: {
+						name: "iw8_sn_alpha50",
+						nameFull: "AX50",
+						desc: "Enter description here",
+						cost: 11082,
+						roundCost: 3.5,
+						magCost: 5,
+						magSize: 30,
+						type: "sniper"
+					}
+				},
+				iw8_sn_hdromeo: {
+					properties: {
+						name: "iw8_sn_hdromeo",
+						nameFull: "HDR",
+						desc: "Enter description here",
+						cost: 7000,
+						roundCost: 3.1,
+						magCost: 5,
+						magSize: 30,
+						type: "sniper"
 					}
 				}
 			},
@@ -375,10 +421,10 @@ export default {
 				iw8_pi_golf21: {
 					properties: {
 						name: "iw8_pi_golf21",
-						nameFull: "iw8_pi_golf21",
+						nameFull: "X16",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 655,
+						roundCost: 0.22,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -389,10 +435,10 @@ export default {
 				iw8_pi_papa320: {
 					properties: {
 						name: "iw8_pi_papa320",
-						nameFull: "iw8_pi_papa320",
+						nameFull: "M19",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 529,
+						roundCost: 0.22,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -403,10 +449,10 @@ export default {
 				iw8_pi_mike1911: {
 					properties: {
 						name: "iw8_pi_mike1911",
-						nameFull: "iw8_pi_mike1911",
+						nameFull: "1911",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 521,
+						roundCost: 0.22,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -417,10 +463,10 @@ export default {
 				iw8_pi_decho: {
 					properties: {
 						name: "iw8_pi_decho",
-						nameFull: "iw8_pi_decho",
+						nameFull: "Desert Eagle",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 1742,
+						roundCost: 1.2,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -431,10 +477,10 @@ export default {
 				iw8_pi_cpapa: {
 					properties: {
 						name: "iw8_pi_cpapa",
-						nameFull: "iw8_pi_cpapa",
+						nameFull: ".357",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 1340,
+						roundCost: 0.24,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -447,10 +493,10 @@ export default {
 				iw8_sh_charlie725: {
 					properties: {
 						name: "iw8_sh_charlie725",
-						nameFull: "iw8_sh_charlie725",
+						nameFull: "725",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 1899,
+						roundCost: 0.5,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -461,10 +507,10 @@ export default {
 				iw8_sh_dpapa12: {
 					properties: {
 						name: "iw8_sh_dpapa12",
-						nameFull: "iw8_sh_dpapa12",
+						nameFull: "R9-0",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 1400,
+						roundCost: 0.5,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -475,10 +521,10 @@ export default {
 				iw8_sh_oscar12: {
 					properties: {
 						name: "iw8_sh_oscar12",
-						nameFull: "iw8_sh_oscar12",
+						nameFull: "Origin 12",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 2800,
+						roundCost: 0.5,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -489,10 +535,10 @@ export default {
 				iw8_sh_romeo870: {
 					properties: {
 						name: "iw8_sh_romeo870",
-						nameFull: "iw8_sh_romeo870",
+						nameFull: "Model 680",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 549,
+						roundCost: 0.5,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -519,10 +565,10 @@ export default {
 				iw8_lm_kilo121: {
 					properties: {
 						name: "iw8_lm_kilo121",
-						nameFull: "iw8_lm_kilo121",
+						nameFull: "M91",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
+						cost: 17435,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -533,10 +579,10 @@ export default {
 				iw8_lm_lima86: {
 					properties: {
 						name: "iw8_lm_lima86",
-						nameFull: "iw8_lm_lima86",
+						nameFull: "SA87",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 4495,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -547,10 +593,10 @@ export default {
 				iw8_lm_mgolf34: {
 					properties: {
 						name: "iw8_lm_mgolf34",
-						nameFull: "iw8_lm_mgolf34",
+						nameFull: "MG34",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 12500,
+						roundCost: 0.3,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -561,10 +607,10 @@ export default {
 				iw8_lm_pkilo: {
 					properties: {
 						name: "iw8_lm_pkilo",
-						nameFull: "iw8_lm_pkilo",
+						nameFull: "PKM",
 						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 2,
+						cost: 2750,
+						roundCost: 0.18,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -601,6 +647,7 @@ export default {
 		this.smgObjToArr(); // Convert piece of JSON to Array for easy cost addition and loops
 		this.arObjToArr();
 		this.dmrObjToArr();
+		this.sniperObjToArr();
 		this.pistolObjToArr();
 		this.shotgunObjToArr();
 		this.lmgObjToArr();
@@ -630,7 +677,8 @@ export default {
 				this.costTotal[2] +
 				this.costTotal[3] +
 				this.costTotal[4] +
-				this.costTotal[5];
+				this.costTotal[5] +
+				this.costTotal[6];
 		},
 		clickEven(e) {
 			let wid = e.toElement.id;
@@ -657,6 +705,9 @@ export default {
 			if (cat == "table-lmg") {
 				this.selected = this.itemDataLmg[wid].properties;
 			}
+			if (cat == "table-sniper") {
+				this.selected = this.itemDataSniper[wid].properties;
+			}
 		},
 		formatPrice(value) {
 			//Formats number into Dollar amounts
@@ -671,6 +722,7 @@ export default {
 			stateMerge(this.itemDataPistol, this.metaObjectPistol);
 			stateMerge(this.itemDataShotgun, this.metaObjectShotgun);
 			stateMerge(this.itemDataLmg, this.metaObjectLmg);
+			stateMerge(this.itemDataSniper, this.metaObjectSniper);
 		},
 		arObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
@@ -685,6 +737,14 @@ export default {
 		dmrObjToArr() {
 			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
 			this.dmrArr = Object.keys(this.itemDataDmr).map(j => this.itemDataDmr[j]);
+			//this.totalDmrCostCalc();
+			//this.totalCostAdd()
+		},
+		sniperObjToArr() {
+			// Convert piece of JSON to Array for easy cost addition and loops this.itemData_Ar
+			this.sniperArr = Object.keys(this.itemDataSniper).map(
+				j => this.itemDataSniper[j]
+			);
 			//this.totalDmrCostCalc();
 			//this.totalCostAdd()
 		},

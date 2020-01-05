@@ -162,7 +162,7 @@ export default {
 			stats: [],
 			loaded: false,
 			status: "loading",
-			completeCost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			completeCost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			// firearmTotal: 0,
 			allTotal: 0
 		};
@@ -276,7 +276,8 @@ export default {
 				this.completeCost[2] +
 				this.completeCost[3] +
 				this.completeCost[4] +
-				this.completeCost[5];
+				this.completeCost[6] +
+				this.completeCost[7];
 		},
 		calcAll() {
 			let tots =
@@ -291,7 +292,8 @@ export default {
 				this.completeCost[8] +
 				this.completeCost[9] +
 				this.completeCost[10] +
-				this.completeCost[11];
+				this.completeCost[11] +
+				this.completeCost[12];
 			this.console.log("calcAll Ran: " + tots);
 			this.allTotal = tots;
 		}
@@ -303,46 +305,6 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/base.scss";
 @import "../styles/tab-styles.scss";
-// .grid {
-// 	//background-color: $grid-filler;
-// 	border: 2px solid $grid-on;
-// 	background-image: repeating-linear-gradient(
-// 			0deg,
-// 			transparent,
-// 			transparent 2px,
-// 			$grid-off 2px,
-// 			$grid-off 3px
-// 		),
-// 		repeating-linear-gradient(
-// 			-90deg,
-// 			transparent,
-// 			transparent 2px,
-// 			$grid-off 2px,
-// 			$grid-off 3px
-// 		);
-// 	background-size: 3px 3px;
-// 	&:hover {
-// 		background-color: $gridbg-on;
-// 		border-left: 2px solid transparent;
-// 		border-right: 2px solid transparent;
-// 		border-top: 2px solid $text-med;
-// 		border-bottom: 2px solid $text-med;
-// 		background-image: repeating-linear-gradient(
-// 				0deg,
-// 				transparent,
-// 				transparent 2px,
-// 				$grid-on 2px,
-// 				$grid-on 3px
-// 			),
-// 			repeating-linear-gradient(
-// 				-90deg,
-// 				transparent,
-// 				transparent 2px,
-// 				$grid-on 2px,
-// 				$grid-on 3px
-// 			);
-// 	}
-// }
 
 // .total-spent {
 // 	margin-bottom: 0.5rem;

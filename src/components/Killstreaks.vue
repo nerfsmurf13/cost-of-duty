@@ -6,7 +6,7 @@
 		</div>
 		<table-component
 			:tab="1"
-			:cat="10"
+			:cat="11"
 			:calc-projectiles="4"
 			:cost-total="costTotal"
 			:killstreak-table="true"
@@ -18,7 +18,7 @@
 		/>
 		<table-component
 			:tab="1"
-			:cat="11"
+			:cat="12"
 			:calc-projectiles="4"
 			:cost-total="costTotal"
 			:display-headshots="false"
@@ -62,9 +62,9 @@ export default {
 			metaObjectOffKs: {
 				bradley: {
 					properties: {
-						name: "Bradley/Wheelson",
-						nameFull: "Bradley Full",
-						cost: 4583000,
+						name: "bradley",
+						nameFull: "Bradley",
+						cost: 3166000,
 						desc: "Description Here",
 						idName: "bradley",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
@@ -76,10 +76,10 @@ export default {
 				},
 				hover_jet: {
 					properties: {
-						name: "Hover Jet",
-						nameFull: "AV-8",
+						name: "hover_jet",
+						nameFull: "Hover Jet",
 						cost: 23700000 + 2799 * 4 + 2194,
-						desc: "Description Here",
+						desc: "Price estimated based on AV-8 Harrier and rocket salvo",
 						idName: "hover_jet",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//AV-8 Cost 23700000
@@ -90,10 +90,11 @@ export default {
 				},
 				precision_airstrike: {
 					properties: {
-						name: "Precision Airstrike",
-						nameFull: "A-10 Strafing Run",
+						name: "precision_airstrike",
+						nameFull: "Precision Airstrike",
 						cost: 20000000 + 71084,
-						desc: "Description Here",
+						desc:
+							"A-10 Strafing Run. Price estimated on 2x A-10s and 4 seconds of GAU-8 fire",
 						idName: "precision_airstrike",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//2x A-10s 2x strikes
@@ -105,10 +106,10 @@ export default {
 				},
 				chopper_support: {
 					properties: {
-						name: "Chopper Support",
-						nameFull: "Pavelow",
-						cost: 40000000,
-						desc: "Description Here",
+						name: "chopper_support",
+						nameFull: "Chopper Support",
+						cost: 35000000,
+						desc: "Estimated price of a Pavelow helicopter",
 						idName: "chopper_support",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
@@ -116,8 +117,8 @@ export default {
 				pac_sentry: {
 					properties: {
 						name: "pac_sentry",
-						nameFull: "AV-8",
-						cost: 1,
+						nameFull: "Wheelson",
+						cost: 250000,
 						desc: "Description Here",
 						idName: "pac_sentry",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
@@ -126,16 +127,16 @@ export default {
 				juggernaut: {
 					properties: {
 						name: "juggernaut",
-						nameFull: "AV-8",
-						cost: 1,
-						desc: "Description Here",
+						nameFull: "Juggernaut",
+						cost: 255000,
+						desc: "Price estimated on Heavy Armour Suit and M134 Minigun",
 						idName: "juggernaut",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				nuke: {
 					properties: {
-						name: "Nuke",
+						name: "nuke",
 						nameFull: "Tactical Nuke",
 						cost: 35500000,
 						desc: "Description Here",
@@ -146,8 +147,8 @@ export default {
 				sentry_gun: {
 					properties: {
 						name: "sentry_gun",
-						nameFull: "AV-8",
-						cost: 1,
+						nameFull: "Sentry Gun",
+						cost: 250000,
 						desc: "Description Here",
 						idName: "sentry_gun",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
@@ -155,10 +156,10 @@ export default {
 				},
 				gunship: {
 					properties: {
-						name: "Gunship",
-						nameFull: "AC-130U Spooky II",
+						name: "gunship",
+						nameFull: "Gunship",
 						cost: 190000000 + 2194 + 4000 + 380,
-						desc: "Description Here",
+						desc: "Cost estimation based on a fully loaded AC-130U Spooky II",
 						idName: "gunship",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//190000000 Unit Cost
@@ -169,10 +170,10 @@ export default {
 				},
 				toma_strike: {
 					properties: {
-						name: "Cluster Strike",
+						name: "toma_strike",
 						nameFull: "Cluster Mortar Strike",
-						cost: 1,
-						desc: "Description Here",
+						cost: 2190,
+						desc: "Cost estimation of mortar shells fired",
 						idName: "toma_strike",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//Aparently Toma_Strike is Mortar/Cluster Strike
@@ -181,28 +182,29 @@ export default {
 				},
 				cruise_predator: {
 					properties: {
-						name: "Cruise Missile",
-						nameFull: "Tomahawk Land Attack Missile",
+						name: "cruise_predator",
+						nameFull: "Cruise Missile",
 						cost: 1400000,
-						desc: "Description Here",
+						desc: "Cost estimation of Tomahawk missiles",
 						idName: "cruise_predator",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				manual_turret: {
 					properties: {
-						name: "Shield Turret",
-						nameFull: "Browning M2",
-						cost: 14000,
-						desc: "Description Here",
+						name: "manual_turret",
+						nameFull: "Shield Turret",
+						cost: 16000,
+						desc:
+							"Cost estimation based on a sheilded and mounted Browning M2 HMG",
 						idName: "manual_turret",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				white_phosphorus: {
 					properties: {
-						name: "White Phosphorous",
-						nameFull: "White Phosphorous",
+						name: "white_phosphorus",
+						nameFull: "White Phosphorous WIP",
 						cost: 1,
 						desc: "Description Here",
 						idName: "white_phosphorus",
@@ -211,10 +213,10 @@ export default {
 				},
 				chopper_gunner: {
 					properties: {
-						name: "Chopper Gunner",
-						nameFull: "AH-64 Apache",
+						name: "chopper_gunner",
+						nameFull: "Chopper Gunner",
 						cost: 35500000,
-						desc: "Description Here",
+						desc: "Cost based on AH-64 helicopter",
 						idName: "chopper_gunner",
 						type: "killstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 						//8 Hellfires
@@ -226,7 +228,7 @@ export default {
 				airdrop: {
 					properties: {
 						name: "airdrop",
-						nameFull: "airdrop",
+						nameFull: "Airdrop WIP",
 						cost: 3,
 						totalCost: 0,
 						desc: "Description Here",
@@ -237,8 +239,8 @@ export default {
 				radar_drone_overwatch: {
 					properties: {
 						name: "radar_drone_overwatch",
-						nameFull: "radar_drone_overwatch",
-						cost: 1,
+						nameFull: "Personal Radar",
+						cost: 14600000,
 						totalCost: 0,
 						desc: "Description Here",
 						idName: "radar_drone_overwatch",
@@ -248,7 +250,7 @@ export default {
 				scrambler_drone_guard: {
 					properties: {
 						name: "scrambler_drone_guard",
-						nameFull: "Cluster Mortars",
+						nameFull: "WIP",
 						cost: 1,
 						totalCost: 0,
 						desc: "Description Here",
@@ -259,10 +261,10 @@ export default {
 				uav: {
 					properties: {
 						name: "uav",
-						nameFull: "AV-8",
-						cost: 1,
+						nameFull: "UAV",
+						cost: 15900000,
 						totalCost: 0,
-						desc: "Description Here",
+						desc: "Cost based on MQ-9 Predator",
 						idName: "uav",
 						type: "tkillstreak" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
@@ -270,7 +272,7 @@ export default {
 				airdrop_multiple: {
 					properties: {
 						name: "airdrop_multiple",
-						nameFull: "AV-8",
+						nameFull: "Emergency Airdrop WIP",
 						cost: 1,
 						totalCost: 0,
 						desc: "Description Here",
@@ -281,7 +283,7 @@ export default {
 				directional_uav: {
 					properties: {
 						name: "directional_uav",
-						nameFull: "AV-8",
+						nameFull: "X47 WIP",
 						cost: 1,
 						totalCost: 0,
 						desc: "Description Here",

@@ -16,8 +16,10 @@
     "node-sass": "^4.13.0",
     "sass-loader": "^7.3.1",
     "vue": "^2.5.2",
+    "vue-google-adsense": "^1.8.0",
     "vue-object-merge": "^0.1.7",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-script2": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

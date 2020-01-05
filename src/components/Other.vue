@@ -10,7 +10,7 @@
 		</div>
 		<table-component
 			:tab="1"
-			:cat="6"
+			:cat="7"
 			:cost-total="costTotal"
 			:display-headshots="false"
 			:arr="launcherArr"
@@ -21,7 +21,7 @@
 
 		<table-component
 			:arr="lethalArr"
-			:cat="7"
+			:cat="8"
 			:cost-total="costTotal"
 			:calc-projectiles="2"
 			:display-headshots="false"
@@ -35,7 +35,7 @@
 		<table-component
 			:arr="otherArr"
 			:calc-projectiles="3"
-			:cat="8"
+			:cat="9"
 			:cost-total="costTotal"
 			:display-headshots="false"
 			:obj="itemDataOther"
@@ -45,7 +45,7 @@
 
 		<table-component
 			:arr="meleeArr"
-			:cat="9"
+			:cat="10"
 			:cost-total="costTotal"
 			:calc-projectiles="3"
 			:display-headshots="false"
@@ -115,72 +115,72 @@ export default {
 				equip_frag: {
 					properties: {
 						name: "equip_frag",
-						nameFull: "equip_frag",
+						nameFull: "Frag Grenade",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 15,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_thermite: {
 					properties: {
 						name: "equip_thermite",
-						nameFull: "equip_thermite",
+						nameFull: "Thermite",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 15,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_semtex: {
 					properties: {
 						name: "equip_semtex",
-						nameFull: "equip_semtex",
+						nameFull: "Semtex",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 60,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_claymore: {
 					properties: {
 						name: "equip_claymore",
-						nameFull: "equip_claymore",
+						nameFull: "Claymore",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 119,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_c4: {
 					properties: {
 						name: "equip_c4",
-						nameFull: "equip_c4",
+						nameFull: "C4",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 68,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_at_mine: {
 					properties: {
 						name: "equip_at_mine",
-						nameFull: "equip_at_mine",
+						nameFull: "Proximity Mine",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 30,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_throwing_knife: {
 					properties: {
 						name: "equip_throwing_knife",
-						nameFull: "equip_throwing_knife",
+						nameFull: "Throwing Knife",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 10,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				},
 				equip_molotov: {
 					properties: {
 						name: "equip_molotov",
-						nameFull: "equip_molotov",
+						nameFull: "Molotov",
 						desc: "Enter description here",
-						cost: 1,
+						cost: 6,
 						type: "lThrowable" //firearm, killstreak, lThrowable, tThrowable, melee
 					}
 				}
@@ -189,47 +189,47 @@ export default {
 				iw8_la_gromeo: {
 					properties: {
 						name: "iw8_la_gromeo",
-						nameFull: "iw8_la_gromeo-7",
+						nameFull: "PILA",
 						desc: "Enter description here",
-						cost: 1000,
-						roundCost: 1,
+						cost: 9150,
+						roundCost: 22700,
 						type: "launcher"
 					}
 				},
 				iw8_la_rpapa7: {
 					properties: {
 						name: "iw8_la_rpapa7",
-						nameFull: "iw8_la_rpapa7",
+						nameFull: "RPG-7",
 						desc: "Enter description here",
-						cost: 1000,
-						roundCost: 1,
+						cost: 500,
+						roundCost: 100,
 						type: "launcher"
 					}
 				},
 				iw8_la_juliet: {
 					properties: {
 						name: "iw8_la_juliet",
-						nameFull: "iw8_la_juliet",
+						nameFull: "JOKR",
 						desc: "Enter description here",
-						cost: 1000,
-						roundCost: 1,
+						cost: 126000,
+						roundCost: 78000,
 						type: "launcher"
 					}
 				},
 				iw8_la_kgolf: {
 					properties: {
 						name: "iw8_la_kgolf",
-						nameFull: "iw8_la_kgolf",
+						nameFull: "Strela-P",
 						desc: "Enter description here",
-						cost: 1000,
-						roundCost: 1,
+						cost: 20000,
+						roundCost: 500,
 						type: "launcher"
 					}
 				},
 				iw8_la_mike32: {
 					properties: {
 						name: "iw8_la_mike32",
-						nameFull: "iw8_la_mike32",
+						nameFull: "iw8_la_mike32 WIP",
 						desc: "Enter description here",
 						cost: 1000,
 						roundCost: 1,
@@ -241,7 +241,7 @@ export default {
 				iw8_me_riotshield: {
 					properties: {
 						name: "iw8_me_riotshield",
-						nameFull: "iw8_me_riotshield",
+						nameFull: "Riot Shield WIP",
 						desc: "Enter description here",
 						cost: 1000,
 						type: "melee" //firearm, killstreak, lThrowable, tThrowable, melee
@@ -252,7 +252,7 @@ export default {
 				iw8_knife: {
 					properties: {
 						name: "iw8_knife",
-						nameFull: "iw8_knife",
+						nameFull: "Knife WIP",
 						desc: "Enter description here",
 						cost: 10,
 						type: "melee" //firearm, killstreak, lThrowable, tThrowable, melee
@@ -371,10 +371,10 @@ export default {
 		},
 		totalCat() {
 			this.otherTotal =
-				this.costTotal[6] +
 				this.costTotal[7] +
 				this.costTotal[8] +
-				this.costTotal[9];
+				this.costTotal[9] +
+				this.costTotal[10];
 		}
 		// totalCostAdd() {
 		// 	//Reads the array created from objToArr() to add up costs
