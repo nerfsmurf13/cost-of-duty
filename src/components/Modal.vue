@@ -201,7 +201,7 @@
 						<div class="stats-title">KD</div>
 					</div>
 					<div v-show="obj.type == '!firearm'" class="stat-container-indv">
-						<div class="stats-content">{{ obj.headShots }}</div>
+						<div class="stats-content">{{ obj.headshots }}</div>
 						<div class="stats-title">Headshots</div>
 					</div>
 					<div class="stat-container-indv">

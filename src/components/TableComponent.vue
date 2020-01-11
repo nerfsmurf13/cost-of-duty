@@ -43,7 +43,7 @@
 						}}
 					</td>
 					<td v-show="displayDeaths">{{ weapon.properties.deaths }}</td>
-					<td v-show="displayHeadshots">{{ weapon.properties.headShots }}</td>
+					<td v-show="displayHeadshots">{{ weapon.properties.headshots }}</td>
 					<td
 						v-show="displayCost && calcProjectiles == 1"
 						:id="weapon.properties.name"
@@ -116,7 +116,7 @@
 							class="table-btn grid"
 							@click="openDetails"
 						>
-							{{ killstreak.properties.name }}
+							{{ killstreak.properties.nameFull }}
 						</button>
 					</td>
 					<td>{{ killstreak.properties.awardedCount }}</td>

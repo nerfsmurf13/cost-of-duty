@@ -2,6 +2,7 @@
 .grid {
   //background-color: $grid-filler;
   -webkit-transition-duration: 0.2;
+
   /* Safari */
   transition-duration: 0.2s;
   border: 2px solid $grid-on;
@@ -72,10 +73,11 @@
 
 .pri {
   justify-content: center;
-  background-image: url("../assets/corners_266_75.png");
+  // background-image: url("../assets/corners_266_75.png");
 
   .stats-cost {
     font-size: 2rem;
+    color: $good;
   }
 }
 
@@ -99,7 +101,8 @@
 // -----========== STAT  and COST Containers ==========-----
 
 .stat-container-indv,
-.cost-container-indv {
+.cost-container-indv,
+.pri {
 
   border: 1px solid white;
   //background-image: url("../assets/corners_125_58.png");
@@ -169,11 +172,14 @@
 
 
 .pri {
+  margin: .5rem;
+  border: 1px solid white;
   min-width: 17rem;
   min-height: 5rem;
   justify-content: center;
 
   .stats-cost {
+
     font-size: 2rem;
   }
 }
@@ -320,6 +326,21 @@
         max-width: 25%;
       }
     }
+
+    tbody {
+      tr {
+        td {
+          button {
+            height: 100%;
+            // padding: 100% auto;
+            // background-color: red;
+          }
+        }
+      }
+    }
+
+
+
   }
 }
 

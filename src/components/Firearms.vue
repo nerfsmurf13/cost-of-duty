@@ -253,6 +253,20 @@ export default {
 						//demoVar: magCost * shots
 						//Fal
 					}
+				},
+				iw8_ar_tango21: {
+					properties: {
+						name: "iw8_ar_tango21",
+						nameFull: "iw8_ar_tango21",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 2,
+						magCost: 10,
+						magSize: 5,
+						type: "firearm"
+						//demoVar: magCost * shots
+						//Fal
+					}
 				}
 			},
 			metaObjectSmg: {
@@ -366,9 +380,9 @@ export default {
 						type: "firearm"
 					}
 				},
-				iw8_sn_delta: {
+				iw8_sn_sbeta: {
 					properties: {
-						name: "iw8_sn_delta",
+						name: "iw8_sn_sbeta",
 						nameFull: "Mk2 Carbine",
 						desc: "Enter description here",
 						cost: 8500,
@@ -380,9 +394,9 @@ export default {
 				}
 			},
 			metaObjectSniper: {
-				iw8_sn_sbeta: {
+				iw8_sn_delta: {
 					properties: {
-						name: "iw8_sn_sbeta",
+						name: "iw8_sn_delta",
 						nameFull: "Dragunov",
 						desc: "Enter description here",
 						cost: 6500,
@@ -548,20 +562,6 @@ export default {
 				}
 			},
 			metaObjectLmg: {
-				iw8_lm_dblmg: {
-					properties: {
-						name: "iw8_lm_dblmg",
-						nameFull: "iw8_lm_dblmg",
-						desc: "Enter description here",
-						cost: 2200,
-						roundCost: 0.15,
-						magCost: 10,
-						magSize: 5,
-						type: "firearm"
-						//demoVar: magCost * shots
-						//Fal
-					}
-				},
 				iw8_lm_kilo121: {
 					properties: {
 						name: "iw8_lm_kilo121",
@@ -569,6 +569,18 @@ export default {
 						desc: "Enter description here",
 						cost: 17435,
 						roundCost: 0.18,
+						magCost: 10,
+						magSize: 5,
+						type: "firearm"
+					}
+				},
+				iw8_lm_mgolf34: {
+					properties: {
+						name: "iw8_lm_mgolf34",
+						nameFull: "MG34",
+						desc: "Enter description here",
+						cost: 12500,
+						roundCost: 0.3,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -590,20 +602,7 @@ export default {
 						//Fal
 					}
 				},
-				iw8_lm_mgolf34: {
-					properties: {
-						name: "iw8_lm_mgolf34",
-						nameFull: "MG34",
-						desc: "Enter description here",
-						cost: 12500,
-						roundCost: 0.3,
-						magCost: 10,
-						magSize: 5,
-						type: "firearm"
-						//demoVar: magCost * shots
-						//Fal
-					}
-				},
+
 				iw8_lm_pkilo: {
 					properties: {
 						name: "iw8_lm_pkilo",
@@ -611,6 +610,20 @@ export default {
 						desc: "Enter description here",
 						cost: 2750,
 						roundCost: 0.18,
+						magCost: 10,
+						magSize: 5,
+						type: "firearm"
+						//demoVar: magCost * shots
+						//Fal
+					}
+				},
+				iw8_lm_mgolf36: {
+					properties: {
+						name: "iw8_lm_mgolf36",
+						nameFull: "iw8_lm_mgolf36",
+						desc: "Enter description here",
+						cost: 2200,
+						roundCost: 0.15,
 						magCost: 10,
 						magSize: 5,
 						type: "firearm"
@@ -785,16 +798,6 @@ export default {
 			}
 			this.totalDmrCost = val;
 		}
-		// totalCostAdd() {
-		// 	//Reads the array created from objToArr() to add up costs
-		// 	let totalCost = 0;
-		// 	for (let i = 0; i < this.offKsArr.length; i++) {
-		// 		this.console.log(this.offKsArr[i].properties.totalCost)
-		// 		totalCost += this.offKsArr[i].properties.totalCost;
-		// 		this.console.log(totalCost)
-		// 	}
-		// 	this.totalKillstreakCost = totalCost;
-		// },
 	}
 };
 </script>
@@ -802,70 +805,4 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/base.scss";
 @import "../styles/tab-styles.scss";
-// .value {
-// 	color: #3e9c35;
-// 	font-size: 2rem;
-// 	font-weight: 300;
-// }
-
-// .cat-spend {
-// 	padding-bottom: 1rem;
-// }
-
-// .table-title {
-// 	width: 100%;
-// 	font-size: 1rem;
-// }
-
-// .stat-container {
-// 	font-size: 1.5rem;
-// 	display: flex;
-// 	flex-flow: column;
-// 	margin: 1rem 0;
-// 	margin-top: 0;
-// 	flex-wrap: wrap;
-// 	justify-content: space-evenly;
-// 	padding: 0;
-// 	.value {
-// 		padding: 0.5rem 0;
-// 	}
-// 	.stat-container-indv {
-// 		background-color: $background2;
-// 		background-image: url("../assets/corners.png");
-// 		background-size: cover;
-// 		background-repeat: no-repeat;
-// 		width: 125px;
-// 		margin: 0.5rem;
-// 		.stats-content {
-// 			padding: 0.3rem;
-// 			color: $text-lite;
-// 		}
-// 		.stats-cost {
-// 			padding: 0.3rem;
-// 			border-top: 2px solid $text-dark;
-// 			font-size: 1rem;
-// 			color: $good;
-// 		}
-// 		.stats-title {
-// 			padding: 0.3rem;
-// 			border-top: 2px solid $text-dark;
-// 			font-size: 1rem;
-// 			color: $text-med;
-// 		}
-// 		&:hover {
-// 			background-color: $selected-dark;
-// 			.stats-title {
-// 				border-top: 2px solid $hilight;
-// 				color: $hilight;
-// 			}
-// 			.stats-cost {
-// 				border-top: 2px solid $hilight;
-// 			}
-// 		}
-// 	}
-// 	.title {
-// 		width: 100%;
-// 		margin-bottom: 0.5rem;
-// 	}
-// }
 </style>
