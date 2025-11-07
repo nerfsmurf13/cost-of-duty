@@ -8,6 +8,8 @@ import Page404 from '@/pages/Page404'
 Vue.use(Router)
 
 export default new Router({
+    mode: 'hash',
+    base: process.env.BASE_URL,
     routes: [{
             path: '/',
             name: 'Home',
