@@ -150,6 +150,7 @@ export default {
 	data() {
 		return {
 			tab: 1,
+			corsProxy: "https://api.allorigins.win/raw?url=",
 			url1:
 				"https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/",
 			url2: "/gamer/",
@@ -198,15 +199,18 @@ export default {
 				this.hash +
 				this.name2 +
 				this.url3;
+			let proxiedURI = this.corsProxy + encodeURIComponent(baseURI);
 			this.$http
-				.get(baseURI)
+				.get(proxiedURI)
 				.then(result => {
 					this.stats = result.data;
 					this.loaded = true;
 					this.status = this.stats.status;
 				})
 				.catch(error => {
-					this.console.log(error.response.data.error);
+					this.console.log(error);
+					this.loaded = true;
+					this.status = "error";
 					//this.console.log(error.response.status);
 					// this.console.log(error.response.headers);
 				});
@@ -222,17 +226,18 @@ export default {
 		fetchPlayer() {
 			let baseURI =
 				this.url1 + this.platform + this.url2 + this.username + this.url3;
+			let proxiedURI = this.corsProxy + encodeURIComponent(baseURI);
 			this.$http
-				.get(baseURI)
+				.get(proxiedURI)
 				.then(result => {
 					this.stats = result.data;
 					this.loaded = true;
 					this.status = this.stats.status;
 				})
 				.catch(error => {
-					this.console.log(error.response.data.status);
+					this.console.log(error);
 					this.loaded = true;
-					this.status = error.response.data.status;
+					this.status = "error";
 					// this.console.log(error.response.status);
 					// this.console.log(error.response.headers);
 				});
