@@ -28,10 +28,12 @@ https://[your-username].github.io/cost-of-duty/
 
 The deployment workflow:
 1. Checks out the repository
-2. Sets up Node.js 14 (required for legacy dependencies)
+2. Sets up Node.js 14 (compatible with legacy webpack dependencies)
 3. Installs dependencies with `npm ci --legacy-peer-deps`
 4. Builds the project with `npm run build`
 5. Deploys the `dist` folder to GitHub Pages
+
+Note: The project uses dart-sass (sass) instead of the deprecated node-sass for better CI/CD compatibility.
 
 ## Configuration
 
@@ -45,8 +47,9 @@ The Vue Router uses **hash mode** (`/#/`) to ensure routing works on GitHub Page
 ## Troubleshooting
 
 ### Build Fails
-- The project uses Node.js 14 due to legacy dependencies (node-sass)
-- The build uses `--openssl-legacy-provider` flag for compatibility
+- The project uses Node.js 14 for compatibility with webpack 3
+- The build uses `--openssl-legacy-provider` flag for OpenSSL compatibility
+- Uses dart-sass (sass) for SCSS compilation instead of deprecated node-sass
 
 ### 404 Errors
 - Make sure GitHub Pages is set to use **GitHub Actions** as the source
